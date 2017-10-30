@@ -1,0 +1,23 @@
+{
+	"__comment": "Designed by Pavel Durov with Cubik Studio - https://cubik.studio",
+	"textures": {
+		"particle": "realism:blocks/burntwood_top",
+		"textureside": "realism:blocks/burntwood_side",
+		"texturetop": "realism:blocks/burntwood_top"
+	},
+	"elements": [
+		{
+			"__comment": "Cube1",
+			"from": [ 0, 0, 0 ],
+			"to": [ 16, 16, 16 ],
+			"faces": {
+				"down": { "uv": [ 0, 16, 16, 16 ], "texture": "#texturetop" },
+				"up": { "uv": [ 0, 16, 16, 16 ], "texture": "#texturetop" },
+				"north": { "uv": [ 0, 16, 16, 16 ], "texture": "#textureside" },
+				"south": { "uv": [ 0, 16, 16, 16 ], "texture": "#textureside" },
+				"west": { "uv": [ 0, 16, 16, 16 ], "texture": "#textureside" },
+				"east": { "uv": [ 0, 16, 16, 16 ], "texture": "#textureside" }
+			}
+		}
+	]
+}

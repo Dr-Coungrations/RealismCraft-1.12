@@ -26,8 +26,8 @@ public class BreakAcaciaGen  extends WorldGeneratorTwo {
 			if(ConfigManager.debugGeneration){
 				Realism.LOGGER.info("Block Acacia generate on: " + "x: " + pos.getX() + " " + "y: " + pos.getY()+ " " + "z: " + pos.getZ());
 			}
-			if(world.getBiome(new BlockPos(pos.getX(), world.getActualHeight(), pos.getZ())) == Biomes.SAVANNA 
-					|| world.getBiome(new BlockPos(pos.getX(), world.getActualHeight(), pos.getZ())) == Biomes.SAVANNA_PLATEAU){
+			if(world.getBiome(new BlockPos(pos.getX() << 4, world.getActualHeight(), pos.getZ() << 4)) == Biomes.SAVANNA 
+					|| world.getBiome(new BlockPos(pos.getX() << 4, world.getActualHeight(), pos.getZ() << 4)) == Biomes.SAVANNA_PLATEAU){
 				if (world.isAirBlock(pos) && world.getBlockState(pos.down()).getBlock() == Blocks.GRASS)
 				{
 					if(variator == 0){

@@ -25,10 +25,10 @@ public class BreakSpruceGen extends WorldGeneratorTwo {
 			if(ConfigManager.debugGeneration){
 				Realism.LOGGER.info("Block Spruce generate on: " + "x: " + pos.getX() + " " + "y: " + pos.getY()+ " " + "z: " + pos.getZ());
 			}
-			if(world.getBiome(new BlockPos(pos.getX(), world.getActualHeight(), pos.getZ())) == Biomes.TAIGA 
-					|| world.getBiome(new BlockPos(pos.getX(), world.getActualHeight(), pos.getZ())) == Biomes.TAIGA_HILLS
-					|| world.getBiome(new BlockPos(pos.getX(), world.getActualHeight(), pos.getZ())) == Biomes.COLD_TAIGA
-					|| world.getBiome(new BlockPos(pos.getX(), world.getActualHeight(), pos.getZ())) == Biomes.COLD_TAIGA_HILLS){
+			if(world.getBiome(new BlockPos(pos.getX() << 4, world.getActualHeight(), pos.getZ() << 4)) == Biomes.TAIGA 
+					|| world.getBiome(new BlockPos(pos.getX() << 4, world.getActualHeight(), pos.getZ() << 4)) == Biomes.TAIGA_HILLS
+					|| world.getBiome(new BlockPos(pos.getX() << 4, world.getActualHeight(), pos.getZ() << 4)) == Biomes.COLD_TAIGA
+					|| world.getBiome(new BlockPos(pos.getX() << 4, world.getActualHeight(), pos.getZ() << 4)) == Biomes.COLD_TAIGA_HILLS){
 				if (world.isAirBlock(pos) && world.getBlockState(pos.down()).getBlock() == Blocks.GRASS)
 				{
 					if(variator == 0){

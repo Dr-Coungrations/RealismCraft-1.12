@@ -8,7 +8,6 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockCactus;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockOldLeaf;
 import net.minecraft.block.BlockPane;
@@ -24,7 +23,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenCactus;
 
 import com.google.common.base.Predicate;
 import com.lg.realism.RegBlocks;
@@ -45,19 +43,14 @@ public class AnnotationHooks {
 
 
 	@Hook(createMethod = true, returnCondition = ReturnCondition.ALWAYS)
-	public static void onEntityWalk(BlockPane pb,World worldIn, BlockPos pos, Entity entityIn) {
+    public static void onEntityWalk(BlockPane pb,World worldIn, BlockPos pos, Entity entityIn) {
 		worldIn.destroyBlock(pos, false);
-	}
+    }
 	@Hook(createMethod = true, returnCondition = ReturnCondition.ALWAYS)
 	public static AxisAlignedBB getCollisionBoundingBox(BlockLeaves bl,IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
 		return NULL_AABB;
 	}
 
-	@Hook(returnCondition = ReturnCondition.ALWAYS)
-	public static boolean generate(WorldGenCactus wgc,World worldIn, Random rand, BlockPos position)
-	{
-		return true;
-	}
 	@Hook(returnCondition = ReturnCondition.ALWAYS)
 	public static void dropApple(BlockOldLeaf hhfg, World world, BlockPos pos, IBlockState state, int chance)
 	{
@@ -89,10 +82,6 @@ public class AnnotationHooks {
 		entity.motionZ *= 0.5D;
 	}
 
-	@Hook(returnCondition = ReturnCondition.ALWAYS)
-	public static void neighborChanged(BlockCactus bc, IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
-	{
-	}
 
 	@Hook(createMethod = true, returnCondition = ReturnCondition.ALWAYS)
 	public static void onBlockAdded(BlockLeaves bl,World world, BlockPos pos, IBlockState state) {

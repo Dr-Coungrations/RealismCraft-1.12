@@ -22,5 +22,7 @@ public class BiomeRegistry extends Biome{
 		
 	}
 
+	public static void initBiome(){
 
+	}
 }

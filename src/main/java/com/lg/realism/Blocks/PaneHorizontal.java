@@ -6,7 +6,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
@@ -33,27 +33,18 @@ public class PaneHorizontal extends BasicBlock{
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		return pane_AABB;
 	}
-
-
-
-
 	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
-	{
-		EntityItem ei = (EntityItem)entity;
-		
-		if (entity instanceof EntityItem) {
-				if(entity.isCollided){
-					world.destroyBlock(pos, false);
-				}
-		
-		}
-	}
+    public void onEntityWalk(World worldIn, BlockPos pos, Entity entity)
+    {
+	//	EntityItem entityitem = (EntityItem)entity;
+	//	if(entityitem == EntityItem.)
+		worldIn.destroyBlock(pos, false);
+    }
 	@Override
-	public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos)
-	{
-		return this.blockMapColor;
-	}
+    public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos)
+    {
+        return this.blockMapColor;
+    }
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {

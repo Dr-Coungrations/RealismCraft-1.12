@@ -26,8 +26,8 @@ public class BreakOakGen extends WorldGeneratorOne {
 			if(ConfigManager.debugGeneration){
 				Realism.LOGGER.info("Block Oak generate on: " + "x: " + pos.getX() + " " + "y: " + pos.getY()+ " " + "z: " + pos.getZ());
 			}
-			if(world.getBiome(new BlockPos(pos.getX() , world.getActualHeight(), pos.getZ() )) == Biomes.FOREST 
-					|| world.getBiome(new BlockPos(pos.getX(), world.getActualHeight(), pos.getZ() )) == Biomes.FOREST_HILLS){
+			if(world.getBiome(new BlockPos(pos.getX() << 4, world.getActualHeight(), pos.getZ() << 4)) == Biomes.FOREST 
+					|| world.getBiome(new BlockPos(pos.getX() << 4, world.getActualHeight(), pos.getZ() << 4)) == Biomes.FOREST_HILLS){
 				if (world.isAirBlock(pos) && world.getBlockState(pos.down()).getBlock() == Blocks.GRASS) {
 					if(variator == 0) {
 						world.setBlockState(new BlockPos(pos),Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.OAK).withProperty(LOG_AXIS, BlockLog.EnumAxis.Y));

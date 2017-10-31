@@ -47,4 +47,21 @@ public class Ash extends Block{
         return ash_AABB;
     }
 
+    @Override
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+        return false;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean isFullCube(IBlockState state) {
+        return false;
+    }
+
 }

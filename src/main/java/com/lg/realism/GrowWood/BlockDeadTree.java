@@ -1,7 +1,7 @@
-package com.lg.realism.GrowWood.AppleTree;
+package com.lg.realism.GrowWood;
 
 
-import net.minecraft.block.BlockPlanks;
+import com.lg.realism.Realism;
 import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -18,17 +18,16 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.lg.realism.Realism;
-
-public class BlockAppleTree extends BlockRotatedPillar {
+public class BlockDeadTree extends BlockRotatedPillar {
 
 	public static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.<EnumFacing.Axis>create("axis", EnumFacing.Axis.class);
-	public BlockAppleTree(final Material materialIn, final String name, float hardness,float resistanse, SoundType soundtype) {
+	public BlockDeadTree(final Material materialIn, final String name, float hardness, String hravLevel, int level, float resistanse, SoundType soundtype) {
 		super(materialIn);
 		this.setRegistryName(name);
 		this.setUnlocalizedName(name);
 		this.setSoundType(soundtype);
 		this.setHardness(hardness);
+		this.setHarvestLevel(hravLevel, level);
 		this.setResistance(resistanse);
 		this.setCreativeTab(Realism.tabMain);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(AXIS, EnumFacing.Axis.Y));
@@ -52,7 +51,7 @@ public class BlockAppleTree extends BlockRotatedPillar {
 			return this.name;
 		}
 
-		public static BlockAppleTree.EnumAxis fromFacingAxis(EnumFacing.Axis axis)
+		public static BlockDeadTree.EnumAxis fromFacingAxis(EnumFacing.Axis axis)
 		{
 			switch (axis)
 			{
@@ -73,10 +72,10 @@ public class BlockAppleTree extends BlockRotatedPillar {
 		}
 	}
 	@Override
-	public boolean rotateBlock(net.minecraft.world.World world, BlockPos pos, EnumFacing axis)
+	public boolean rotateBlock(World world, BlockPos pos, EnumFacing axis)
 	{
-		net.minecraft.block.state.IBlockState state = world.getBlockState(pos);
-		for (net.minecraft.block.properties.IProperty<?> prop : state.getProperties().keySet())
+		IBlockState state = world.getBlockState(pos);
+		for (IProperty<?> prop : state.getProperties().keySet())
 		{
 			if (prop.getName().equals("axis"))
 			{

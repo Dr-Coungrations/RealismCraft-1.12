@@ -25,8 +25,8 @@ public class BreakBirchGen extends WorldGeneratorOne {
 			if(ConfigManager.debugGeneration){
 				Realism.LOGGER.info("Block Birch generate on: " + "x: " + pos.getX() + " " + "y: " + pos.getY()+ " " + "z: " + pos.getZ());
 			}
-			if(world.getBiome(new BlockPos(pos.getX(), world.getActualHeight(), pos.getZ())) == Biomes.BIRCH_FOREST 
-					|| world.getBiome(new BlockPos(pos.getX(), world.getActualHeight(), pos.getZ())) == Biomes.BIRCH_FOREST_HILLS){
+			if(world.getBiome(new BlockPos(pos.getX() << 4, world.getActualHeight(), pos.getZ() << 4)) == Biomes.BIRCH_FOREST 
+					|| world.getBiome(new BlockPos(pos.getX() << 4, world.getActualHeight(), pos.getZ() << 4)) == Biomes.BIRCH_FOREST_HILLS){
 				if (world.isAirBlock(pos) && world.getBlockState(pos.down()).getBlock() == Blocks.GRASS) {
 					if(variator == 0) {
 						world.setBlockState(new BlockPos(pos),Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.BIRCH).withProperty(LOG_AXIS, BlockLog.EnumAxis.Y));

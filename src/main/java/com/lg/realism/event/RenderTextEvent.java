@@ -144,10 +144,10 @@ public class RenderTextEvent {
 			page--;
 		
 		if (pressKeyCharge.isPressed())
-			System.out.println(charge++);
+			System.out.println(charge + 1);
 		
 		if (pressKeyChargeM.isPressed())
-			System.out.println(charge++);
+			System.out.println(charge - 1);
 	}
 
 }

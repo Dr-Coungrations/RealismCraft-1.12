@@ -11,8 +11,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
+import com.lg.realism.Realism;
 import com.lg.realism.RegItems;
 import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
 import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
@@ -24,10 +26,12 @@ public class RenderTextEvent {
 	@SubscribeEvent
 	public void render(RenderSpecificHandEvent event){
 		if(page == 0){
+			
 			if (event.getItemStack().getItem() == RegItems.counter && (event.getHand() == EnumHand.MAIN_HAND)){
 				Minecraft mc = Minecraft.getMinecraft();
-				 EntityPlayer player = Minecraft.getMinecraft().player;
-				 IBarLevel capabilities = Minecraft.getMinecraft().player.getCapability(WaterBarProv.LEVEL_CAP, null);
+				
+				EntityPlayer player = Minecraft.getMinecraft().player;
+				IBarLevel capabilities = Minecraft.getMinecraft().player.getCapability(WaterBarProv.LEVEL_CAP, null);
 				
 				GL11.glPushMatrix();
 				GL11.glEnable(GL11.GL_BLEND);
@@ -127,10 +131,12 @@ public class RenderTextEvent {
 			}
 		}
 	}
-	public static KeyBinding pressKeyOne = new KeyBinding("key.clearUrine", Keyboard.KEY_V, "key.clear.clearUrine");
-	public static KeyBinding pressKeyTwo = new KeyBinding("key.clearUrinec", Keyboard.KEY_B, "key.clear.clearUrinec");
-	public static KeyBinding pressKeyCharge = new KeyBinding("key.charge", Keyboard.KEY_N, "key.charge.charge");
-	public static KeyBinding pressKeyChargeM = new KeyBinding("key.chargem", Keyboard.KEY_K, "key.chargem.chargem");
+	
+	public static String KEY_CATEGORY = "key.categories." + Realism.MODID;
+	public static KeyBinding pressKeyOne = new KeyBinding("key.clearUrine", Keyboard.KEY_V, KEY_CATEGORY);
+	public static KeyBinding pressKeyTwo = new KeyBinding("key.clearUrinec", Keyboard.KEY_B, KEY_CATEGORY);
+	public static KeyBinding pressKeyCharge = new KeyBinding("key.charge", Keyboard.KEY_N, KEY_CATEGORY);
+	public static KeyBinding pressKeyChargeM = new KeyBinding("key.chargem", Keyboard.KEY_K, KEY_CATEGORY);
 	@SubscribeEvent
 	public void nextPage(KeyInputEvent event){
 		if (pressKeyOne.isPressed()) {

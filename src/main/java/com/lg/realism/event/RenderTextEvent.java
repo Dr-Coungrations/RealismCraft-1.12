@@ -81,8 +81,7 @@ public class RenderTextEvent {
 		if(page == 0){
 			if (event.getItemStack().getItem() == RegItems.counter && (event.getHand() == EnumHand.OFF_HAND)){
 				Minecraft mc = Minecraft.getMinecraft();
-				 EntityPlayer player = Minecraft.getMinecraft().player;
-				  ResourceLocation textureLevelBattery = new ResourceLocation("realism:textures/gui/battery.png");
+				ResourceLocation textureLevelBattery = new ResourceLocation("realism:textures/gui/battery.png");
 			
 				GL11.glPushMatrix();
 				GL11.glEnable(GL11.GL_BLEND);
@@ -99,8 +98,7 @@ public class RenderTextEvent {
 			}
 			if (event.getItemStack().getItem() == RegItems.counter && (event.getHand() == EnumHand.MAIN_HAND)){
 				Minecraft mc = Minecraft.getMinecraft();
-				 EntityPlayer player = Minecraft.getMinecraft().player;
-				  ResourceLocation textureLevelBattery = new ResourceLocation("realism:textures/gui/battery.png");
+				ResourceLocation textureLevelBattery = new ResourceLocation("realism:textures/gui/battery.png");
 		
 				GL11.glPushMatrix();
 				GL11.glEnable(GL11.GL_BLEND);
@@ -139,26 +137,17 @@ public class RenderTextEvent {
 	public static KeyBinding pressKeyChargeM = new KeyBinding("key.chargem", Keyboard.KEY_K, KEY_CATEGORY);
 	@SubscribeEvent
 	public void nextPage(KeyInputEvent event){
-		if (pressKeyOne.isPressed()) {
-			int pagel;
-			pagel = page++;
-
-		}
-		if (pressKeyTwo.isPressed()) {
-			int pagel;
-			pagel = page--;
-	
-		}
-		if (pressKeyCharge.isPressed()) {
-			int chargel;
-			chargel = charge++;
-			System.out.println(charge);
-		}
-		if (pressKeyChargeM.isPressed()) {
-			int chargel;
-			chargel = charge--;
-			System.out.println(charge);
-		}
+		if (pressKeyOne.isPressed())
+			page++;
+		
+		if (pressKeyTwo.isPressed())
+			page--;
+		
+		if (pressKeyCharge.isPressed())
+			System.out.println(charge++);
+		
+		if (pressKeyChargeM.isPressed())
+			System.out.println(charge++);
 	}
 
 }

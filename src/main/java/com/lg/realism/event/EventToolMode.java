@@ -55,7 +55,7 @@ public class EventToolMode {
 		if (mc.player.getHeldItemMainhand().getItem() instanceof ItemShovel) {
 			GL11.glPushMatrix();
 			GlStateManager.enableBlend();
-			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			//GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 			mc.renderEngine.bindTexture(modesTexture);
 			mc.ingameGUI.drawTexturedModalRect(4, 4, ClientProxy.currentToolMode.getId() * 20, 0, 20, 20);
 			GL11.glPopMatrix();
@@ -64,7 +64,8 @@ public class EventToolMode {
 	
 	@SubscribeEvent
 	public void onKey(KeyInputEvent event) {
-		if (KEY_TOOL_MODE.isPressed())
-			ClientProxy.currentToolMode = ClientProxy.currentToolMode.getNext();
+		if (mc.player.getHeldItemMainhand().getItem() instanceof ItemShovel)
+			if (KEY_TOOL_MODE.isPressed())
+				ClientProxy.currentToolMode = ClientProxy.currentToolMode.getNext();
 	}
 }

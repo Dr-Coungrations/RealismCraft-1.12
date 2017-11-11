@@ -83,14 +83,17 @@ public class ItemShovel extends Item {
 				if (!world.getBlockState(pos).getBlock().isReplaceable(world, pos))
 					pos = pos.offset(raytrace.sideHit);
 				if (stack.getMetadata() == 1)
-					if (world.setBlockState(pos, Blocks.DIRT.getDefaultState()))
-						stack = new ItemStack(this, 1, 0);
+					if (world.getBlockState(pos).getBlock().isReplaceable(world, pos))
+						if (world.setBlockState(pos, Blocks.DIRT.getDefaultState()))
+							stack = new ItemStack(this, 1, 0);
 				if (stack.getMetadata() == 2)
-					if (world.setBlockState(pos, Blocks.GRASS.getDefaultState()))
-						stack = new ItemStack(this, 1, 0);
+					if (world.getBlockState(pos).getBlock().isReplaceable(world, pos))
+						if (world.setBlockState(pos, Blocks.GRASS.getDefaultState()))
+							stack = new ItemStack(this, 1, 0);
 				if (stack.getMetadata() == 3)
-					if (world.setBlockState(pos, Blocks.GRAVEL.getDefaultState()))
-						stack = new ItemStack(this, 1, 0);
+					if (world.getBlockState(pos).getBlock().isReplaceable(world, pos))
+						if (world.setBlockState(pos, Blocks.GRAVEL.getDefaultState()))
+							stack = new ItemStack(this, 1, 0);
 			}
 			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
 		}

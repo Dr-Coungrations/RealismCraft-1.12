@@ -21,3 +21,14 @@ item.fullgoldshovel.name=Filled Golden Shovel
 item.fulldiamondshovel.name=Filled Diamond Shovel
 item.spoke.name=Spoke
 item.spokes.name=Spokes
+
+#MP's lang
+
+item.emptyWoodShovel.name=Wooden Shovel
+item.dirtWoodShovel.name=Wooden Shovel ( Dirt )
+item.grassWoodShovel.name=Wooden Shovel ( Grass )
+item.gravelWoodShovel.name=Wooden Shovel ( Gravel )
+item.emptyStoneShovel.name=Stone Shovel
+item.dirtStoneShovel.name=Stone Shovel ( Dirt )
+item.grassStoneShovel.name=Stone Shovel ( Grass )
+item.gravelStoneShovel.name=Stone Shovel ( Gravel )

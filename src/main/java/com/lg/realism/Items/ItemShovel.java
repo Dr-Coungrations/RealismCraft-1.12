@@ -29,10 +29,10 @@ public class ItemShovel extends Item {
 	public String getUnlocalizedName(ItemStack stack)
     {
 		switch(stack.getMetadata()) {
-		case 1: return "dirt" + name + "Shovel";
-		case 2: return "grass" + name + "Shovel";
-		case 3: return "gravel" + name + "Shovel";
-		default: return "empty" + name + "Shovel";
+		case 1: return "item.dirt" + name + "Shovel";
+		case 2: return "item.grass" + name + "Shovel";
+		case 3: return "item.gravel" + name + "Shovel";
+		default: return "item.empty" + name + "Shovel";
 		}
     }
 	

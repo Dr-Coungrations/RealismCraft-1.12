@@ -8,6 +8,7 @@ import com.lg.realism.event.CapEventHandler;
 import com.lg.realism.event.ClearDropsEvent;
 import com.lg.realism.event.ClonePlayer;
 import com.lg.realism.event.DropDeadHorse;
+import com.lg.realism.event.EventDamageIndicator;
 import com.lg.realism.event.EventDrinkBar;
 import com.lg.realism.event.EventHandThirstUpdate;
 import com.lg.realism.event.EventJoinToWorld;
@@ -50,6 +51,7 @@ public class RegEvents {
      	register(new WorldResetTime());
      	
      	register(new EventToolMode());
+     	register(new EventDamageIndicator());
 	}
 	
 	static void register(Object object) {

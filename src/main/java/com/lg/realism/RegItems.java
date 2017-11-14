@@ -14,7 +14,8 @@ import com.lg.realism.Basic.BasicDamageItem;
 import com.lg.realism.Basic.BasicFood;
 import com.lg.realism.Basic.BasicItem;
 import com.lg.realism.Items.Counter;
-import com.lg.realism.Items.ItemShovel;
+import com.lg.realism.Items.ItemRealPickaxe;
+import com.lg.realism.Items.ItemRealShovel;
 import com.lg.realism.Items.Kaolin;
 import com.lg.realism.Items.NewStoneAxe;
 import com.lg.realism.Items.PointedStone;
@@ -112,8 +113,10 @@ public class RegItems {
 	
 	// MaximPixel's Items
 	
-	public static Item wood_shovel = new ItemShovel("Wood", "wood_shovel");
-	public static Item stone_shovel = new ItemShovel("Stone", "stone_shovel");
+	public static Item wood_shovel = new ItemRealShovel("Wood", "wood_shovel");
+	public static Item stone_shovel = new ItemRealShovel("Stone", "stone_shovel");
+	
+	public static Item wood_pickaxe = new ItemRealPickaxe("wood_pickaxe", "woodPickaxe");
 	
 	public static void register() {
 	
@@ -177,6 +180,7 @@ public class RegItems {
 		
 		registerItem(wood_shovel);
 		registerItem(stone_shovel);
+		registerItem(wood_pickaxe);
 	}
 	
 	public static void registerRender() {
@@ -258,6 +262,8 @@ public class RegItems {
 		registerRenderItem(stone_shovel, 1, new ResourceLocation(modid, "stone_shovel_dirt"));
 		registerRenderItem(stone_shovel, 2, new ResourceLocation(modid, "stone_shovel_grass"));
 		registerRenderItem(stone_shovel, 3, new ResourceLocation(modid, "stone_shovel_gravel"));
+		
+		registerRenderItem(wood_pickaxe, new ResourceLocation("wooden_pickaxe"));
 	}
 	
 	public static void preRegisterRender() {

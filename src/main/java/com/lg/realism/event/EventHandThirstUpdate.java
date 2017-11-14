@@ -34,7 +34,7 @@ public class EventHandThirstUpdate {
 		EntityPlayer player = (EntityPlayer) event.getEntity();
 		ItemStack is = player.getHeldItem(EnumHand.MAIN_HAND);
 		RayTraceResult raytraceresult = this.rayTrace(world, player, true);
-		
+		if (raytraceresult == null) return; // MP's fix
 			if (raytraceresult.typeOfHit == RayTraceResult.Type.BLOCK)
 			{
 				BlockPos blockpos = raytraceresult.getBlockPos();

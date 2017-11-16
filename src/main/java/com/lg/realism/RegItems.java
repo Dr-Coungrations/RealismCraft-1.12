@@ -118,6 +118,8 @@ public class RegItems {
 	
 	public static Item wood_pickaxe = new ItemRealPickaxe("wood_pickaxe", "woodPickaxe");
 	
+	public static Item wood_pickaxe_handle = new BasicItem("wood_pickaxe_hancdle", 1);
+	
 	public static void register() {
 	
 		registerItem(counter);
@@ -181,6 +183,7 @@ public class RegItems {
 		registerItem(wood_shovel);
 		registerItem(stone_shovel);
 		registerItem(wood_pickaxe);
+		registerItem(wood_pickaxe_handle);
 	}
 	
 	public static void registerRender() {
@@ -264,6 +267,7 @@ public class RegItems {
 		registerRenderItem(stone_shovel, 3, new ResourceLocation(modid, "stone_shovel_gravel"));
 		
 		registerRenderItem(wood_pickaxe, new ResourceLocation("wooden_pickaxe"));
+		registerRenderItem(wood_pickaxe_handle, new ResourceLocation("stick"));
 	}
 	
 	public static void preRegisterRender() {

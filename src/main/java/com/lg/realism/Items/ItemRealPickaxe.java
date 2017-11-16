@@ -1,14 +1,17 @@
 package com.lg.realism.Items;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Nullable;
 
 import com.lg.realism.Realism;
+import com.lg.realism.RegItems;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -26,7 +29,11 @@ public class ItemRealPickaxe extends Item {
 	
 	public float getStrVsBlock(ItemStack stack, IBlockState state)
     {
-        return 5.0F;
+		NBTTagCompound nbt = stack.getTagCompound();
+		if (nbt != null) {
+			return 10F / nbt.getFloat("UpSharpness");
+		}
+        return 1F;
     }
 	
 	public boolean canHarvestBlock(IBlockState block)
@@ -47,8 +54,19 @@ public class ItemRealPickaxe extends Item {
         	NBTTagCompound nbt = stack.getTagCompound();
         	if (nbt == null)
         		nbt = new NBTTagCompound();
-        	nbt.setInteger("damage", nbt.getInteger("damage") + 1);
-        	stack.setTagCompound(nbt);
+        	nbt.setFloat("UpDamage", nbt.getFloat("UpDamage") + 0.5F);
+        	nbt.setFloat("UpSharpness", nbt.getFloat("UpSharpness") + 0.65F);
+        	nbt.setFloat("HandleDamage", nbt.getFloat("HandleDamage") + 0.25F);
+			
+        	if (nbt.getFloat("UpSharpness") > 10F)
+        		nbt.setFloat("UpSharpness", 10F);
+        	
+			if (nbt.getFloat("UpDamage") >= 10F) {
+				stack.shrink(1);
+				if (entityLiving instanceof EntityPlayer)
+					((EntityPlayer)entityLiving).inventory.addItemStackToInventory(new ItemStack(RegItems.wood_pickaxe_handle));
+			} else
+				stack.setTagCompound(nbt);
         }
         return true;
     }
@@ -56,7 +74,20 @@ public class ItemRealPickaxe extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-		if (stack.hasTagCompound())
-			tooltip.add("Damage: " + stack.getTagCompound().getInteger("damage"));
+		if (stack.hasTagCompound()) {
+			tooltip.add("Upper Damage: " + stack.getTagCompound().getFloat("UpDamage"));
+			tooltip.add("Handle Damage: " + stack.getTagCompound().getFloat("HandleDamage"));
+		}
+    }
+	
+	public boolean showDurabilityBar(ItemStack stack)
+    {
+        return stack.hasTagCompound();
+    }
+	
+	public double getDurabilityForDisplay(ItemStack stack)
+    {
+		NBTTagCompound nbt = stack.getTagCompound();
+        return nbt.getFloat("UpDamage") / 10F;
     }
 }

@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.lg.realism.Realism;
 import com.lg.realism.RegBlocks;
 import com.lg.realism.API.TimerForCoord;
 import com.lg.realism.Basic.BasicBlockWithCustomModel;
@@ -26,6 +27,7 @@ public class AppleTreeStageOne extends BasicBlockWithCustomModel {
 
 	public AppleTreeStageOne(Material materialIn, String name, float hardness,float resistanse, String hravLevel, int level, SoundType blockSoundType) {
 		super(materialIn, name, hardness, resistanse, hravLevel, level, blockSoundType);
+		
 	}
 	@Override
     public Block setBlockUnbreakable()

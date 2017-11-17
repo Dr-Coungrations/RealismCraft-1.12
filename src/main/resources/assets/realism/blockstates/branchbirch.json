@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "facing=east":  { "model": "realism:branchbirch", "y": 90  },
-        "facing=west":   { "model": "realism:branchbirch", "y": 90 },
-        "facing=south":   { "model": "realism:branchbirch", "z": 90},
-        "facing=north": { "model": "realism:branchbirch"}
-    }
-}

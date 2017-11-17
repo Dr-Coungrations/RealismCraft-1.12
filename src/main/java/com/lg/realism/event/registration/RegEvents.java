@@ -1,9 +1,9 @@
 package com.lg.realism.event.registration;
 
-import net.minecraftforge.common.MinecraftForge;
-
+import com.lg.realism.API.WorldAPI.TimeHundler;
 import com.lg.realism.Diseaces.Cold;
 import com.lg.realism.Diseaces.Grippe;
+import com.lg.realism.event.AmfRenderEvent;
 import com.lg.realism.event.CapEventHandler;
 import com.lg.realism.event.ClearDropsEvent;
 import com.lg.realism.event.ClonePlayer;
@@ -14,6 +14,7 @@ import com.lg.realism.event.EventJoinToWorld;
 import com.lg.realism.event.EventNewLevelPickaxe;
 import com.lg.realism.event.EventSaveWaterLevel;
 import com.lg.realism.event.EventThirstUpdate;
+import com.lg.realism.event.EventToolMode;
 import com.lg.realism.event.FilledJar;
 import com.lg.realism.event.PlaceOnBlock;
 import com.lg.realism.event.RenderTextEvent;
@@ -22,30 +23,38 @@ import com.lg.realism.event.TempEventHundler;
 import com.lg.realism.event.UnbreakBlock;
 import com.lg.realism.event.VisualTempBody;
 import com.lg.realism.event.WorldResetTime;
-import com.lg.realism.event.DelRecipesEvent.DelRecipesHundler;
+
+import net.minecraftforge.common.MinecraftForge;
 
 public class RegEvents {
-	public static void register(){
-    	MinecraftForge.EVENT_BUS.register(new UnbreakBlock());
-    	MinecraftForge.EVENT_BUS.register(new ShovelEvent());
-    	MinecraftForge.EVENT_BUS.register(new PlaceOnBlock());
-    	MinecraftForge.EVENT_BUS.register(new ClearDropsEvent());
-    	MinecraftForge.EVENT_BUS.register(new CapEventHandler());
-    	MinecraftForge.EVENT_BUS.register(new ClonePlayer());
-    	MinecraftForge.EVENT_BUS.register(new EventNewLevelPickaxe());
-    	MinecraftForge.EVENT_BUS.register(new EventDrinkBar());
-    	MinecraftForge.EVENT_BUS.register(new EventJoinToWorld());
-    	MinecraftForge.EVENT_BUS.register(new EventSaveWaterLevel());
-    	MinecraftForge.EVENT_BUS.register(new EventHandThirstUpdate());
-    	MinecraftForge.EVENT_BUS.register(new EventThirstUpdate());
-    	MinecraftForge.EVENT_BUS.register(new TempEventHundler());
-    	MinecraftForge.EVENT_BUS.register(new DropDeadHorse());
-    	MinecraftForge.EVENT_BUS.register(new Cold());
-    	MinecraftForge.EVENT_BUS.register(new RenderTextEvent());
-    	MinecraftForge.EVENT_BUS.register(new Grippe());
-    	MinecraftForge.EVENT_BUS.register(new VisualTempBody());
-       	MinecraftForge.EVENT_BUS.register(new FilledJar());
-    	//MinecraftForge.EVENT_BUS.register(new DelRecipesHundler());
-     	MinecraftForge.EVENT_BUS.register(new WorldResetTime());
-	}
+		public static void register(){
+	    	register(new UnbreakBlock());
+	    	register(new ShovelEvent());
+	    	register(new PlaceOnBlock());
+	    	register(new ClearDropsEvent());
+	    	register(new CapEventHandler());
+	    	register(new ClonePlayer());
+	    	register(new EventNewLevelPickaxe());
+	    	register(new EventDrinkBar());
+	    	register(new EventJoinToWorld());
+	    	register(new EventSaveWaterLevel());
+	    	register(new EventHandThirstUpdate());
+	    	register(new EventThirstUpdate());
+	    	register(new TempEventHundler());
+	    	register(new DropDeadHorse());
+	    	register(new Cold());
+	    	register(new RenderTextEvent());
+	    	register(new Grippe());
+	    	register(new VisualTempBody());
+	       	register(new FilledJar());
+	    	//register(new DelRecipesHundler());
+	     	register(new WorldResetTime());
+	     	register(new AmfRenderEvent());
+	     	register(new EventToolMode());
+	     	register(new TimeHundler());
+		}
+		
+		static void register(Object object) {
+			MinecraftForge.EVENT_BUS.register(object);
+		}
 }

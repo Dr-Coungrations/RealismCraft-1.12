@@ -44,7 +44,7 @@ public class SideCactus extends BlockSide
     {
         super(name, Material.WOOD, SIDE_AABB);
         this.setHardness(1.2F);
-     //   this.setCreativeTab(Realism.tabMain);
+        this.setCreativeTab(Realism.tabDev);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 

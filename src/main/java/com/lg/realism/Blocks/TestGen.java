@@ -10,7 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import com.lg.realism.Basic.BasicBlock;
-import com.lg.realism.World.GenCactus.WorldGenNewCactus;
+import com.lg.realism.World.Biome.WorldGenThisBiome.WorldGenDeadTree;
 
 public class TestGen extends BasicBlock{
 
@@ -22,6 +22,8 @@ public class TestGen extends BasicBlock{
 	@Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        return new WorldGenNewCactus().generate(worldIn, worldIn.rand, pos);
+		
+		
+        return new WorldGenDeadTree().generate(worldIn, worldIn.rand, pos);
     }
 }

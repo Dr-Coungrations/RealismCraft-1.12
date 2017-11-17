@@ -2,7 +2,7 @@ package gloomyfolken.hooklib.minecraft;
 
 import gloomyfolken.hooklib.asm.Hook;
 import net.minecraft.launchwrapper.LaunchClassLoader;
-import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.client.model.ItemLayerModel.Loader;
 
 public class SecondaryTransformerHook {
 

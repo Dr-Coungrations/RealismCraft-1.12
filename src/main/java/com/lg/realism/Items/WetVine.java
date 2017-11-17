@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.lg.realism.Realism;
 import com.lg.realism.RegBlocks;
 import com.lg.realism.RegItems;
 import com.lg.realism.API.TimerForCoord;
@@ -28,7 +29,7 @@ public class WetVine extends DevBasicBlock {
 
 			float resistanse, String hravLevel, int level, SoundType soundtype) {
 		super(materialIn, name, hardness, resistanse, hravLevel, level, soundtype);
-		// TODO Auto-generated constructor stub
+		this.setCreativeTab(Realism.tabDev);
 	}
 	@Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)

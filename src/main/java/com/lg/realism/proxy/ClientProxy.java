@@ -16,22 +16,26 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
+import com.lg.realism.Realism;
 import com.lg.realism.RegBlocks;
 import com.lg.realism.RegItems;
 import com.lg.realism.Sounds.SoundsRegister;
+import com.lg.realism.event.EventToolMode;
 import com.lg.realism.event.RenderTextEvent;
 
 public class ClientProxy extends CommonProxy {
-
+	public static String KEY_CATEGORY = "key.categories." + Realism.MODID;
+	public static EventToolMode.EnumToolMode currentToolMode = EventToolMode.EnumToolMode.FULL;
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
-
+		RegItems.preRegisterRender();
 	}
 
 	@Override
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
+		
 		RegBlocks.registerRender();
 		RegItems.registerRender();
 		SoundsRegister.register();
@@ -39,6 +43,8 @@ public class ClientProxy extends CommonProxy {
 		 ClientRegistry.registerKeyBinding(RenderTextEvent.pressKeyTwo); 
 		 ClientRegistry.registerKeyBinding(RenderTextEvent.pressKeyCharge); 
 		 ClientRegistry.registerKeyBinding(RenderTextEvent.pressKeyChargeM); 
+		 
+			ClientRegistry.registerKeyBinding(EventToolMode.KEY_TOOL_MODE);
 	}
 
 	@Override
@@ -56,9 +62,11 @@ public class ClientProxy extends CommonProxy {
 		ItemColors color = FMLClientHandler.instance().getClient().getItemColors();
 		color.registerItemColorHandler(new IItemColor() {
 			
+
 			@Override
-			public int getColorFromItemstack(ItemStack stack, int tintIndex){
-				return block.colorMultiplier( RegBlocks.smallleaves.getStateFromMeta(0), (IBlockAccess)null, (BlockPos)null, tintIndex);}},
+			public int colorMultiplier(ItemStack stack, int tintIndex) {
+				return block.colorMultiplier( RegBlocks.smallleaves.getStateFromMeta(0), (IBlockAccess)null, (BlockPos)null, tintIndex);}
+			},
 				RegBlocks.smallleaves,RegBlocks.smallleavesspruce,RegBlocks.mossblock,RegBlocks.smallleavesbirch,RegBlocks.smallleavesappletree,RegBlocks.leavesappletree);
 		
 	}

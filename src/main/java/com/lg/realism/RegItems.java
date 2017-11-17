@@ -5,6 +5,8 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemFood;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import com.lg.realism.API.ItemDrink;
@@ -12,6 +14,7 @@ import com.lg.realism.Basic.BasicDamageItem;
 import com.lg.realism.Basic.BasicFood;
 import com.lg.realism.Basic.BasicItem;
 import com.lg.realism.Items.Counter;
+import com.lg.realism.Items.ItemShovel;
 import com.lg.realism.Items.Kaolin;
 import com.lg.realism.Items.NewStoneAxe;
 import com.lg.realism.Items.PointedStone;
@@ -102,13 +105,21 @@ public class RegItems {
 			   oreitemgold = new BasicItem("oreitemgold",64),
 			   oreitemcopper = new BasicItem("oreitemcopper",64),
 			   oreitemdiamond = new BasicItem("oreitemdiamond",64);
+		// MaximPixel's Items
 	
+	public static Item woodenshovel = new ItemShovel("woodenshovel", "woodenshovel");
+	public static Item stoneshovel = new ItemShovel("stoneshovel", "stoneshovel");
 	
 	public static Item counter = new Counter("counter",1);
 
 	
 	public static void register() {
-	
+		// MP's register
+		
+		registerItem(woodenshovel);
+		registerItem(stoneshovel);
+		
+		
 		registerItem(counter);
 		registerItem(cookedplayermeat);
 		registerItem(playermeat);
@@ -232,12 +243,53 @@ public class RegItems {
 		registerRenderItem(wetvineitem);
 		registerRenderItem(dryvineitem);
 		registerRenderItem(pointedstone);
+		
+		String modid = Realism.MODID;
+		
+		registerRenderItem(woodenshovel, 0, new ResourceLocation(modid, "woodenshovelempty"));
+		registerRenderItem(woodenshovel, 1, new ResourceLocation(modid, "woodenshoveldirt"));
+		registerRenderItem(woodenshovel, 2, new ResourceLocation(modid, "woodenshovelgrass"));
+		registerRenderItem(woodenshovel, 3, new ResourceLocation(modid, "woodenshovelgravel"));
+		registerRenderItem(stoneshovel, 0, new ResourceLocation(modid, "stoneshovel"));
+		registerRenderItem(stoneshovel, 1, new ResourceLocation(modid, "stoneshoveldirt"));
+		registerRenderItem(stoneshovel, 2, new ResourceLocation(modid, "stoneshovelgrass"));
+		registerRenderItem(stoneshovel, 3, new ResourceLocation(modid, "stoneshovelgravel"));
 	}
+	
+	public static void preRegisterRender() {
+		String modid = Realism.MODID;
+		
+		registerCustomModel(woodenshovel, 0, new ResourceLocation(modid, "woodenshovelempty"));
+		registerCustomModel(woodenshovel, 1, new ResourceLocation(modid, "woodenshoveldirt"));
+		registerCustomModel(woodenshovel, 2, new ResourceLocation(modid, "woodenshovelgrass"));
+		registerCustomModel(woodenshovel, 3, new ResourceLocation(modid, "woodenshovelgravel"));
+		registerCustomModel(stoneshovel, 0, new ResourceLocation(modid, "stoneshovelempty"));
+		registerCustomModel(stoneshovel, 1, new ResourceLocation(modid, "stoneshoveldirt"));
+		registerCustomModel(stoneshovel, 2, new ResourceLocation(modid, "stoneshovelgrass"));
+		registerCustomModel(stoneshovel, 3, new ResourceLocation(modid, "stoneshovelgravel"));
+	}
+	
 	private static void registerItem(Item item) {
 		ForgeRegistries.ITEMS.register(item);
-		
 	}
+	
+	private static void registerCustomModel(Item item, int meta, ResourceLocation location) {
+		ModelLoader.setCustomModelResourceLocation(item, meta, getModel(location));
+	}
+	
 	private static void registerRenderItem(Item item) {
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+		registerRenderItem(item, item.getRegistryName());
+	}
+	
+	private static void registerRenderItem(Item item, ResourceLocation location) {
+		registerRenderItem(item, 0, location);
+	}
+	
+	private static void registerRenderItem(Item item, int meta, ResourceLocation location) {
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, meta, getModel(location));
+	}
+	
+	public static ModelResourceLocation getModel(ResourceLocation location) {
+		return new ModelResourceLocation(location, "inventory");
 	}
 }

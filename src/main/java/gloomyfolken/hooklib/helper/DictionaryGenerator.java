@@ -9,10 +9,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Генерирует из mcp-шного methods.csv словарь с названиями методов для хуклибы.
+ * Файл methods.csv лежит в mcp/conf/
+ *
+ * Настоятельно рекомендую сгенерировать methods.bin самостоятельно для своей версии mcp, иначе могут быть
+ * внезапные ошибки уровня "can not find target method of hook".
+ */
 public class DictionaryGenerator {
 
     public static void main(String[] args) throws Exception {
-        List<String> lines = FileUtils.readLines(new File("E:/Realism/src/main/java/gloomyfolken/hooklib/helper/methods.csv"));
+        List<String> lines = FileUtils.readLines(new File("methods.csv"));
         lines.remove(0);
         HashMap<Integer, String> map = new HashMap<Integer, String>();
         for (String str : lines) {

@@ -56,16 +56,7 @@ public class Rope extends BasicItem {
 
         for (EntityLiving entityliving : worldIn.getEntitiesWithinAABB(EntityLiving.class, new AxisAlignedBB((double)i - 7.0D, (double)j - 7.0D, (double)k - 7.0D, (double)i + 7.0D, (double)j + 7.0D, (double)k + 7.0D)))
         {
-            if (entityliving.getLeashed() && entityliving.getLeashedToEntity() == player)
-            {
-                if (entityleashknot == null)
-                {
-                    entityleashknot = EntityLeashKnot.createKnot(worldIn, fence);
-                }
-
-                entityliving.setLeashedToEntity(entityleashknot, true);
-                flag = true;
-            }
+        
         }
 
         return flag;

@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "facing=east":  { "model": "realism:branchoak", "y": 90  },
-        "facing=west":   { "model": "realism:branchoak", "y": 90 },
-        "facing=south":   { "model": "realism:branchoak", "z": 90},
-        "facing=north": { "model": "realism:branchoak"}
-    }
-}

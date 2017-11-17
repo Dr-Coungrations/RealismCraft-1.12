@@ -20,6 +20,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.lg.realism.Realism;
 import com.lg.realism.RegBlocks;
 import com.lg.realism.API.TimerForCoord;
 import com.lg.realism.Basic.BasicBlockWithCustomModel;
@@ -34,6 +35,7 @@ public class AppleTreeStageTwo extends BasicBlockWithCustomModel {
 
 	public AppleTreeStageTwo(Material materialIn, String name, float hardness,float resistanse, String hravLevel, int level, SoundType blockSoundType) {
 		super(materialIn, name, hardness, resistanse, hravLevel, level, blockSoundType);
+	
 	}
 	@Override
 	public Block setBlockUnbreakable()
@@ -79,8 +81,8 @@ public class AppleTreeStageTwo extends BasicBlockWithCustomModel {
 					world.setBlockState(new BlockPos(pos.getX(), pos.getY() + 2, pos.getZ() + 1), RegBlocks.smallleavesappletree.getDefaultState());
 					world.setBlockState(new BlockPos(pos.getX(), pos.getY() + 2, pos.getZ() -1), RegBlocks.smallleavesappletree.getDefaultState());
 
-					world.setBlockState(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()), RegBlocks.branchappletree.getDefaultState().withProperty(FACING, EnumFacing.EAST), 2);
-					world.setBlockState(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()), RegBlocks.branchappletree.getDefaultState().withProperty(FACING, EnumFacing.EAST), 2);
+					world.setBlockState(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()), RegBlocks.branchappletree.getDefaultState());
+					world.setBlockState(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()), RegBlocks.branchappletree.getDefaultState());
 					world.setBlockState(new BlockPos(pos.getX() , pos.getY(), pos.getZ() + 1), RegBlocks.branchappletree.getDefaultState());
 					world.setBlockState(new BlockPos(pos.getX() , pos.getY(), pos.getZ() - 1), RegBlocks.branchappletree.getDefaultState());
 

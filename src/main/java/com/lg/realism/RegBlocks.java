@@ -10,6 +10,10 @@ import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import com.lg.realism.Basic.BasicBlockWithDropItem;
+import com.lg.realism.Blocks.Ash;
+import com.lg.realism.Blocks.BlockBurntGrass;
+import com.lg.realism.Blocks.BlockBurntTree;
+import com.lg.realism.Blocks.BlockDryGrass;
 import com.lg.realism.Blocks.MossBlock;
 import com.lg.realism.Blocks.PaneHorizontal;
 import com.lg.realism.Blocks.RealismRedSand;
@@ -20,16 +24,18 @@ import com.lg.realism.Blocks.WetSand;
 import com.lg.realism.Blocks.Cactus.CactusSmall;
 import com.lg.realism.Blocks.Cactus.OneStageCactus;
 import com.lg.realism.Blocks.Cactus.SideCactus;
+import com.lg.realism.Blocks.DeadTree.BlockDeadTree;
+import com.lg.realism.Blocks.DeadTree.DeadBranch;
 import com.lg.realism.Blocks.Ocean.Corals;
 import com.lg.realism.Blocks.Ocean.Seaweeds;
-import com.lg.realism.GrowWood.BranchBirch;
-import com.lg.realism.GrowWood.BranchOak;
+import com.lg.realism.GrowWood.BirchBranch;
 import com.lg.realism.GrowWood.GrowTreeStageOne;
 import com.lg.realism.GrowWood.GrowTreeStageOneBirch;
 import com.lg.realism.GrowWood.GrowTreeStageOneSpruce;
 import com.lg.realism.GrowWood.GrowTreeStageTwo;
 import com.lg.realism.GrowWood.GrowTreeStageTwoBirch;
 import com.lg.realism.GrowWood.GrowTreeStageTwoSpruce;
+import com.lg.realism.GrowWood.OakBranch;
 import com.lg.realism.GrowWood.SmallLeaves;
 import com.lg.realism.GrowWood.SmallLeavesBirch;
 import com.lg.realism.GrowWood.SmallLeavesSpruce;
@@ -49,13 +55,13 @@ public class RegBlocks {
 	public static Block blockappletree = new BlockAppleTree(Material.WOOD, "blockappletree", 6F, 6F, SoundType.WOOD);
 	public static Block appletreeone = new AppleTreeStageOne(Material.WOOD, "appletreeone", 3F, 3F, "axe", 1, SoundType.WOOD);
 	public static Block appletreetwo = new AppleTreeStageTwo(Material.WOOD, "appletreetwo", 6F, 6F, "axe", 1, SoundType.WOOD);
-	public static Block branchappletree = new BranchAppleTree("branchappletree");
+	
 	public static Block smallleavesappletree = new SmallLeavesAppleTree(Material.LEAVES, "smallleavesappletree", 2F, 2F, "shears", 1, SoundType.GROUND);
 	public static Block leavesappletree = new LeavesAppleTree(Material.LEAVES, "leavesappletree", 2F, 2F, "shears", 1, SoundType.GROUND);
 	//Oak
 	public static Block growtreeone = new GrowTreeStageOne(Material.WOOD, "growtreeone", 3F, 3F, "axe", 1, SoundType.WOOD);
 	public static Block growtreetwo = new GrowTreeStageTwo(Material.WOOD, "growtreetwo", 6F, 6F, "axe", 1, SoundType.WOOD);
-	public static Block branchoak = new BranchOak("branchoak");
+	
 	public static Block smallleaves = new SmallLeaves(Material.LEAVES, "smallleaves", 2F, 2F, "shears", 1, SoundType.GROUND);
 	//Spruce
 	public static Block growtreeonespruce = new GrowTreeStageOneSpruce(Material.WOOD, "growtreeonespruce", 3F, 3F, "axe", 1, SoundType.WOOD);
@@ -64,7 +70,8 @@ public class RegBlocks {
 	public static Block smallleavesspruce = new SmallLeavesSpruce(Material.LEAVES, "smallleavesspruce", 2F, 2F, "shears", 1, SoundType.GROUND);
 	//birch
 	public static Block growtreeonebirch = new GrowTreeStageOneBirch(Material.WOOD, "growtreeonebirch", 3F, 3F, "axe", 1, SoundType.WOOD);
-	public static Block branchbirch = new BranchBirch("branchbirch");
+	
+	
 	public static Block growtreetwobirch = new GrowTreeStageTwoBirch(Material.WOOD, "growtreetwobirch", 6F, 6F, "axe", 1, SoundType.WOOD);
 	public static Block smallleavesbirch = new SmallLeavesBirch(Material.LEAVES, "smallleavesbirch", 2F, 2F, "shears", 1, SoundType.GROUND);
 	//new ore
@@ -102,7 +109,27 @@ public class RegBlocks {
 	public static Block cactusside = new SideCactus("cactusside");
 	public static Block cactussmall = new CactusSmall(Material.GRASS, "cactussmall", 1F, 1F, "axe", 1, SoundType.WOOD);
 	
+	public static Block blockdrygrass = new BlockDryGrass(Material.GLASS, "blockdrygrass", 1F, 2F, SoundType.PLANT);
+	public static Block blockburntgrass = new BlockBurntGrass(Material.GLASS, "blockburntgrass", 1F, 2F, SoundType.PLANT);
+	public static Block ash = new Ash(Material.GLASS, "ash", 0.2F, 2F, SoundType.SNOW);
+
+	public static Block blockburnttree = new BlockBurntTree(Material.WOOD, "blockburnttree", 6F, "axe",  1, 3F, SoundType.WOOD);
+	public static Block blockdeadtree = new BlockDeadTree(Material.WOOD, "blockdeadtree", 6F, "axe",  1, 3F, SoundType.WOOD);
+	
+	public static Block connectblock = new BirchBranch("connectblock");
+	public static Block oakbranch = new OakBranch("oakbranch");
+	public static Block branchappletree = new BranchAppleTree("branchappletree");
+	public static Block deadbranch = new DeadBranch("deadbranch");
 	public static void register() {
+		
+		
+		registerBlock(connectblock);
+		registerBlock(deadbranch);
+		registerBlock(blockdeadtree);
+		registerBlock(blockburnttree);
+		registerBlock(ash);
+		registerBlock(blockburntgrass);
+		registerBlock(blockdrygrass);
 		registerBlock(coralblock);
 		registerBlock(cactussmall);
 		registerBlock(seaweeds);
@@ -117,9 +144,9 @@ public class RegBlocks {
 		registerBlock(smallleavesappletree);
 		registerBlock(testgen);
 		registerBlock(blockappletree);
-		registerBlock(branchoak);
+		registerBlock(oakbranch);
 		registerBlock(smallleavesbirch);
-		registerBlock(branchbirch);
+		
 		registerBlock(growtreeonebirch);
 		registerBlock(growtreetwobirch);
 		registerBlock(copperore);
@@ -141,6 +168,13 @@ public class RegBlocks {
 		registerBlock(smallleavesspruce);
 	}
 	public static void registerRender() {
+		registerRenderBlock(connectblock);
+		registerRenderBlock(deadbranch);
+		registerRenderBlock(blockdeadtree);
+		registerRenderBlock(blockburnttree);
+		registerRenderBlock(ash);
+		registerRenderBlock(blockburntgrass);
+		registerRenderBlock(blockdrygrass);
 		registerRenderBlock(coralblock);
 		registerRenderBlock(cactussmall);
 		registerRenderBlock(seaweeds);
@@ -155,9 +189,9 @@ public class RegBlocks {
 		registerRenderBlock(branchappletree);
 		registerRenderBlock(smallleavesappletree);
 		registerRenderBlock(blockappletree);
-		registerRenderBlock(branchoak);
+		registerRenderBlock(oakbranch);
 		registerRenderBlock(smallleavesbirch);
-		registerRenderBlock(branchbirch);
+
 		registerRenderBlock(growtreeonebirch);
 		registerRenderBlock(growtreetwobirch);
 		registerRenderBlock(copperore);

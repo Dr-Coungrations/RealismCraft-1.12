@@ -33,17 +33,17 @@ public class PointedStone extends ItemTool {
 	     this.setRegistryName(name);
 	  this.setCreativeTab(Realism.tabMain);
 	  this.setUnlocalizedName(name);
-	        this.damageVsEntity = ATTACK_DAMAGES[material.ordinal()];
+	        this.attackDamage = ATTACK_DAMAGES[material.ordinal()];
 	        this.attackSpeed = ATTACK_SPEEDS[material.ordinal()];
 	    }
 	    public PointedStone(Item.ToolMaterial material, float damage, float speed) {
 	        super(material, EFFECTIVE_ON);
-	        this.damageVsEntity = damage;
+	        this.attackDamage = damage;
 	        this.attackSpeed = speed;
 	    }
-	    public float getStrVsBlock(ItemStack stack, IBlockState state) {
+	    public float getDestroySpeed(ItemStack stack, IBlockState state) {
 	        Material material = state.getMaterial();
-	        return material != Material.GRASS ? super.getStrVsBlock(stack, state) : this.efficiencyOnProperMaterial;
+	        return material != Material.GRASS ? super.getDestroySpeed(stack, state) : this.efficiency;
 	    }
 	 @Override
 	 public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)

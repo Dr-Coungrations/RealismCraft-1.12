@@ -1,5 +1,6 @@
 package gloomyfolken.hooklib.minecraft;
 
+
 import gloomyfolken.hooklib.asm.ClassMetadataReader;
 
 import java.io.IOException;

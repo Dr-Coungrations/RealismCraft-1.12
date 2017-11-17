@@ -73,7 +73,29 @@ public class RenderTextEvent {
 				GL11.glPopMatrix();
 			}
 		}
-		
+		if(page == 1){
+			if (event.getItemStack().getItem() == RegItems.counter && (event.getHand() == EnumHand.MAIN_HAND)){
+				Minecraft mc = Minecraft.getMinecraft();
+				 EntityPlayer player = Minecraft.getMinecraft().player;
+				 IBarLevel capabilities = Minecraft.getMinecraft().player.getCapability(WaterBarProv.LEVEL_CAP, null);
+				
+				GL11.glPushMatrix();
+				GL11.glEnable(GL11.GL_BLEND);
+				GL11.glTranslatef(0.435F, -0.12F, -1.07F);
+				GL11.glScalef(0.005f, -0.005f, 0.005f);
+				GL11.glRotatef(22.5F, 1 ,0, 0);
+				GL11.glRotatef(0F, 0 ,1, 0);
+				GL11.glRotatef(0F, 0 ,0, 1);
+				FontRenderer fontrenderer = Minecraft.getMinecraft().fontRenderer;
+				fontrenderer.drawString("TOTAL TIME(min): "  + (player.getEntityWorld().getTotalWorldTime()/20)/60, 0, 20, 0xFFFFFF);
+				fontrenderer.drawString("Time(Min): " + (player.getEntityWorld().getWorldTime()/20)/60, 0, 30, 0xFFFFFF);
+				fontrenderer.drawString("Time(Sec): "  + player.getEntityWorld().getWorldTime()/20, 0, 40, 0xFFFFFF);
+				fontrenderer.drawString("TOTAL TIME(sec): "  + player.getEntityWorld().getTotalWorldTime()/20, 0, 50, 0xFFFFFF);
+			//	fontrenderer.drawString("WORLD INFO: "  + player.getEntityWorld().getWorldInfo(), 0, 90, 0xFFFFFF);
+				GL11.glDisable(GL11.GL_BLEND);
+				GL11.glPopMatrix();
+			}
+		}
 		if(page == 0){
 			if (event.getItemStack().getItem() == RegItems.counter && (event.getHand() == EnumHand.OFF_HAND)){
 				Minecraft mc = Minecraft.getMinecraft();

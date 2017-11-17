@@ -6,7 +6,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
@@ -40,13 +41,16 @@ public class PaneHorizontal extends BasicBlock{
 	@Override
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
 	{
-		EntityItem ei = (EntityItem)entity;
-		
+
 		if (entity instanceof EntityItem) {
-				if(entity.isCollided){
+			EntityItem ei = (EntityItem)entity;
+			ItemStack stack = ei.getItem();
+			if(stack.getItem() == Items.APPLE){
+				if(entity.collided){
 					world.destroyBlock(pos, false);
 				}
-		
+			}
+
 		}
 	}
 	@Override
@@ -65,11 +69,12 @@ public class PaneHorizontal extends BasicBlock{
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
+
+
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		return EnumBlockRenderType.MODEL;
 	}
-
 	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {

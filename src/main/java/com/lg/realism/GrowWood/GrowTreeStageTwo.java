@@ -79,10 +79,10 @@ public class GrowTreeStageTwo extends BasicBlockWithCustomModel {
 					world.setBlockState(new BlockPos(pos.getX(), pos.getY() + 2, pos.getZ() + 1), RegBlocks.smallleaves.getDefaultState());
 					world.setBlockState(new BlockPos(pos.getX(), pos.getY() + 2, pos.getZ() -1), RegBlocks.smallleaves.getDefaultState());
 				
-						world.setBlockState(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()), RegBlocks.branchoak.getDefaultState().withProperty(FACING, EnumFacing.EAST), 2);
-						world.setBlockState(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()), RegBlocks.branchoak.getDefaultState().withProperty(FACING, EnumFacing.EAST), 2);
-						world.setBlockState(new BlockPos(pos.getX() , pos.getY(), pos.getZ() + 1), RegBlocks.branchoak.getDefaultState());
-						world.setBlockState(new BlockPos(pos.getX() , pos.getY(), pos.getZ() - 1), RegBlocks.branchoak.getDefaultState());
+						world.setBlockState(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()), RegBlocks.oakbranch.getDefaultState());
+						world.setBlockState(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()), RegBlocks.oakbranch.getDefaultState());
+						world.setBlockState(new BlockPos(pos.getX() , pos.getY(), pos.getZ() + 1), RegBlocks.oakbranch.getDefaultState());
+						world.setBlockState(new BlockPos(pos.getX() , pos.getY(), pos.getZ() - 1), RegBlocks.oakbranch.getDefaultState());
 				
 					
 					if(world.rand.nextInt(8) >= 4){

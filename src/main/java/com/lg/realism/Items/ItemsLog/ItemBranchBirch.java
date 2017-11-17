@@ -20,9 +20,9 @@ public class ItemBranchBirch extends BasicItem{
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if(facing == EnumFacing.UP || facing == EnumFacing.DOWN){
-			world.setBlockState(pos.offset(facing),RegBlocks.branchbirch.getDefaultState());
+			world.setBlockState(pos.offset(facing),RegBlocks.connectblock.getDefaultState());
 		} else {
-		world.setBlockState(pos.offset(facing),RegBlocks.branchbirch.getDefaultState().withProperty(FACING, facing), 2);
+		world.setBlockState(pos.offset(facing),RegBlocks.connectblock.getDefaultState().withProperty(FACING, facing), 2);
 		}
 		player.getHeldItem(EnumHand.MAIN_HAND).shrink(1);	
 

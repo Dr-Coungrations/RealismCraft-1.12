@@ -15,7 +15,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.lg.realism.Config.ConfigManager;
+import com.lg.realism.CreativeTabs.DevRealism;
 import com.lg.realism.CreativeTabs.MainRealism;
+import com.lg.realism.World.Biome.BiomeInit;
 import com.lg.realism.event.registration.RegEvents;
 import com.lg.realism.fire.BlockFireTileEntity;
 import com.lg.realism.proxy.CommonProxy;
@@ -28,6 +30,7 @@ public class Realism
     public static final String NAME = "Realism Mod";
     public static final Logger LOGGER = LogManager.getLogger();
     public static CreativeTabs tabMain = new MainRealism("tabMain");
+    public static CreativeTabs tabDev = new DevRealism("tabDev");
     @SidedProxy(clientSide = "com.lg.realism.proxy.ClientProxy", serverSide = "com.lg.realism.proxy.CommonProxy")
    	public static CommonProxy proxy;
     @Mod.Instance
@@ -43,7 +46,7 @@ public class Realism
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
     	GameRegistry.registerTileEntity(BlockFireTileEntity.class, "BlockFireTileEntity");
-    	
+    	BiomeInit.registerBiomes();
     	  proxy.preInit(event);
     	  RegEvents.register();
     	LOGGER.info("[MOD] Realism Mod enabled and loaded");

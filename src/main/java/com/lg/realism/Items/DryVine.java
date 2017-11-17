@@ -13,6 +13,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.lg.realism.Realism;
 import com.lg.realism.RegItems;
 import com.lg.realism.Basic.DevBasicBlock;
 
@@ -22,7 +23,7 @@ public class DryVine extends DevBasicBlock{
 	public DryVine(Material materialIn, String name, float hardness,
 			float resistanse, String hravLevel, int level, SoundType soundtype) {
 		super(materialIn, name, hardness, resistanse, hravLevel, level, soundtype);
-		// TODO Auto-generated constructor stub
+		this.setCreativeTab(Realism.tabDev);
 	}
 	
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)

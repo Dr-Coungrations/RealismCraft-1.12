@@ -16,25 +16,31 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemRealPickaxe extends Item {
 	
-	public ItemRealPickaxe(String regName, String name) {
+	public float strength;
+	public float speed;
+	
+	public ItemRealPickaxe(String regName, String name, float strength, float speed) {
 		setRegistryName(regName).setUnlocalizedName(name).setCreativeTab(Realism.tabMain).setMaxStackSize(1);
 		setHarvestLevel("pickaxe", 4);
+		this.strength = strength;
+		this.speed = speed;
 	}
 	
 	public float getStrVsBlock(ItemStack stack, IBlockState state)
-    {
+	{
 		NBTTagCompound nbt = stack.getTagCompound();
 		if (nbt != null) {
-			return 10F / nbt.getFloat("UpSharpness");
+			return ((-nbt.getFloat("UpSharpness") + strength) / strength + 0.25F) * speed;
 		}
-        return 1F;
-    }
+		return speed;
+	}
 	
 	public boolean canHarvestBlock(IBlockState block)
     {
@@ -55,13 +61,13 @@ public class ItemRealPickaxe extends Item {
         	if (nbt == null)
         		nbt = new NBTTagCompound();
         	nbt.setFloat("UpDamage", nbt.getFloat("UpDamage") + 0.5F);
-        	nbt.setFloat("UpSharpness", nbt.getFloat("UpSharpness") + 0.65F);
+        	nbt.setFloat("UpSharpness", nbt.getFloat("UpSharpness") + 0.55F);
         	nbt.setFloat("HandleDamage", nbt.getFloat("HandleDamage") + 0.25F);
 			
-        	if (nbt.getFloat("UpSharpness") > 10F)
-        		nbt.setFloat("UpSharpness", 10F);
+        	if (nbt.getFloat("UpSharpness") > strength)
+        		nbt.setFloat("UpSharpness", strength);
         	
-			if (nbt.getFloat("UpDamage") >= 10F) {
+			if (nbt.getFloat("UpDamage") >= strength) {
 				stack.shrink(1);
 				if (entityLiving instanceof EntityPlayer)
 					((EntityPlayer)entityLiving).inventory.addItemStackToInventory(new ItemStack(RegItems.wood_pickaxe_handle));
@@ -72,22 +78,40 @@ public class ItemRealPickaxe extends Item {
     }
 	
 	@SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-    {
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	{
 		if (stack.hasTagCompound()) {
-			tooltip.add("Upper Damage: " + stack.getTagCompound().getFloat("UpDamage"));
-			tooltip.add("Handle Damage: " + stack.getTagCompound().getFloat("HandleDamage"));
+			
+			String green = "" + TextFormatting.GREEN;
+			String yellow = "" + TextFormatting.YELLOW;
+			String red = "" + TextFormatting.RED;
+			String res = "" + TextFormatting.RESET;
+			
+			int proc = (int)((-stack.getTagCompound().getFloat("UpDamage") + strength) / strength * 100);
+			String color = proc > 60 ? green : proc > 20 ? yellow : red;
+			tooltip.add("Upper Damage: " + color + proc + res + "%");
+			
+			proc = (int)((-stack.getTagCompound().getFloat("UpSharpness") + strength) / strength * 100);
+			color = proc > 60 ? green : proc > 20 ? yellow : red;
+			tooltip.add("Upper Sharpness: " + color + proc + res + "%");
+			
+			proc = (int)((-stack.getTagCompound().getFloat("HandleDamage") + strength) / strength * 100);
+			color = proc > 60 ? green : proc > 20 ? yellow : red;
+			tooltip.add("Handle Damage: " + color + proc + res + "%");
 		}
     }
 	
 	public boolean showDurabilityBar(ItemStack stack)
-    {
-        return stack.hasTagCompound();
-    }
+	{
+		return false;
+	}
 	
 	public double getDurabilityForDisplay(ItemStack stack)
-    {
+	{
 		NBTTagCompound nbt = stack.getTagCompound();
-        return nbt.getFloat("UpDamage") / 10F;
-    }
+		if (nbt == null)
+			return 0F;
+		else
+			return nbt.getFloat("UpDamage") / 10F;
+	}
 }

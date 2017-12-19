@@ -3,12 +3,11 @@ package com.lg.realism.event;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
-import com.lg.realism.Items.ItemShovel;
+import com.lg.realism.Items.ItemRealShovel;
 import com.lg.realism.proxy.ClientProxy;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -52,7 +51,7 @@ public class EventToolMode {
 	@SubscribeEvent
 	public void renderWLevel(RenderGameOverlayEvent.Post event) {
 		if (event.isCancelable() && event.getType() != ElementType.TEXT) return;
-		if (mc.player.getHeldItemMainhand().getItem() instanceof ItemShovel) {
+		if (mc.player.getHeldItemMainhand().getItem() instanceof ItemRealShovel) {
 			GL11.glPushMatrix();
 			GlStateManager.enableBlend();
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);

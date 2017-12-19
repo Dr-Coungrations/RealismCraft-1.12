@@ -1,19 +1,11 @@
 package com.lg.realism;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
-
 import com.lg.realism.Basic.BasicBlockWithDropItem;
 import com.lg.realism.Blocks.Ash;
 import com.lg.realism.Blocks.BlockBurntGrass;
 import com.lg.realism.Blocks.BlockBurntTree;
 import com.lg.realism.Blocks.BlockDryGrass;
+import com.lg.realism.Blocks.FallingDirt;
 import com.lg.realism.Blocks.MossBlock;
 import com.lg.realism.Blocks.PaneHorizontal;
 import com.lg.realism.Blocks.RealismRedSand;
@@ -26,28 +18,41 @@ import com.lg.realism.Blocks.Cactus.OneStageCactus;
 import com.lg.realism.Blocks.Cactus.SideCactus;
 import com.lg.realism.Blocks.DeadTree.BlockDeadTree;
 import com.lg.realism.Blocks.DeadTree.DeadBranch;
+import com.lg.realism.Blocks.ExTorch.ExTorch;
+import com.lg.realism.Blocks.ExTorch.Torch;
 import com.lg.realism.Blocks.Ocean.Corals;
 import com.lg.realism.Blocks.Ocean.Seaweeds;
-import com.lg.realism.GrowWood.BirchBranch;
-import com.lg.realism.GrowWood.GrowTreeStageOne;
-import com.lg.realism.GrowWood.GrowTreeStageOneBirch;
-import com.lg.realism.GrowWood.GrowTreeStageOneSpruce;
-import com.lg.realism.GrowWood.GrowTreeStageTwo;
-import com.lg.realism.GrowWood.GrowTreeStageTwoBirch;
-import com.lg.realism.GrowWood.GrowTreeStageTwoSpruce;
-import com.lg.realism.GrowWood.OakBranch;
-import com.lg.realism.GrowWood.SmallLeaves;
-import com.lg.realism.GrowWood.SmallLeavesBirch;
-import com.lg.realism.GrowWood.SmallLeavesSpruce;
+import com.lg.realism.GrowWood.GrowTreeStageOneAcacia;
 import com.lg.realism.GrowWood.AppleTree.AppleTreeStageOne;
 import com.lg.realism.GrowWood.AppleTree.AppleTreeStageTwo;
 import com.lg.realism.GrowWood.AppleTree.BlockAppleTree;
 import com.lg.realism.GrowWood.AppleTree.BranchAppleTree;
 import com.lg.realism.GrowWood.AppleTree.LeavesAppleTree;
 import com.lg.realism.GrowWood.AppleTree.SmallLeavesAppleTree;
+import com.lg.realism.GrowWood.Birch.BirchBranch;
+import com.lg.realism.GrowWood.Birch.GrowTreeStageOneBirch;
+import com.lg.realism.GrowWood.Birch.GrowTreeStageTwoBirch;
+import com.lg.realism.GrowWood.Birch.SmallLeavesBirch;
+import com.lg.realism.GrowWood.Oak.GrowTreeStageOne;
+import com.lg.realism.GrowWood.Oak.GrowTreeStageTwo;
+import com.lg.realism.GrowWood.Oak.OakBranch;
+import com.lg.realism.GrowWood.Oak.SmallLeaves;
+import com.lg.realism.GrowWood.Spruce.GrowTreeStageOneSpruce;
+import com.lg.realism.GrowWood.Spruce.GrowTreeStageTwoSpruce;
+import com.lg.realism.GrowWood.Spruce.SmallLeavesSpruce;
+import com.lg.realism.GrowWood.Spruce.SpruceBranch;
 import com.lg.realism.Items.DryVine;
 import com.lg.realism.Items.WetVine;
 import com.lg.realism.fire.BlockFire;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class RegBlocks {
 	public static Block panehorizontal = new PaneHorizontal(Material.WOOD, "panehorizontal", 3F, 3F, SoundType.WOOD);
@@ -58,22 +63,34 @@ public class RegBlocks {
 	
 	public static Block smallleavesappletree = new SmallLeavesAppleTree(Material.LEAVES, "smallleavesappletree", 2F, 2F, "shears", 1, SoundType.GROUND);
 	public static Block leavesappletree = new LeavesAppleTree(Material.LEAVES, "leavesappletree", 2F, 2F, "shears", 1, SoundType.GROUND);
+	
 	//Oak
 	public static Block growtreeone = new GrowTreeStageOne(Material.WOOD, "growtreeone", 3F, 3F, "axe", 1, SoundType.WOOD);
 	public static Block growtreetwo = new GrowTreeStageTwo(Material.WOOD, "growtreetwo", 6F, 6F, "axe", 1, SoundType.WOOD);
-	
 	public static Block smallleaves = new SmallLeaves(Material.LEAVES, "smallleaves", 2F, 2F, "shears", 1, SoundType.GROUND);
+	
 	//Spruce
 	public static Block growtreeonespruce = new GrowTreeStageOneSpruce(Material.WOOD, "growtreeonespruce", 3F, 3F, "axe", 1, SoundType.WOOD);
 	public static Block growtreetwospruce = new GrowTreeStageTwoSpruce(Material.WOOD, "growtreetwospruce", 6F, 6F, "axe", 1, SoundType.WOOD);
-
 	public static Block smallleavesspruce = new SmallLeavesSpruce(Material.LEAVES, "smallleavesspruce", 2F, 2F, "shears", 1, SoundType.GROUND);
+	
 	//birch
 	public static Block growtreeonebirch = new GrowTreeStageOneBirch(Material.WOOD, "growtreeonebirch", 3F, 3F, "axe", 1, SoundType.WOOD);
-	
-	
 	public static Block growtreetwobirch = new GrowTreeStageTwoBirch(Material.WOOD, "growtreetwobirch", 6F, 6F, "axe", 1, SoundType.WOOD);
 	public static Block smallleavesbirch = new SmallLeavesBirch(Material.LEAVES, "smallleavesbirch", 2F, 2F, "shears", 1, SoundType.GROUND);
+	
+	//Acacia
+	public static Block growtreeoneacacia = new GrowTreeStageOneAcacia(Material.WOOD, "growtreeoneacacia", 3F, 3F, "axe", 1, SoundType.WOOD);
+//	public static Block growtreetwoacacia = new GrowTreeStageTwoAcacia(Material.WOOD, "growtreetwoacacia", 6F, 6F, "axe", 1, SoundType.WOOD);
+//	public static Block smallleavesacacia = new SmallLeavesAcacia(Material.LEAVES, "smallleavesacacia", 2F, 2F, "shears", 1, SoundType.GROUND);
+	
+	//Branchs
+	public static Block connectblock = new BirchBranch("connectblock");
+	public static Block oakbranch = new OakBranch("oakbranch");
+	public static Block branchappletree = new BranchAppleTree("branchappletree");
+	public static Block deadbranch = new DeadBranch("deadbranch");
+	public static Block sprucebranch = new SpruceBranch("sprucebranch");
+	
 	//new ore
 	public static Block copperore = new BasicBlockWithDropItem(Material.ROCK, "copperore", 3F, 3F, SoundType.STONE, RegItems.oreitemcopper, 2,0);
 	//kaolin
@@ -116,13 +133,17 @@ public class RegBlocks {
 	public static Block blockburnttree = new BlockBurntTree(Material.WOOD, "blockburnttree", 6F, "axe",  1, 3F, SoundType.WOOD);
 	public static Block blockdeadtree = new BlockDeadTree(Material.WOOD, "blockdeadtree", 6F, "axe",  1, 3F, SoundType.WOOD);
 	
-	public static Block connectblock = new BirchBranch("connectblock");
-	public static Block oakbranch = new OakBranch("oakbranch");
-	public static Block branchappletree = new BranchAppleTree("branchappletree");
-	public static Block deadbranch = new DeadBranch("deadbranch");
+
+	
+	public static Block torch = new Torch();
+	public static Block extorch = new ExTorch();
+	
+//	public static Block fdirt = new FallingDirt(Material.WOOD, "fdirt", 6F, 1, SoundType.WOOD);
 	public static void register() {
-		
-		
+		registerBlock(sprucebranch);
+	//	registerBlock(fdirt);
+		registerBlock(torch);
+		registerBlock(extorch);
 		registerBlock(connectblock);
 		registerBlock(deadbranch);
 		registerBlock(blockdeadtree);
@@ -168,6 +189,10 @@ public class RegBlocks {
 		registerBlock(smallleavesspruce);
 	}
 	public static void registerRender() {
+		registerRenderBlock(sprucebranch);
+	//	registerRenderBlock(fdirt);
+		registerRenderBlock(extorch);
+		registerRenderBlock(torch);
 		registerRenderBlock(connectblock);
 		registerRenderBlock(deadbranch);
 		registerRenderBlock(blockdeadtree);

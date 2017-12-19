@@ -1,5 +1,12 @@
 package com.lg.realism.event;
 
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+
+import com.lg.realism.RegItems;
+import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
+import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.settings.KeyBinding;
@@ -9,13 +16,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderSpecificHandEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
-
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
-import com.lg.realism.RegItems;
-import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
-import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
 
 public class RenderTextEvent {
 	public static int page = 0;
@@ -91,7 +91,8 @@ public class RenderTextEvent {
 				fontrenderer.drawString("Time(Min): " + (player.getEntityWorld().getWorldTime()/20)/60, 0, 30, 0xFFFFFF);
 				fontrenderer.drawString("Time(Sec): "  + player.getEntityWorld().getWorldTime()/20, 0, 40, 0xFFFFFF);
 				fontrenderer.drawString("TOTAL TIME(sec): "  + player.getEntityWorld().getTotalWorldTime()/20, 0, 50, 0xFFFFFF);
-			//	fontrenderer.drawString("WORLD INFO: "  + player.getEntityWorld().getWorldInfo(), 0, 90, 0xFFFFFF);
+				fontrenderer.drawString("ticks: "  + player.getEntityWorld().getTotalWorldTime(), 0, 60, 0xFFFFFF);
+			//	fontrenderer.drawString("day: "  + TimeHundler.day, 0, 70, 0xFFFFFF);
 				GL11.glDisable(GL11.GL_BLEND);
 				GL11.glPopMatrix();
 			}

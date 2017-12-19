@@ -20,15 +20,15 @@ public class WorldGenRegistry {
 		
 		
 		if(ConfigManager.enableFirstGenerator){
-		GameRegistry.registerWorldGenerator(wgo, 0);
+	//	GameRegistry.registerWorldGenerator(wgo, 0);
 		}
 		if(ConfigManager.enableTwoGenerator){
-		GameRegistry.registerWorldGenerator(wgt, 1);
+	//	GameRegistry.registerWorldGenerator(wgt, 1);
 		}
 		if(ConfigManager.enableThirdGenerator){
-		GameRegistry.registerWorldGenerator(wgth, 2);
+	//	GameRegistry.registerWorldGenerator(wgth, 2);
 		}
 //		GameRegistry.registerWorldGenerator(wgenore, 3);
-		GameRegistry.registerWorldGenerator(wgf, 1);
+//		GameRegistry.registerWorldGenerator(wgf, 1);
 	}
 }

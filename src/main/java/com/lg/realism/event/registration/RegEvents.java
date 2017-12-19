@@ -1,9 +1,9 @@
 package com.lg.realism.event.registration;
 
-import com.lg.realism.API.WorldAPI.TimeHundler;
 import com.lg.realism.Diseaces.Cold;
 import com.lg.realism.Diseaces.Grippe;
 import com.lg.realism.event.AmfRenderEvent;
+import com.lg.realism.event.BurnTorchEvent;
 import com.lg.realism.event.CapEventHandler;
 import com.lg.realism.event.ClearDropsEvent;
 import com.lg.realism.event.ClonePlayer;
@@ -51,7 +51,9 @@ public class RegEvents {
 	     	register(new WorldResetTime());
 	     	register(new AmfRenderEvent());
 	     	register(new EventToolMode());
-	     	register(new TimeHundler());
+	     	register(new BurnTorchEvent());
+	   //  	register(new NewTimeHundler());
+	     //	register(new PickingUpEvent());
 		}
 		
 		static void register(Object object) {

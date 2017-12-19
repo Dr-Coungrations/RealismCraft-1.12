@@ -2,70 +2,50 @@ package com.lg.realism.World.Biome.WorldGenThisBiome;
 
 import java.util.Random;
 
-import net.minecraft.block.properties.PropertyDirection;
+import com.lg.realism.RegBlocks;
+
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 
-import com.lg.realism.RegBlocks;
-import com.lg.realism.World.LayerGenerator.ALayerGen;
-
-public class WorldGenDeadTree extends ALayerGen {
-	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
-	static final int[][][] MATRIX = new int[][][] {
-
-		{
-			{0, 2, 0},
-			{2, 1, 2},
-			{0, 2, 0},
-		},
-		{
-			{0, 0, 0},
-			{0, 1, 0},
-			{0, 2, 0},
-		},
-		{
-			{0, 0, 0},
-			{2, 1, 0},
-			{0, 0, 0},
-		},
-		{
-			{0, 2, 0},
-			{0, 1, 2},
-			{0, 2, 0},
-		},
-
-	};
-
-
+public class WorldGenDeadTree extends WorldGenerator {
 	@Override
-	protected int[][][] get3LayerMatrix()
+	public boolean generate(World world, Random rand, BlockPos pos)
 	{
-		return MATRIX;
-	}
-
-	@Override
-	public void generateBlock(World world, Random random, int x, int y, int z, int matrixValue)
-	{
-
-		BlockPos pos = new BlockPos(x, y, z);
-		int variator = random.nextInt(3);
-		switch(matrixValue) {
-
-		case 0:
-			world.setBlockState(new BlockPos(pos.getX(), pos.getY(), pos.getZ()),Blocks.AIR.getDefaultState()); 
-			break;
-		case 1:
-			world.setBlockState(new BlockPos(pos.getX(), pos.getY(), pos.getZ()),RegBlocks.blockdeadtree.getDefaultState()); 
-			break;
-		case 2:
-			world.setBlockState(new BlockPos(pos.getX(), pos.getY(), pos.getZ()),RegBlocks.deadbranch.getDefaultState()); 
-			break;
-
-
+		for (IBlockState iblockstate = world.getBlockState(pos); (iblockstate.getBlock().isAir(iblockstate, world, pos) || iblockstate.getBlock().isLeaves(iblockstate, world, pos))
+				&& pos.getY() > 0; iblockstate = world.getBlockState(pos))
+		{
+			pos = pos.down();
 		}
+
+
+		for (int i = 0; i < 128; ++i)
+		{
+
+	
+
+					BlockPos blockpos = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
+
+					if (world.isAirBlock(blockpos) && world.getBlockState(blockpos.down()) == Blocks.GRASS)
+					{
+						int randomBranch = rand.nextInt(5);
+						for(int height = 0; height < 5; ++height) {
+							world.setBlockState(new BlockPos(blockpos.getX(),blockpos.getY(),blockpos.getZ()), RegBlocks.blockdeadtree.getDefaultState(), 2);
+						}
+						if(randomBranch != 1 || randomBranch != 0) {
+							world.setBlockState(new BlockPos(blockpos.getX() + 1,blockpos.getY() + randomBranch,blockpos.getZ()), RegBlocks.blockdeadtree.getDefaultState(), 2);
+							world.setBlockState(new BlockPos(blockpos.getX() - 1,blockpos.getY() + randomBranch,blockpos.getZ()), RegBlocks.blockdeadtree.getDefaultState(), 2);
+							world.setBlockState(new BlockPos(blockpos.getX(),blockpos.getY() + randomBranch,blockpos.getZ()-1), RegBlocks.blockdeadtree.getDefaultState(), 2);
+							world.setBlockState(new BlockPos(blockpos.getX(),blockpos.getY() + randomBranch,blockpos.getZ()+1), RegBlocks.blockdeadtree.getDefaultState(), 2);
+						}
+				
+			}
+		}
+		return true;
 	}
+
 }
 
 /*
@@ -86,4 +66,4 @@ public class WorldGenDeadTree extends ALayerGen {
 						}
 						}
 				}
-*/
+ */

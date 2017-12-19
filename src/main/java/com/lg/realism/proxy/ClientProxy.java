@@ -1,5 +1,12 @@
 package com.lg.realism.proxy;
 
+import com.lg.realism.Realism;
+import com.lg.realism.RegBlocks;
+import com.lg.realism.RegItems;
+import com.lg.realism.Sounds.SoundsRegister;
+import com.lg.realism.event.EventToolMode;
+import com.lg.realism.event.RenderTextEvent;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.IBlockColor;
@@ -16,13 +23,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-import com.lg.realism.Realism;
-import com.lg.realism.RegBlocks;
-import com.lg.realism.RegItems;
-import com.lg.realism.Sounds.SoundsRegister;
-import com.lg.realism.event.EventToolMode;
-import com.lg.realism.event.RenderTextEvent;
-
 public class ClientProxy extends CommonProxy {
 	public static String KEY_CATEGORY = "key.categories." + Realism.MODID;
 	public static EventToolMode.EnumToolMode currentToolMode = EventToolMode.EnumToolMode.FULL;
@@ -30,6 +30,7 @@ public class ClientProxy extends CommonProxy {
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
 		RegItems.preRegisterRender();
+		
 	}
 
 	@Override
@@ -45,6 +46,7 @@ public class ClientProxy extends CommonProxy {
 		 ClientRegistry.registerKeyBinding(RenderTextEvent.pressKeyChargeM); 
 		 
 			ClientRegistry.registerKeyBinding(EventToolMode.KEY_TOOL_MODE);
+			
 	}
 
 	@Override

@@ -1,11 +1,5 @@
 package com.lg.realism.proxy;
 
-import net.minecraftforge.common.capabilities.CapabilityManager;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-
 import com.lg.realism.Realism;
 import com.lg.realism.RegBlocks;
 import com.lg.realism.RegItems;
@@ -18,6 +12,12 @@ import com.lg.realism.Craft.RealismCrafts;
 import com.lg.realism.PSystem.NetworkHandler;
 import com.lg.realism.fire.BlockFireGuiHandler;
 
+import net.minecraftforge.common.capabilities.CapabilityManager;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+
 public class CommonProxy {
     public void registerColouring() {}
     public void preInit(FMLPreInitializationEvent event) {
@@ -26,7 +26,6 @@ public class CommonProxy {
     	RegItems.register();
     	NetworkHandler.INSTANCE.init();
 		CapabilityManager.INSTANCE.register(IBarLevel.class, new WaterLevelStorage(), WaterBar.class);
-
     
     }
     public void init(FMLInitializationEvent event) {

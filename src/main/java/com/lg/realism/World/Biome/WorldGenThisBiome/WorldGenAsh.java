@@ -14,31 +14,32 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenAsh extends WorldGenerator
 {
-	private final IBlockState ash;
-
-	public WorldGenAsh()
+	@Override
+	public boolean generate(World world, Random rand, BlockPos pos)
 	{
-		this.ash = RegBlocks.ash.getDefaultState();
-	}
-
-	public boolean generate(World worldIn, Random rand, BlockPos position)
-	{
-		for (IBlockState iblockstate = worldIn.getBlockState(position); (iblockstate.getBlock().isAir(iblockstate, worldIn, position) || iblockstate.getBlock().isLeaves(iblockstate, worldIn, position)) && position.getY() > 0; iblockstate = worldIn.getBlockState(position))
+		for (IBlockState iblockstate = world.getBlockState(pos); (iblockstate.getBlock().isAir(iblockstate, world, pos) || iblockstate.getBlock().isLeaves(iblockstate, world, pos))
+				&& pos.getY() > 0; iblockstate = world.getBlockState(pos))
 		{
-			position = position.down();
+			pos = pos.down();
 		}
 
-		for (int i = 0; i < 128; ++i)
+
+		for (int i = 0; i < 64; ++i)
 		{
-				BlockPos blockpos = position.add(rand.nextInt(10) - rand.nextInt(10), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
-				if(worldIn.getBiome(position) == BiomeInit.DEADFOREST){
-					if (worldIn.isAirBlock(blockpos) && worldIn.getBlockState(blockpos.down()) != Blocks.AIR  && worldIn.getBlockState(blockpos.down()) != Blocks.WATER)
+			for (int j = 0; j < 64; ++j)
+			{
+				for (int k = 0; k < 64; ++k)
+				{
+					BlockPos blockpos = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
+
+					if (world.isAirBlock(blockpos) && world.getBlockState(blockpos.down()).getBlock() == RegBlocks.blockburntgrass)
 					{
-						worldIn.setBlockState(blockpos, this.ash, 2);
+						world.setBlockState(blockpos, RegBlocks.ash.getDefaultState(), 2);
 					}
 				}
+			}
 		}
-
 		return true;
 	}
+
 }

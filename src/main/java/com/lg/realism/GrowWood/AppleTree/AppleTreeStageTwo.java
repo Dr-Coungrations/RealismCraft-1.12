@@ -48,6 +48,11 @@ public class AppleTreeStageTwo extends BasicBlockWithCustomModel {
 		world.scheduleBlockUpdate(pos, this, 1, 0);
 		time.add(new TimerForCoord(pos.getX(),pos.getY(),pos.getZ(),0));
 	}
+	
+	private boolean setBlock(BlockPos pos,World world, IBlockState state) {
+		world.setBlockState(pos, state);
+		return true;
+	}
 	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
 
@@ -69,42 +74,42 @@ public class AppleTreeStageTwo extends BasicBlockWithCustomModel {
 		if(!world.isRemote) {
 			if (time2.time == 20) {
 				if(world.getBlockState(new BlockPos(pos.getX(), pos.getY() - maxHeightTree, pos.getZ())).getBlock() != RegBlocks.blockappletree){
-					world.setBlockState(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ()), RegBlocks.appletreeone.getDefaultState());
+					setBlock(new BlockPos(pos.getX(), pos.getY() + 1, pos.getZ()),world, RegBlocks.appletreeone.getDefaultState());
 				}
 
 			}
 			if (time2.time == 40) {
-				world.setBlockState(new BlockPos(pos.getX(), pos.getY() + 2, pos.getZ()), RegBlocks.smallleavesappletree.getDefaultState());
+				setBlock(new BlockPos(pos.getX(), pos.getY() + 2, pos.getZ()),world, RegBlocks.smallleavesappletree.getDefaultState());
 				if(world.getBlockState(new BlockPos(pos.getX(), pos.getY() - maxHeightLeaves, pos.getZ())).getBlock() == RegBlocks.blockappletree){	
-					world.setBlockState(new BlockPos(pos.getX() + 1, pos.getY() + 2, pos.getZ()), RegBlocks.smallleavesappletree.getDefaultState());
-					world.setBlockState(new BlockPos(pos.getX() - 1, pos.getY() + 2, pos.getZ()), RegBlocks.smallleavesappletree.getDefaultState());
-					world.setBlockState(new BlockPos(pos.getX(), pos.getY() + 2, pos.getZ() + 1), RegBlocks.smallleavesappletree.getDefaultState());
-					world.setBlockState(new BlockPos(pos.getX(), pos.getY() + 2, pos.getZ() -1), RegBlocks.smallleavesappletree.getDefaultState());
+					setBlock(new BlockPos(pos.getX() + 1, pos.getY() + 2, pos.getZ()),world, RegBlocks.smallleavesappletree.getDefaultState());
+					setBlock(new BlockPos(pos.getX() - 1, pos.getY() + 2, pos.getZ()),world, RegBlocks.smallleavesappletree.getDefaultState());
+					setBlock(new BlockPos(pos.getX(), pos.getY() + 2, pos.getZ() + 1),world, RegBlocks.smallleavesappletree.getDefaultState());
+					setBlock(new BlockPos(pos.getX(), pos.getY() + 2, pos.getZ() -1),world, RegBlocks.smallleavesappletree.getDefaultState());
 
-					world.setBlockState(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()), RegBlocks.branchappletree.getDefaultState());
-					world.setBlockState(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()), RegBlocks.branchappletree.getDefaultState());
-					world.setBlockState(new BlockPos(pos.getX() , pos.getY(), pos.getZ() + 1), RegBlocks.branchappletree.getDefaultState());
-					world.setBlockState(new BlockPos(pos.getX() , pos.getY(), pos.getZ() - 1), RegBlocks.branchappletree.getDefaultState());
+					setBlock(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()),world, RegBlocks.branchappletree.getDefaultState());
+					setBlock(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()),world, RegBlocks.branchappletree.getDefaultState());
+					setBlock(new BlockPos(pos.getX() , pos.getY(), pos.getZ() + 1),world, RegBlocks.branchappletree.getDefaultState());
+					setBlock(new BlockPos(pos.getX() , pos.getY(), pos.getZ() - 1),world, RegBlocks.branchappletree.getDefaultState());
 
 
 					if(world.rand.nextInt(8) >= 4){
-						world.setBlockState(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()), RegBlocks.smallleavesappletree.getDefaultState());
-						world.setBlockState(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()), RegBlocks.smallleavesappletree.getDefaultState());
-						world.setBlockState(new BlockPos(pos.getX() , pos.getY(), pos.getZ() + 1), RegBlocks.smallleavesappletree.getDefaultState());
-						world.setBlockState(new BlockPos(pos.getX() , pos.getY(), pos.getZ() - 1), RegBlocks.smallleavesappletree.getDefaultState());
+						setBlock(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()),world, RegBlocks.smallleavesappletree.getDefaultState());
+						setBlock(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()),world, RegBlocks.smallleavesappletree.getDefaultState());
+						setBlock(new BlockPos(pos.getX() , pos.getY(), pos.getZ() + 1),world, RegBlocks.smallleavesappletree.getDefaultState());
+						setBlock(new BlockPos(pos.getX() , pos.getY(), pos.getZ() - 1),world, RegBlocks.smallleavesappletree.getDefaultState());
 					}
-					world.setBlockState(new BlockPos(pos.getX() + 1 , pos.getY(), pos.getZ() + 1), RegBlocks.smallleavesappletree.getDefaultState());
-					world.setBlockState(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() - 1), RegBlocks.smallleavesappletree.getDefaultState());
-					world.setBlockState(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ() - 1), RegBlocks.smallleavesappletree.getDefaultState());
-					world.setBlockState(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() + 1), RegBlocks.smallleavesappletree.getDefaultState());
-					world.setBlockState(new BlockPos(pos.getX() + 2 , pos.getY(), pos.getZ()), RegBlocks.smallleavesappletree.getDefaultState());
-					world.setBlockState(new BlockPos(pos.getX() - 2, pos.getY(), pos.getZ()), RegBlocks.smallleavesappletree.getDefaultState());
-					world.setBlockState(new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 2), RegBlocks.smallleavesappletree.getDefaultState());
-					world.setBlockState(new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 2), RegBlocks.smallleavesappletree.getDefaultState());
+					setBlock(new BlockPos(pos.getX() + 1 , pos.getY(), pos.getZ() + 1),world, RegBlocks.smallleavesappletree.getDefaultState());
+					setBlock(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() - 1),world, RegBlocks.smallleavesappletree.getDefaultState());
+					setBlock(new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ() - 1),world, RegBlocks.smallleavesappletree.getDefaultState());
+					setBlock(new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() + 1),world, RegBlocks.smallleavesappletree.getDefaultState());
+					setBlock(new BlockPos(pos.getX() + 2 , pos.getY(), pos.getZ()),world, RegBlocks.smallleavesappletree.getDefaultState());
+					setBlock(new BlockPos(pos.getX() - 2, pos.getY(), pos.getZ()),world, RegBlocks.smallleavesappletree.getDefaultState());
+					setBlock(new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 2),world, RegBlocks.smallleavesappletree.getDefaultState());
+					setBlock(new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 2),world, RegBlocks.smallleavesappletree.getDefaultState());
 				}
 			}
 			if (time2.time == 80) {
-				world.setBlockState(new BlockPos(pos.getX(), pos.getY(), pos.getZ()), RegBlocks.blockappletree.getDefaultState());
+				setBlock(new BlockPos(pos.getX(), pos.getY(), pos.getZ()),world, RegBlocks.blockappletree.getDefaultState());
 			}		
 		}
 	}

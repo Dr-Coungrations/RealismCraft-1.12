@@ -1,20 +1,12 @@
 package com.lg.realism;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemFood;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
-
 import com.lg.realism.API.ItemDrink;
 import com.lg.realism.Basic.BasicDamageItem;
 import com.lg.realism.Basic.BasicFood;
 import com.lg.realism.Basic.BasicItem;
 import com.lg.realism.Items.Counter;
-import com.lg.realism.Items.ItemShovel;
+import com.lg.realism.Items.ItemRealPickaxe;
+import com.lg.realism.Items.ItemRealShovel;
 import com.lg.realism.Items.Kaolin;
 import com.lg.realism.Items.NewStoneAxe;
 import com.lg.realism.Items.PointedStone;
@@ -31,6 +23,15 @@ import com.lg.realism.Items.ItemsLog.BirchSapling;
 import com.lg.realism.Items.ItemsLog.ItemBranchBirch;
 import com.lg.realism.Items.ItemsLog.OakSapling;
 import com.lg.realism.Items.ItemsLog.SpruceSapling;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemFood;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class RegItems {
 
@@ -101,14 +102,21 @@ public class RegItems {
 	public static Item birchsapling = new BirchSapling("birchsapling",64);
 	public static Item sprucesapling = new SpruceSapling("sprucesapling",64);
 	
+	public static Item thermo = new BasicItem("thermo",1);
+	
 	public static Item oreitemiron = new BasicItem("oreitemiron",64),
 			   oreitemgold = new BasicItem("oreitemgold",64),
 			   oreitemcopper = new BasicItem("oreitemcopper",64),
 			   oreitemdiamond = new BasicItem("oreitemdiamond",64);
 		// MaximPixel's Items
 	
-	public static Item woodenshovel = new ItemShovel("woodenshovel", "woodenshovel");
-	public static Item stoneshovel = new ItemShovel("stoneshovel", "stoneshovel");
+
+	public static Item wood_shovel = new ItemRealShovel("Wood", "wood_shovel");
+	public static Item stone_shovel = new ItemRealShovel("Stone", "stone_shovel");
+	
+	public static Item wood_pickaxe = new ItemRealPickaxe("wood_pickaxe", "woodPickaxe");
+	
+	public static Item wood_pickaxe_handle = new BasicItem("wood_pickaxe_hancdle", 1);
 	
 	public static Item counter = new Counter("counter",1);
 
@@ -116,9 +124,12 @@ public class RegItems {
 	public static void register() {
 		// MP's register
 		
-		registerItem(woodenshovel);
-		registerItem(stoneshovel);
+		registerItem(wood_shovel);
+		registerItem(stone_shovel);
+		registerItem(wood_pickaxe);
+		registerItem(wood_pickaxe_handle);
 		
+		registerItem(thermo);
 		
 		registerItem(counter);
 		registerItem(cookedplayermeat);
@@ -178,7 +189,8 @@ public class RegItems {
 
 	}
 	public static void registerRender() {
-	
+		registerRenderItem(thermo);
+		
 		registerRenderItem(counter);
 		registerRenderItem(cookedplayermeat);
 		registerRenderItem(playermeat);
@@ -243,30 +255,34 @@ public class RegItems {
 		registerRenderItem(wetvineitem);
 		registerRenderItem(dryvineitem);
 		registerRenderItem(pointedstone);
+	// MP's register
 		
 		String modid = Realism.MODID;
 		
-		registerRenderItem(woodenshovel, 0, new ResourceLocation(modid, "woodenshovelempty"));
-		registerRenderItem(woodenshovel, 1, new ResourceLocation(modid, "woodenshoveldirt"));
-		registerRenderItem(woodenshovel, 2, new ResourceLocation(modid, "woodenshovelgrass"));
-		registerRenderItem(woodenshovel, 3, new ResourceLocation(modid, "woodenshovelgravel"));
-		registerRenderItem(stoneshovel, 0, new ResourceLocation(modid, "stoneshovel"));
-		registerRenderItem(stoneshovel, 1, new ResourceLocation(modid, "stoneshoveldirt"));
-		registerRenderItem(stoneshovel, 2, new ResourceLocation(modid, "stoneshovelgrass"));
-		registerRenderItem(stoneshovel, 3, new ResourceLocation(modid, "stoneshovelgravel"));
+		registerRenderItem(wood_shovel, 0, new ResourceLocation(modid, "wooden_shovel_empty"));
+		registerRenderItem(wood_shovel, 1, new ResourceLocation(modid, "wooden_shovel_dirt"));
+		registerRenderItem(wood_shovel, 2, new ResourceLocation(modid, "wooden_shovel_grass"));
+		registerRenderItem(wood_shovel, 3, new ResourceLocation(modid, "wooden_shovel_gravel"));
+		registerRenderItem(stone_shovel, 0, new ResourceLocation(modid, "stone_shovel_empty"));
+		registerRenderItem(stone_shovel, 1, new ResourceLocation(modid, "stone_shovel_dirt"));
+		registerRenderItem(stone_shovel, 2, new ResourceLocation(modid, "stone_shovel_grass"));
+		registerRenderItem(stone_shovel, 3, new ResourceLocation(modid, "stone_shovel_gravel"));
+		
+		registerRenderItem(wood_pickaxe, new ResourceLocation("wooden_pickaxe"));
+		registerRenderItem(wood_pickaxe_handle, new ResourceLocation("stick"));
 	}
 	
 	public static void preRegisterRender() {
 		String modid = Realism.MODID;
 		
-		registerCustomModel(woodenshovel, 0, new ResourceLocation(modid, "woodenshovelempty"));
-		registerCustomModel(woodenshovel, 1, new ResourceLocation(modid, "woodenshoveldirt"));
-		registerCustomModel(woodenshovel, 2, new ResourceLocation(modid, "woodenshovelgrass"));
-		registerCustomModel(woodenshovel, 3, new ResourceLocation(modid, "woodenshovelgravel"));
-		registerCustomModel(stoneshovel, 0, new ResourceLocation(modid, "stoneshovelempty"));
-		registerCustomModel(stoneshovel, 1, new ResourceLocation(modid, "stoneshoveldirt"));
-		registerCustomModel(stoneshovel, 2, new ResourceLocation(modid, "stoneshovelgrass"));
-		registerCustomModel(stoneshovel, 3, new ResourceLocation(modid, "stoneshovelgravel"));
+		registerCustomModel(wood_shovel, 0, new ResourceLocation(modid, "wooden_shovel_empty"));
+		registerCustomModel(wood_shovel, 1, new ResourceLocation(modid, "wooden_shovel_dirt"));
+		registerCustomModel(wood_shovel, 2, new ResourceLocation(modid, "wooden_shovel_grass"));
+		registerCustomModel(wood_shovel, 3, new ResourceLocation(modid, "wooden_shovel_gravel"));
+		registerCustomModel(stone_shovel, 0, new ResourceLocation(modid, "stone_shovel_empty"));
+		registerCustomModel(stone_shovel, 1, new ResourceLocation(modid, "stone_shovel_dirt"));
+		registerCustomModel(stone_shovel, 2, new ResourceLocation(modid, "stone_shovel_grass"));
+		registerCustomModel(stone_shovel, 3, new ResourceLocation(modid, "stone_shovel_gravel"));
 	}
 	
 	private static void registerItem(Item item) {

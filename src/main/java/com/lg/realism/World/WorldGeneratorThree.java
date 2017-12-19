@@ -27,7 +27,7 @@ public class WorldGeneratorThree implements IWorldGenerator {
 	}
 	public void generateOverworld(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider){		 
 
-		generateDeadTree(world, random, chunkX, chunkZ);
+	
 		generateSalt(world, random, chunkX, chunkZ);
 
 	}
@@ -39,17 +39,7 @@ public class WorldGeneratorThree implements IWorldGenerator {
 
 		new WorldGenSalt().generate(world, random, new BlockPos(x, y, z));
 
-	}
-	private void generateDeadTree(World world, Random random, int chunkX, int chunkZ){
 
-
-		int x = (chunkX) + random.nextInt(8);
-		int y = random.nextInt(128);
-		int z = (chunkZ) + random.nextInt(8);
-		BlockPos pos = new BlockPos(x,y,z);
-		if(world.getBiome(pos) == BiomeInit.DEADFOREST && world.isAirBlock(pos) && !(world.isAirBlock(pos.down()))) {
-				new WorldGenDeadTree().generate(world, random, new BlockPos(x, y, z));
-	}
 }
 
 

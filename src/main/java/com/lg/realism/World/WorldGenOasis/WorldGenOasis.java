@@ -1,27 +1,22 @@
 package com.lg.realism.World.WorldGenOasis;
 
-import java.util.Random;
-
-import net.minecraft.block.BlockLog;
-import net.minecraft.block.BlockOldLeaf;
-import net.minecraft.block.BlockOldLog;
-import net.minecraft.block.BlockPlanks;
-import net.minecraft.block.BlockSand;
-import net.minecraft.block.BlockTallGrass;
+import com.lg.realism.RegBlocks;
+import com.lg.realism.World.LayerGenerator.ALayerGen;
+import net.minecraft.block.*;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.lg.realism.RegBlocks;
-import com.lg.realism.World.LayerGenerator.ALayerGen;
+import java.util.Random;
 
 public class WorldGenOasis extends ALayerGen
 {
-	public static final PropertyEnum<BlockLog.EnumAxis> LOG_AXIS = PropertyEnum.<BlockLog.EnumAxis>create("axis", BlockLog.EnumAxis.class);
-	  public static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.<EnumFacing.Axis>create("axis", EnumFacing.Axis.class);
-	static final int[][][] MATRIX = new int[][][] {
+	private final PropertyEnum<BlockLog.EnumAxis> LOG_AXIS = PropertyEnum.create("axis", BlockLog.EnumAxis.class);
+	private final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.create("axis", EnumFacing.Axis.class);
+
+	private static final int[][][] MATRIX = {
 		{
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 			{0, 1, 1, 0, 0, 0, 0, 0, 1, 0},
@@ -57,6 +52,7 @@ public class WorldGenOasis extends ALayerGen
 
 		},
 	};
+
 	@Override
 	public void generateBlock(World world, Random random, int x, int y, int z, int matrixValue)
 	{
@@ -98,14 +94,12 @@ public class WorldGenOasis extends ALayerGen
 			world.setBlockState(new BlockPos(pos.getX() - 1, pos.getY() + 3, pos.getZ()),Blocks.LEAVES.getDefaultState().withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.JUNGLE));
 			world.setBlockState(new BlockPos(pos.getX() + 1, pos.getY() + 3, pos.getZ()),Blocks.LEAVES.getDefaultState().withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.JUNGLE));
 			break;
-		
 		}
 	}
+
 	@Override
 	protected int[][][] get3LayerMatrix()
 	{
 		return MATRIX;
 	}
-
 }
-

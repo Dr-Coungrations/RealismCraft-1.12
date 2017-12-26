@@ -1,19 +1,13 @@
 package com.lg.realism.GrowWood.AppleTree;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import javax.annotation.Nullable;
-
+import com.lg.realism.API.TimerForCoord;
+import com.lg.realism.Basic.BasicBlockWithCustomModel;
+import com.lg.realism.RegBlocks;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockOldLeaf;
-import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
@@ -24,12 +18,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.lg.realism.RegBlocks;
-import com.lg.realism.API.TimerForCoord;
-import com.lg.realism.Basic.BasicBlockWithCustomModel;
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class SmallLeavesAppleTree extends BasicBlockWithCustomModel{
-	List<TimerForCoord> time =  new ArrayList<TimerForCoord>();
+	List<TimerForCoord> time = new ArrayList<>();
 	protected static final AxisAlignedBB smallleaves_AABB = new AxisAlignedBB(0.3D, 0.0D, 0.3D, 0.7D, 0.6D, 0.7D);
 	
 	public SmallLeavesAppleTree(Material materialIn, String name, float hardness,

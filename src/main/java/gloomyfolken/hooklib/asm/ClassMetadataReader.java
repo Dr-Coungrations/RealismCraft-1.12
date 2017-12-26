@@ -6,6 +6,7 @@ import org.objectweb.asm.*;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 /**
@@ -71,12 +72,9 @@ public class ClassMetadataReader {
 
     protected MethodReference getMethodReferenceReflect(String type, String methodName, String desc) {
         Class loadedClass = getLoadedClass(type);
-        if (loadedClass != null) {
-            for (Method m : loadedClass.getDeclaredMethods()) {
-                if (checkSameMethod(methodName, desc, m.getName(), Type.getMethodDescriptor(m))) {
-                    return new MethodReference(type, m.getName(), Type.getMethodDescriptor(m));
-                }
-            }
+        if (loadedClass != null)
+        {
+            return Arrays.stream(loadedClass.getDeclaredMethods()).filter(m -> checkSameMethod(methodName, desc, m.getName(), Type.getMethodDescriptor(m))).findFirst().map(m -> new MethodReference(type, m.getName(), Type.getMethodDescriptor(m))).orElse(null);
         }
         return null;
     }
@@ -90,7 +88,7 @@ public class ClassMetadataReader {
      * и заканчивая данным типом)
      */
     public ArrayList<String> getSuperClasses(String type) {
-        ArrayList<String> superclasses = new ArrayList<String>(1);
+        ArrayList<String> superclasses = new ArrayList<>(1);
         superclasses.add(type);
         while ((type = getSuperClass(type)) != null) {
             superclasses.add(type);

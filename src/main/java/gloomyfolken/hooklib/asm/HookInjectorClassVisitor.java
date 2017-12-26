@@ -11,7 +11,7 @@ import java.util.List;
 public class HookInjectorClassVisitor extends ClassVisitor {
 
     List<AsmHook> hooks;
-    List<AsmHook> injectedHooks = new ArrayList<AsmHook>(1);
+    List<AsmHook> injectedHooks = new ArrayList<>(1);
     boolean visitingHook;
     HookClassTransformer transformer;
 
@@ -45,11 +45,7 @@ public class HookInjectorClassVisitor extends ClassVisitor {
 
     @Override
     public void visitEnd() {
-        for (AsmHook hook : hooks) {
-            if (hook.getCreateMethod() && !injectedHooks.contains(hook)) {
-                hook.createMethod(this);
-            }
-        }
+        hooks.stream().filter(hook -> hook.getCreateMethod() && !injectedHooks.contains(hook)).forEach(hook -> hook.createMethod(this));
         super.visitEnd();
     }
 

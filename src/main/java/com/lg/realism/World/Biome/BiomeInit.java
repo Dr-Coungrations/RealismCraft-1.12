@@ -1,5 +1,6 @@
 package com.lg.realism.World.Biome;
 
+import com.lg.realism.World.Biome.Biomes.BiomeDeadForest;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
@@ -8,16 +9,17 @@ import net.minecraftforge.common.BiomeManager.BiomeEntry;
 import net.minecraftforge.common.BiomeManager.BiomeType;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
-import com.lg.realism.World.Biome.Biomes.BiomeDeadForest;
+public class BiomeInit
+{
+	private final Biome DEADFOREST = new BiomeDeadForest();
 
-public class BiomeInit{
-	
-	public static final Biome DEADFOREST = new BiomeDeadForest();
-	
-	public static void registerBiomes(){
-		initBiome(DEADFOREST,"deadforest", BiomeType.WARM, Type.HILLS, Type.FOREST, Type.DRY);
-	}
-	public static Biome initBiome(Biome biome, String name, BiomeType biometype, Type... types){
+	public BiomeInit()
+    {
+        initBiome(DEADFOREST,"deadforest", BiomeType.WARM, Type.HILLS, Type.FOREST, Type.DRY);
+    }
+
+	private Biome initBiome(Biome biome, String name, BiomeType biometype, Type... types)
+    {
 		biome.setRegistryName(name);
 		ForgeRegistries.BIOMES.register(biome);
 		BiomeDictionary.addTypes(biome, types);
@@ -26,10 +28,5 @@ public class BiomeInit{
 		BiomeManager.isTypeListModded(biometype);
 		
 		return biome;
-		
 	}
-		
-	
-
-
 }

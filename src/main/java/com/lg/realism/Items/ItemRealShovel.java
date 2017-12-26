@@ -95,8 +95,8 @@ public class ItemRealShovel extends Item {
 						if (world.setBlockState(pos, Blocks.GRAVEL.getDefaultState()))
 							stack = new ItemStack(this, 1, 0);
 			}
-			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, stack);
+			return new ActionResult<>(EnumActionResult.SUCCESS, stack);
 		}
-		return new ActionResult<ItemStack>(EnumActionResult.FAIL, stack);
+		return new ActionResult<>(EnumActionResult.FAIL, stack);
     }
 }

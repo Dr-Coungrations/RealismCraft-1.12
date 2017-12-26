@@ -1,11 +1,6 @@
 package com.lg.realism.Blocks.DeadTree;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import com.lg.realism.Realism;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFenceGate;
 import net.minecraft.block.material.Material;
@@ -14,7 +9,6 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -23,6 +17,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.List;
+
+import static java.lang.Boolean.*;
 
 public class DeadBranch extends Block
 {
@@ -58,7 +57,7 @@ public class DeadBranch extends Block
         super(Material.ROCK);
 		this.setRegistryName(name);
 		this.setUnlocalizedName(name);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(DEFAULT, Boolean.valueOf(false)));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(DEFAULT, false));
 
         this.setCreativeTab(Realism.tabDev);
     }
@@ -90,22 +89,22 @@ public class DeadBranch extends Block
     {
         int i = 0;
 
-        if (((Boolean)state.getValue(NORTH)).booleanValue())
+        if (state.getValue(NORTH))
         {
             i |= 1 << EnumFacing.NORTH.getHorizontalIndex();
         }
 
-        if (((Boolean)state.getValue(EAST)).booleanValue())
+        if (state.getValue(EAST))
         {
             i |= 1 << EnumFacing.EAST.getHorizontalIndex();
         }
 
-        if (((Boolean)state.getValue(SOUTH)).booleanValue())
+        if (state.getValue(SOUTH))
         {
             i |= 1 << EnumFacing.SOUTH.getHorizontalIndex();
         }
 
-        if (((Boolean)state.getValue(WEST)).booleanValue())
+        if (state.getValue(WEST))
         {
             i |= 1 << EnumFacing.WEST.getHorizontalIndex();
         }
@@ -156,7 +155,7 @@ public class DeadBranch extends Block
     @SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side)
     {
-        return side == EnumFacing.DOWN ? super.shouldSideBeRendered(blockState, blockAccess, pos, side) : true;
+        return side != EnumFacing.DOWN || super.shouldSideBeRendered(blockState, blockAccess, pos, side);
     }
 
     public IBlockState getStateFromMeta(int meta)
@@ -178,18 +177,18 @@ public class DeadBranch extends Block
         boolean flag2 = canWallConnectTo(worldIn, pos, EnumFacing.SOUTH);
         boolean flag3 = canWallConnectTo(worldIn, pos, EnumFacing.WEST);
         return state
-        		.withProperty(DEFAULT, Boolean.valueOf(!flag4))
-        		.withProperty(UP, Boolean.valueOf(flag4))
-        		.withProperty(NORTH, Boolean.valueOf(flag))
-        		.withProperty(EAST, Boolean.valueOf(flag1))
-        		.withProperty(SOUTH, Boolean.valueOf(flag2))
-        		.withProperty(WEST, Boolean.valueOf(flag3))
-        		.withProperty(DOWN, Boolean.valueOf(flag0));
+        		.withProperty(DEFAULT, !flag4)
+        		.withProperty(UP, flag4)
+        		.withProperty(NORTH, flag)
+        		.withProperty(EAST, flag1)
+        		.withProperty(SOUTH, flag2)
+        		.withProperty(WEST, flag3)
+        		.withProperty(DOWN, flag0);
     }
 
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {DEFAULT, DOWN, UP, NORTH, EAST, WEST, SOUTH});
+        return new BlockStateContainer(this, DEFAULT, DOWN, UP, NORTH, EAST, WEST, SOUTH);
     }
 
     public BlockFaceShape getBlockFaceShape(IBlockAccess p_193383_1_, IBlockState p_193383_2_, BlockPos p_193383_3_, EnumFacing p_193383_4_)
@@ -212,8 +211,4 @@ public class DeadBranch extends Block
         Block block = world.getBlockState(other).getBlock();
         return block.canBeConnectedTo(world, other, facing.getOpposite()) || canConnectTo(world, other, facing.getOpposite());
     }
-
-    
-
-    
 }

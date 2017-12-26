@@ -10,15 +10,14 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.lg.realism.Realism;
-
 /**
  * Basics API class by block
  * @author LegendGamer
  */
-public class DevBasicBlock extends Block {
-
-	public DevBasicBlock(final Material materialIn, final String name, float hardness,float resistanse, String hravLevel, int level, SoundType soundtype) {
+public class DevBasicBlock extends Block
+{
+	public DevBasicBlock(final Material materialIn, final String name, float hardness,float resistanse, String hravLevel, int level, SoundType soundtype)
+	{
 		super(materialIn);
 		this.setRegistryName(name);
 		this.setUnlocalizedName(name);
@@ -29,19 +28,22 @@ public class DevBasicBlock extends Block {
 	}
 
 	@Override
-	public boolean isOpaqueCube(IBlockState state) {
+	public boolean isOpaqueCube(IBlockState state)
+	{
 		return false;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side)
+	{
 		return false;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean isFullCube(IBlockState state) {
+	public boolean isFullCube(IBlockState state)
+	{
 		return false;
 	}
 }

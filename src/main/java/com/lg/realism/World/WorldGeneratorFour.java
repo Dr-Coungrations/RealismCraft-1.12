@@ -1,7 +1,7 @@
 package com.lg.realism.World;
 
-import java.util.Random;
-
+import com.lg.realism.World.GenCactus.WorldGenNewCactus;
+import com.lg.realism.World.WorldGenOasis.WorldGenOasis;
 import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -10,17 +10,13 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
-import com.lg.realism.RegBlocks;
-import com.lg.realism.World.Biome.BiomeInit;
-import com.lg.realism.World.Biome.WorldGenThisBiome.WorldGenDeadTree;
-import com.lg.realism.World.GenCactus.WorldGenNewCactus;
-import com.lg.realism.World.WorldGenOasis.WorldGenOasis;
+import java.util.Random;
 
-public class WorldGeneratorFour implements IWorldGenerator {
-
-
+public class WorldGeneratorFour implements IWorldGenerator
+{
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider)
+	{
 
 		switch (world.provider.getDimension()){
 		case 0:
@@ -62,7 +58,7 @@ public class WorldGeneratorFour implements IWorldGenerator {
 		if((world.getBiome(pos) == Biomes.DESERT || world.getBiome(pos) == Biomes.DESERT_HILLS) && world.isAirBlock(pos) && world.getBlockState(pos.down()) == Blocks.SAND.getDefaultState()){
 			new WorldGenNewCactus().generate(world, random, new BlockPos(x, y, z));
 		}
-		//осталось сделать генератор водорослей и кораллов. А также отдебажить баундбоксы, реализовать механику самовоспроизводства кактусов!
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!
 	}
 
 }

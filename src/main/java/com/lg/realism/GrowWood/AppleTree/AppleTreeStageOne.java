@@ -1,9 +1,8 @@
 package com.lg.realism.GrowWood.AppleTree;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
+import com.lg.realism.API.TimerForCoord;
+import com.lg.realism.Basic.BasicBlockWithCustomModel;
+import com.lg.realism.RegBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -16,13 +15,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.lg.realism.Realism;
-import com.lg.realism.RegBlocks;
-import com.lg.realism.API.TimerForCoord;
-import com.lg.realism.Basic.BasicBlockWithCustomModel;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class AppleTreeStageOne extends BasicBlockWithCustomModel {
-	List<TimerForCoord> time =  new ArrayList<TimerForCoord>();
+	List<TimerForCoord> time = new ArrayList<>();
 	  protected static final AxisAlignedBB treeStageOne_AABB = new AxisAlignedBB(0.3D, 0.0D, 0.3D, 0.7D, 1D, 0.7D);
 
 	public AppleTreeStageOne(Material materialIn, String name, float hardness,float resistanse, String hravLevel, int level, SoundType blockSoundType) {

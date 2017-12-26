@@ -1,12 +1,12 @@
 package gloomyfolken.hooklib.minecraft;
 
 
+import net.minecraftforge.fml.common.FMLLog;
+import net.minecraftforge.fml.relauncher.CoreModManager;
+import net.minecraftforge.fml.relauncher.FMLRelaunchLog;
 
 import java.lang.reflect.Field;
 import java.util.Map;
-
-import net.minecraftforge.fml.relauncher.CoreModManager;
-import net.minecraftforge.fml.relauncher.FMLRelaunchLog;
 
 public class HookLibPlugin implements net.minecraftforge.fml.relauncher.IFMLLoadingPlugin {
 
@@ -47,7 +47,7 @@ public class HookLibPlugin implements net.minecraftforge.fml.relauncher.IFMLLoad
                 Field deobfField = CoreModManager.class.getDeclaredField("deobfuscatedEnvironment");
                 deobfField.setAccessible(true);
                 obf = !deobfField.getBoolean(null);
-                FMLRelaunchLog.info("[HOOKLIB] " + " Obfuscated: " + obf);
+                FMLLog.log.info("[HOOKLIB] " + " Obfuscated: " + obf);
             } catch (Exception e) {
                 e.printStackTrace();
             }

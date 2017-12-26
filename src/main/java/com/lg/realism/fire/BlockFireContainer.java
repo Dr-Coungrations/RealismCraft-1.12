@@ -1,17 +1,13 @@
 package com.lg.realism.fire;
 
-import javax.annotation.Nullable;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IContainerListener;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnaceFuel;
+import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
 
 public class BlockFireContainer extends Container{
 	
@@ -61,7 +57,7 @@ public class BlockFireContainer extends Container{
 
         for (int i = 0; i < this.listeners.size(); ++i){
         	
-            IContainerListener icontainerlistener = (IContainerListener)this.listeners.get(i);
+            IContainerListener icontainerlistener = this.listeners.get(i);
             
             for(int j = 0; j < tile.getFieldCount(); j++){
 				 
@@ -93,7 +89,7 @@ public class BlockFireContainer extends Container{
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index){
     	
     	ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = (Slot)this.inventorySlots.get(index);
+        Slot slot = this.inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack()){
             ItemStack itemstack1 = slot.getStack();

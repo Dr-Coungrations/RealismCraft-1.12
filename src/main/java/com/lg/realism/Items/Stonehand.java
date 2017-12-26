@@ -1,5 +1,7 @@
 package com.lg.realism.Items;
 
+import com.lg.realism.Basic.BasicItem;
+import com.lg.realism.RegItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -8,9 +10,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import com.lg.realism.RegItems;
-import com.lg.realism.Basic.BasicItem;
 
 public class Stonehand extends BasicItem{
 

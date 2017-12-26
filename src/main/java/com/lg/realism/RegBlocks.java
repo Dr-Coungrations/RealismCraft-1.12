@@ -1,18 +1,7 @@
 package com.lg.realism;
 
 import com.lg.realism.Basic.BasicBlockWithDropItem;
-import com.lg.realism.Blocks.Ash;
-import com.lg.realism.Blocks.BlockBurntGrass;
-import com.lg.realism.Blocks.BlockBurntTree;
-import com.lg.realism.Blocks.BlockDryGrass;
-import com.lg.realism.Blocks.FallingDirt;
-import com.lg.realism.Blocks.MossBlock;
-import com.lg.realism.Blocks.PaneHorizontal;
-import com.lg.realism.Blocks.RealismRedSand;
-import com.lg.realism.Blocks.RealismSand;
-import com.lg.realism.Blocks.TestGen;
-import com.lg.realism.Blocks.WetRedSand;
-import com.lg.realism.Blocks.WetSand;
+import com.lg.realism.Blocks.*;
 import com.lg.realism.Blocks.Cactus.CactusSmall;
 import com.lg.realism.Blocks.Cactus.OneStageCactus;
 import com.lg.realism.Blocks.Cactus.SideCactus;
@@ -22,17 +11,12 @@ import com.lg.realism.Blocks.ExTorch.ExTorch;
 import com.lg.realism.Blocks.ExTorch.Torch;
 import com.lg.realism.Blocks.Ocean.Corals;
 import com.lg.realism.Blocks.Ocean.Seaweeds;
-import com.lg.realism.GrowWood.GrowTreeStageOneAcacia;
-import com.lg.realism.GrowWood.AppleTree.AppleTreeStageOne;
-import com.lg.realism.GrowWood.AppleTree.AppleTreeStageTwo;
-import com.lg.realism.GrowWood.AppleTree.BlockAppleTree;
-import com.lg.realism.GrowWood.AppleTree.BranchAppleTree;
-import com.lg.realism.GrowWood.AppleTree.LeavesAppleTree;
-import com.lg.realism.GrowWood.AppleTree.SmallLeavesAppleTree;
+import com.lg.realism.GrowWood.AppleTree.*;
 import com.lg.realism.GrowWood.Birch.BirchBranch;
 import com.lg.realism.GrowWood.Birch.GrowTreeStageOneBirch;
 import com.lg.realism.GrowWood.Birch.GrowTreeStageTwoBirch;
 import com.lg.realism.GrowWood.Birch.SmallLeavesBirch;
+import com.lg.realism.GrowWood.GrowTreeStageOneAcacia;
 import com.lg.realism.GrowWood.Oak.GrowTreeStageOne;
 import com.lg.realism.GrowWood.Oak.GrowTreeStageTwo;
 import com.lg.realism.GrowWood.Oak.OakBranch;
@@ -44,7 +28,6 @@ import com.lg.realism.GrowWood.Spruce.SpruceBranch;
 import com.lg.realism.Items.DryVine;
 import com.lg.realism.Items.WetVine;
 import com.lg.realism.fire.BlockFire;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -113,7 +96,7 @@ public class RegBlocks {
 		//corals
 	public static Block corals = new Corals(Material.WOOD, "corals", 3F, 3F, "axe", 1, SoundType.WOOD);
 		//seaweeds
-	public static Block seaweeds = new Seaweeds(Material.GRASS, "seaweeds");
+	public static Block seaweeds = new Seaweeds("seaweeds");
 	
 	public static Block coralblock = new BasicBlockWithDropItem(Material.ROCK, "coralblock", 3F, 3F, SoundType.STONE, Item.getItemFromBlock(RegBlocks.corals), 2,0);
 	

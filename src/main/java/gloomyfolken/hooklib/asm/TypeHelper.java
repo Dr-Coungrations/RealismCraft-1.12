@@ -5,6 +5,7 @@ import org.objectweb.asm.Type;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 /**
  * Класс, позволяющий создавать типы из разных входных данных.
@@ -12,7 +13,7 @@ import java.util.Map;
  */
 public class TypeHelper {
 
-    private static final Map<String, Type> primitiveTypes = new HashMap<String, Type>(9);
+    private static final Map<String, Type> primitiveTypes = new HashMap<>(9);
 
     static {
         primitiveTypes.put("void", Type.VOID_TYPE);
@@ -57,9 +58,7 @@ public class TypeHelper {
      */
     public static Type getArrayType(String className, int arrayDimensions) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < arrayDimensions; i++) {
-            sb.append("[");
-        }
+        IntStream.range(0, arrayDimensions).mapToObj(i -> "[").forEach(sb::append);
         Type primitive = primitiveTypes.get(className);
         if (primitive == null) {
             sb.append("L");

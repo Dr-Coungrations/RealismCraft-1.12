@@ -1,21 +1,19 @@
 package com.lg.realism.event;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Items;
-import net.minecraft.item.EnumAction;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumHand;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import com.lg.realism.Realism;
-import com.lg.realism.RegItems;
 import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
 import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
 import com.lg.realism.Config.ConfigManager;
 import com.lg.realism.PSystem.HUDSyncMessage;
 import com.lg.realism.PSystem.NetworkHandler;
+import com.lg.realism.Realism;
+import com.lg.realism.RegItems;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EventCounterDrink {
 

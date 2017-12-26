@@ -24,7 +24,7 @@ public class MinecraftClassTransformer extends HookClassTransformer implements I
     static MinecraftClassTransformer instance;
     private Map<Integer, String> methodNames;
 
-    private static List<IClassTransformer> postTransformers = new ArrayList<IClassTransformer>();
+    private static List<IClassTransformer> postTransformers = new ArrayList<>();
 
     public MinecraftClassTransformer() {
         instance = this;
@@ -52,7 +52,7 @@ public class MinecraftClassTransformer extends HookClassTransformer implements I
         if (resourceStream == null) throw new IOException("Methods dictionary not found");
         DataInputStream input = new DataInputStream(new BufferedInputStream(resourceStream));
         int numMethods = input.readInt();
-        HashMap<Integer, String> map = new HashMap<Integer, String>(numMethods);
+        HashMap<Integer, String> map = new HashMap<>(numMethods);
         for (int i = 0; i < numMethods; i++) {
             map.put(input.readInt(), input.readUTF());
         }
@@ -63,8 +63,8 @@ public class MinecraftClassTransformer extends HookClassTransformer implements I
     @Override
     public byte[] transform(String oldName, String newName, byte[] bytecode) {
         bytecode = transform(newName, bytecode);
-        for (int i = 0; i < postTransformers.size(); i++) {
-            bytecode = postTransformers.get(i).transform(oldName, newName, bytecode);
+        for (IClassTransformer postTransformer : postTransformers) {
+            bytecode = postTransformer.transform(oldName, newName, bytecode);
         }
         return bytecode;
     }

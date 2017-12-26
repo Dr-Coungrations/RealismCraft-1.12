@@ -1,7 +1,7 @@
 package com.lg.realism.GrowWood.AppleTree;
 
 
-import net.minecraft.block.BlockPlanks;
+import com.lg.realism.Realism;
 import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -18,11 +18,9 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.lg.realism.Realism;
-
 public class BlockAppleTree extends BlockRotatedPillar {
 
-	 public static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.<EnumFacing.Axis>create("axis", EnumFacing.Axis.class);
+	 public static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.create("axis", EnumFacing.Axis.class);
 	public BlockAppleTree(final Material materialIn, final String name, float hardness,float resistanse, SoundType soundtype) {
 		super(materialIn);
 		this.setRegistryName(name);
@@ -33,7 +31,7 @@ public class BlockAppleTree extends BlockRotatedPillar {
 		this.setCreativeTab(Realism.tabMain);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(AXIS, EnumFacing.Axis.Y));
 	}
-	public static enum EnumAxis implements IStringSerializable
+	public enum EnumAxis implements IStringSerializable
 	{
 		X("x"),
 		Y("y"),
@@ -42,7 +40,7 @@ public class BlockAppleTree extends BlockRotatedPillar {
 
 		private final String name;
 
-		private EnumAxis(String name)
+		EnumAxis(String name)
 		{
 			this.name = name;
 		}
@@ -98,7 +96,7 @@ public class BlockAppleTree extends BlockRotatedPillar {
 		case COUNTERCLOCKWISE_90:
 		case CLOCKWISE_90:
 
-			switch ((EnumFacing.Axis)state.getValue(AXIS))
+			switch (state.getValue(AXIS))
 			{
 			case X:
 				return state.withProperty(AXIS, EnumFacing.Axis.Z);
@@ -139,7 +137,7 @@ public class BlockAppleTree extends BlockRotatedPillar {
 	public int getMetaFromState(IBlockState state)
 	{
 		int i = 0;
-		EnumFacing.Axis enumfacing$axis = (EnumFacing.Axis)state.getValue(AXIS);
+		EnumFacing.Axis enumfacing$axis = state.getValue(AXIS);
 
 		if (enumfacing$axis == EnumFacing.Axis.X)
 		{
@@ -155,7 +153,7 @@ public class BlockAppleTree extends BlockRotatedPillar {
 
 	protected BlockStateContainer createBlockState()
 	{
-		return new BlockStateContainer(this, new IProperty[] {AXIS});
+		return new BlockStateContainer(this, AXIS);
 	}
 
 	protected ItemStack getSilkTouchDrop(IBlockState state)

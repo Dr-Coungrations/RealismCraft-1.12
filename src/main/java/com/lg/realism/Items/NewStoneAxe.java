@@ -1,8 +1,6 @@
 package com.lg.realism.Items;
 
 import com.lg.realism.Realism;
-
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemAxe;
 
 public class NewStoneAxe extends ItemAxe {

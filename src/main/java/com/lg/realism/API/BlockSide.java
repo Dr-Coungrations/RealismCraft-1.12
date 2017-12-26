@@ -1,22 +1,15 @@
 package com.lg.realism.API;
 
 import net.minecraft.block.BlockHorizontal;
-import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
-
-import com.lg.realism.Realism;
 
 public class BlockSide extends BlockHorizontal
 {
@@ -26,7 +19,7 @@ public class BlockSide extends BlockHorizontal
     {
         super(material);
     	this.setRegistryName(name);
-	this.setUnlocalizedName(name);
+    	this.setUnlocalizedName(name);
 	
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.aabb = aabb;

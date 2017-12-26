@@ -1,26 +1,25 @@
 package com.lg.realism.fire;
 
-import java.util.Map;
-import java.util.Map.Entry;
-
+import com.google.common.collect.Maps;
+import com.lg.realism.RegItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-import com.google.common.collect.Maps;
-import com.lg.realism.RegItems;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class FireRecipeManager {
 	
 	public static final FireRecipeManager RECIPES = new FireRecipeManager();
 	
-	private final Map<ItemStack, ItemStack> recipes = Maps.<ItemStack, ItemStack>newHashMap();
+	private final Map<ItemStack, ItemStack> recipes = Maps.newHashMap();
 
 	public static FireRecipeManager getInstance(){
 		return RECIPES;
 	}
 		
 	private FireRecipeManager(){
-		//первый аргумент - вход, второй - выход
+		//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ
 		recipes.put(new ItemStack(RegItems.claycup), new ItemStack(RegItems.annealedclaycup));
 		recipes.put(new ItemStack(RegItems.clayplate), new ItemStack(RegItems.annealedclayplate));
 		recipes.put(new ItemStack(Items.PORKCHOP), new ItemStack(Items.COOKED_PORKCHOP));

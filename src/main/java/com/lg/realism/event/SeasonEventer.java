@@ -1,8 +1,6 @@
 package com.lg.realism.event;
 
-import com.lg.realism.Config.ConfigManager;
 import com.lg.realism.Realism.TimeTicker;
-
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;

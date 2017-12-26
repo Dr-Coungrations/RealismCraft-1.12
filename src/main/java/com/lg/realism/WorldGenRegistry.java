@@ -1,14 +1,12 @@
 package com.lg.realism;
 
 
-import net.minecraftforge.fml.common.registry.GameRegistry;
-
 import com.lg.realism.Config.ConfigManager;
+import com.lg.realism.World.GenOre.WorldGenOre;
 import com.lg.realism.World.WorldGeneratorFour;
 import com.lg.realism.World.WorldGeneratorOne;
 import com.lg.realism.World.WorldGeneratorThree;
 import com.lg.realism.World.WorldGeneratorTwo;
-import com.lg.realism.World.GenOre.WorldGenOre;
 
 public class WorldGenRegistry {
 	public static WorldGeneratorOne wgo = new WorldGeneratorOne();

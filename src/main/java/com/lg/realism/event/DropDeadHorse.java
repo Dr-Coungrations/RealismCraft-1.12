@@ -1,5 +1,6 @@
 package com.lg.realism.event;
 
+import com.lg.realism.RegItems;
 import net.minecraft.entity.passive.EntityDonkey;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.passive.EntityMule;
@@ -7,8 +8,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import com.lg.realism.RegItems;
 
 public class DropDeadHorse {
 

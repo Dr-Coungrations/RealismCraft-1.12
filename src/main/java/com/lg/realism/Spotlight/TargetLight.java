@@ -1,7 +1,6 @@
 package com.lg.realism.Spotlight;
 
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 
 public class TargetLight {
 	float[] ambient = {0.2F,0.2F,0.2F,1.0F};

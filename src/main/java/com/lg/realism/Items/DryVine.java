@@ -1,7 +1,8 @@
 package com.lg.realism.Items;
 
-import java.util.Random;
-
+import com.lg.realism.Basic.DevBasicBlock;
+import com.lg.realism.Realism;
+import com.lg.realism.RegItems;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -13,9 +14,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.lg.realism.Realism;
-import com.lg.realism.RegItems;
-import com.lg.realism.Basic.DevBasicBlock;
+import java.util.Random;
 
 public class DryVine extends DevBasicBlock{
 	protected static final AxisAlignedBB dryvine_AABB = new AxisAlignedBB(0D, 0.0D, 0D, 1D, 0.1D, 1D);

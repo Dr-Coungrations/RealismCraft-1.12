@@ -6,7 +6,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
 public class BlockFireGuiHandler implements IGuiHandler{
-	
+
+	//Я б через Enum сделал б...
 	public static final int BLOCK_FIRE_GUI_ID = 6;
 	
 	@Override

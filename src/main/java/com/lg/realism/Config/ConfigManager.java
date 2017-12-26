@@ -1,33 +1,20 @@
 package com.lg.realism.Config;
 
-import scala.Int;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.common.config.Property;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import scala.Int;
 
 public class ConfigManager
 {
-   public static Configuration config;
-   public static Property randomList;
-   public static int xTextTempBody;
-   public static int yTextTempBody;
-   public static int powerThirst;
-   public static boolean thirstDebug;
-   public static boolean debugGeneration;
-   public static boolean enableFirstGenerator;
-   public static boolean enableTwoGenerator;
-   public static boolean enableThirdGenerator;
+    public static Configuration config;
+    public static int xTextTempBody, yTextTempBody, powerThirst;
+    public static boolean thirstDebug, debugGeneration, enableFirstGenerator, enableTwoGenerator, enableThirdGenerator;
    
-   public static int timeOneSec;
-   public static int timeOneMin;
-   public static int timeOneHour;
-   public static int timeOneDay;
-   public static int timeOneMonth;
-   public static int timeOneSeason;
-   public static int timeOneYear;
+   public static int timeOneSec, timeOneMin, timeOneHour, timeOneDay, timeOneMonth, timeOneSeason, timeOneYear;
 
-   public static void register(FMLPreInitializationEvent e) {
+   public static void register(FMLPreInitializationEvent e)
+   {
        config = new Configuration(e.getSuggestedConfigurationFile());
        config.load();
        timeOneSec = config.getInt("timeOneSec", "Time Ticker", 20, Int.MinValue(), Int.MinValue(), I18n.format("config.timeOneSec"), "config.timeOneSec.name");

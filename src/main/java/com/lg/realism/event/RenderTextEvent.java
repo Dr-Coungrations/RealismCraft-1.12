@@ -1,12 +1,8 @@
 package com.lg.realism.event;
 
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
-import com.lg.realism.RegItems;
 import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
 import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
-
+import com.lg.realism.RegItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.settings.KeyBinding;
@@ -16,6 +12,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderSpecificHandEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
 
 public class RenderTextEvent {
 	public static int page = 0;

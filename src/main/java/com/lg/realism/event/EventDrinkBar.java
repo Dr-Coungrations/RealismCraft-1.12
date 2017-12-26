@@ -1,17 +1,14 @@
 package com.lg.realism.event;
 
 
-
+import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
+import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
 import org.lwjgl.opengl.GL11;
-
-import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
-import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
 /*
  * Created with the help of a timaxa007
  */

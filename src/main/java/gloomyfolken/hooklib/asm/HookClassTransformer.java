@@ -12,7 +12,7 @@ import java.util.List;
 public class HookClassTransformer {
 
     public HookLogger logger = new SystemOutLogger();
-    protected HashMap<String, List<AsmHook>> hooksMap = new HashMap<String, List<AsmHook>>();
+    protected HashMap<String, List<AsmHook>> hooksMap = new HashMap<>();
     private HookContainerParser containerParser = new HookContainerParser(this);
     protected ClassMetadataReader classMetadataReader = new ClassMetadataReader();
 
@@ -20,7 +20,7 @@ public class HookClassTransformer {
         if (hooksMap.containsKey(hook.getTargetClassName())) {
             hooksMap.get(hook.getTargetClassName()).add(hook);
         } else {
-            List<AsmHook> list = new ArrayList<AsmHook>(2);
+            List<AsmHook> list = new ArrayList<>(2);
             list.add(hook);
             hooksMap.put(hook.getTargetClassName(), list);
         }
@@ -56,16 +56,12 @@ public class HookClassTransformer {
                 HookInjectorClassVisitor hooksWriter = createInjectorClassVisitor(cw, hooks);
                 cr.accept(hooksWriter, java7 ? ClassReader.SKIP_FRAMES : ClassReader.EXPAND_FRAMES);
                 bytecode = cw.toByteArray();
-                for (AsmHook hook : hooksWriter.injectedHooks) {
-                    logger.debug("Patching method " + hook.getPatchedMethodName());
-                }
+                hooksWriter.injectedHooks.forEach(hook -> logger.debug("Patching method " + hook.getPatchedMethodName()));
                 hooks.removeAll(hooksWriter.injectedHooks);
             } catch (Exception e) {
                 logger.severe("A problem has occurred during transformation of class " + className + ".");
                 logger.severe("Attached hooks:");
-                for (AsmHook hook : hooks) {
-                    logger.severe(hook.toString());
-                }
+                hooks.forEach(hook -> logger.severe(hook.toString()));
                 logger.severe("Stack trace:", e);
             }
 

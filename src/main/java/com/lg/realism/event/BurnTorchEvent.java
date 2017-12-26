@@ -1,19 +1,17 @@
 package com.lg.realism.event;
 
-import javax.annotation.Nullable;
-
 import com.google.common.base.Predicate;
 import com.lg.realism.RegBlocks;
-
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import javax.annotation.Nullable;
 
 public class BurnTorchEvent {
 	 public static final PropertyDirection FACING = PropertyDirection.create("facing", new Predicate<EnumFacing>()

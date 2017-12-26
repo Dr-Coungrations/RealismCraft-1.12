@@ -1,16 +1,15 @@
 package com.lg.realism.World.GenSalt;
 
-import java.util.Random;
-
+import com.lg.realism.Config.ConfigManager;
+import com.lg.realism.Realism;
+import com.lg.realism.RegBlocks;
+import com.lg.realism.World.WorldGeneratorThree;
 import net.minecraft.block.BlockSand;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.lg.realism.Realism;
-import com.lg.realism.RegBlocks;
-import com.lg.realism.Config.ConfigManager;
-import com.lg.realism.World.WorldGeneratorThree;
+import java.util.Random;
 
 public class WorldGenSalt extends WorldGeneratorThree {
 	

@@ -1,12 +1,11 @@
 package com.lg.realism.Blocks;
 
+import com.lg.realism.Realism;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -15,8 +14,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.lg.realism.Realism;
 
 public class Ash extends Block{
 
@@ -63,7 +60,7 @@ public class Ash extends Block{
 				double d15 = (double)pos.getZ() + world.rand.nextDouble();
 				world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, d5, d10, d15, 0.0D, 0.0D, 0.0D);
 		}
-		if(entity.collidedVertically){
+		if(entity.isCollidedVertically){
 			if(entity.motionX != 0 && entity.motionZ != 0) {
 			double d6 = (double)pos.getX() + world.rand.nextDouble();
 			double d7 = (double)pos.getY() + world.rand.nextDouble();

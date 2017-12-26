@@ -1,11 +1,6 @@
 package com.lg.realism.GrowWood.Spruce;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import com.lg.realism.Realism;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFenceGate;
 import net.minecraft.block.material.Material;
@@ -23,6 +18,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
+import java.util.List;
+
 public class SpruceBranch extends Block
 {
 	 public static final PropertyBool DEFAULT = PropertyBool.create("default");
@@ -34,9 +32,9 @@ public class SpruceBranch extends Block
     public static final PropertyBool WEST = PropertyBool.create("west");
  
     protected static final AxisAlignedBB[] AABB_BY_INDEX = new AxisAlignedBB[] {
-    	new AxisAlignedBB(0.375D, 0.375D, 0.375D, 0.625D, 0.625D, 0.625D),//одиночный кубик, + если (снизу\сверху, дефолт)
-    	new AxisAlignedBB(0.375D, 0.375D, 0.375D, 0.625D, 0.625D, 0.625D),//когда что то есть на +Z(юг, дефолт,верх\низ)
-    	new AxisAlignedBB(0.375D, 0.375D, 0.375D, 0.625D, 0.625D, 0.625D),//когда что то есть на -X(восток, дефолт, верх\низ)
+    	new AxisAlignedBB(0.375D, 0.375D, 0.375D, 0.625D, 0.625D, 0.625D),//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, + пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ\пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ)
+    	new AxisAlignedBB(0.375D, 0.375D, 0.375D, 0.625D, 0.625D, 0.625D),//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ +Z(пїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ,пїЅпїЅпїЅпїЅ\пїЅпїЅпїЅ)
+    	new AxisAlignedBB(0.375D, 0.375D, 0.375D, 0.625D, 0.625D, 0.625D),//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ -X(пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ\пїЅпїЅпїЅ)
     	new AxisAlignedBB(0.375D, 0.375D, 0.375D, 0.625D, 0.625D, 0.625D),
     	
     	new AxisAlignedBB(0.375D, 0.375D, 0.375D, 0.625D, 0.625D, 0.625D),

@@ -11,7 +11,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemCoal;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
@@ -23,7 +22,7 @@ import java.util.Random;
 
 public class BlockBurntTree extends BlockRotatedPillar {
 
-    public static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.<EnumFacing.Axis>create("axis", EnumFacing.Axis.class);
+    public static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.create("axis", EnumFacing.Axis.class);
     public BlockBurntTree(final Material materialIn, final String name, float hardness, String hravLevel, int level, float resistanse, SoundType soundtype) {
         super(materialIn);
         this.setRegistryName(name);
@@ -35,7 +34,7 @@ public class BlockBurntTree extends BlockRotatedPillar {
         this.setCreativeTab(Realism.tabMain);
     }
 
-    public static enum EnumAxis implements IStringSerializable
+    public enum EnumAxis implements IStringSerializable
     {
         X("x"),
         Y("y"),
@@ -44,7 +43,7 @@ public class BlockBurntTree extends BlockRotatedPillar {
 
         private final String name;
 
-        private EnumAxis(String name)
+        EnumAxis(String name)
         {
             this.name = name;
         }
@@ -100,7 +99,7 @@ public class BlockBurntTree extends BlockRotatedPillar {
             case COUNTERCLOCKWISE_90:
             case CLOCKWISE_90:
 
-                switch ((EnumFacing.Axis)state.getValue(AXIS))
+                switch (state.getValue(AXIS))
                 {
                     case X:
                         return state.withProperty(AXIS, EnumFacing.Axis.Z);
@@ -141,7 +140,7 @@ public class BlockBurntTree extends BlockRotatedPillar {
     public int getMetaFromState(IBlockState state)
     {
         int i = 0;
-        EnumFacing.Axis enumfacing$axis = (EnumFacing.Axis)state.getValue(AXIS);
+        EnumFacing.Axis enumfacing$axis = state.getValue(AXIS);
 
         if (enumfacing$axis == EnumFacing.Axis.X)
         {
@@ -157,7 +156,7 @@ public class BlockBurntTree extends BlockRotatedPillar {
 
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {AXIS});
+        return new BlockStateContainer(this, AXIS);
     }
 
     protected ItemStack getSilkTouchDrop(IBlockState state)

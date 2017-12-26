@@ -1,5 +1,3 @@
 package com.lg.realism.BiomeTemp;
 
-public class PermissionOnPlant {
-
-}
+public class PermissionOnPlant {}

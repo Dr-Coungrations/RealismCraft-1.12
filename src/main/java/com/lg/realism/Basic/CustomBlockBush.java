@@ -1,7 +1,5 @@
 package com.lg.realism.Basic;
 
-import javax.annotation.Nullable;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -14,9 +12,10 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
 
 public class CustomBlockBush extends Block 
 {
@@ -26,12 +25,10 @@ public class CustomBlockBush extends Block
     {
         this(Material.ROCK);
     }
-
     protected CustomBlockBush(Material materialIn)
     {
         this(materialIn, materialIn.getMaterialMapColor());
     }
-
     protected CustomBlockBush(Material materialIn, MapColor mapColorIn)
     {
         super(materialIn, mapColorIn);
@@ -46,10 +43,6 @@ public class CustomBlockBush extends Block
     {
         return state.getBlock() == Blocks.GRASS || state.getBlock() == Blocks.DIRT || state.getBlock() == Blocks.FARMLAND;
     }
-
-
-
-
 
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
@@ -74,9 +67,6 @@ public class CustomBlockBush extends Block
     {
         return false;
     }
-
-
-
 
     @SideOnly(Side.CLIENT)
     public BlockRenderLayer getBlockLayer()

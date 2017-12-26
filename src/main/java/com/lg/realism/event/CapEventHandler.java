@@ -1,12 +1,11 @@
 package com.lg.realism.event;
 
+import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
+import com.lg.realism.Realism;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import com.lg.realism.Realism;
-import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
 /*
  * The basis of this code comes from modifications Bionisation 2
  * Thanks Thunder for the help

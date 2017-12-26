@@ -3,11 +3,10 @@ package gloomyfolken.hooklib.minecraft;
 import gloomyfolken.hooklib.asm.AsmHook;
 import gloomyfolken.hooklib.asm.ClassMetadataReader;
 import gloomyfolken.hooklib.asm.HookClassTransformer;
-
-import java.util.Map;
-
 import net.minecraftforge.fml.common.asm.transformers.DeobfuscationTransformer;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
+
+import java.util.Map;
 
 /**
  * Удобная базовая реализация IFMLLoadingPlugin для использования HookLib.

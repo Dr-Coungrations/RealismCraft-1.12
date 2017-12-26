@@ -2,13 +2,12 @@ package gloomyfolken.hooklib.minecraft;
 
 
 import gloomyfolken.hooklib.asm.ClassMetadataReader;
-
-import java.io.IOException;
-import java.lang.reflect.Method;
-
 import net.minecraft.launchwrapper.Launch;
 import net.minecraft.launchwrapper.LaunchClassLoader;
 import net.minecraftforge.fml.common.asm.transformers.deobf.FMLDeobfuscatingRemapper;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
 
 /**
  * Еще больше костылей вдобавок к ClassMetadataReader для работы с майновской обфускацией.

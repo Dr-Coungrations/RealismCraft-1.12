@@ -1,5 +1,11 @@
 package com.lg.realism.event;
 
+import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
+import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
+import com.lg.realism.Config.ConfigManager;
+import com.lg.realism.PSystem.HUDSyncMessageServer;
+import com.lg.realism.PSystem.NetworkHandler;
+import com.lg.realism.Realism;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,14 +22,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.lg.realism.Realism;
-import com.lg.realism.RegItems;
-import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
-import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
-import com.lg.realism.Config.ConfigManager;
-import com.lg.realism.PSystem.HUDSyncMessageServer;
-import com.lg.realism.PSystem.NetworkHandler;
 
 public class EventHandThirstUpdate {
 	@SideOnly(Side.CLIENT)

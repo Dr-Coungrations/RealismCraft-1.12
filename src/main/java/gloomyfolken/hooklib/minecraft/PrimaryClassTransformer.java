@@ -3,15 +3,15 @@ package gloomyfolken.hooklib.minecraft;
 import gloomyfolken.hooklib.asm.AsmHook;
 import gloomyfolken.hooklib.asm.HookClassTransformer;
 import gloomyfolken.hooklib.asm.HookInjectorClassVisitor;
-
-import java.util.HashMap;
-import java.util.List;
-
 import net.minecraft.launchwrapper.IClassTransformer;
 import net.minecraftforge.fml.common.asm.transformers.deobf.FMLDeobfuscatingRemapper;
-
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Type;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.IntStream;
 
 /** Этим трансформером трансформятся все классы, которые грузятся раньше майновских.
  * В момент начала загрузки майна (точнее, чуть раньше - в Loader.injectData) все хуки отсюда переносятся в
@@ -65,9 +65,7 @@ public class PrimaryClassTransformer extends HookClassTransformer implements ICl
         Type mappedReturnType = map(methodType.getReturnType());
         Type[] argTypes = methodType.getArgumentTypes();
         Type[] mappedArgTypes = new Type[argTypes.length];
-        for (int i = 0; i < mappedArgTypes.length; i++) {
-            mappedArgTypes[i] = map(argTypes[i]);
-        }
+        Arrays.setAll(mappedArgTypes, i -> map(argTypes[i]));
         return Type.getMethodDescriptor(mappedReturnType, mappedArgTypes);
     }
 
@@ -80,9 +78,7 @@ public class PrimaryClassTransformer extends HookClassTransformer implements ICl
         //array
         if (type.getSort() == 9) {
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < type.getDimensions(); i++) {
-                sb.append("[");
-            }
+            IntStream.range(0, type.getDimensions()).mapToObj(i -> "[").forEach(sb::append);
             boolean isPrimitiveArray = type.getSort() < 9;
             if (!isPrimitiveArray) sb.append("L");
             sb.append(map(type.getElementType()).getInternalName());

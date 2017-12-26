@@ -1,16 +1,15 @@
 package com.lg.realism.Basic;
 
-import net.minecraft.block.BlockBush;
+import com.lg.realism.Realism;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-
-import com.lg.realism.Realism;
 /**
  * Basics API class by block bush
  * @author LegendGamer
  */
-public class BasicBlockBush extends CustomBlockBush {
-	public BasicBlockBush(final Material materialIn, final String name)
+public class BasicBlockBush extends CustomBlockBush
+{
+	public BasicBlockBush(final String name)
 	{
 		setRegistryName(name);
 		setUnlocalizedName(name);

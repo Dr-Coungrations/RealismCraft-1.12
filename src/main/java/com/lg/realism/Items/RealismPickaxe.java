@@ -1,8 +1,7 @@
 package com.lg.realism.Items;
 
-import net.minecraft.item.ItemPickaxe;
-
 import com.lg.realism.Realism;
+import net.minecraft.item.ItemPickaxe;
 
 public class RealismPickaxe extends ItemPickaxe
 {

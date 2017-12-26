@@ -169,13 +169,9 @@ public class HookContainerParser {
         transformer.registerHook(builder.build());
     }
 
-    private Object getPrimitiveConstant() {
-        for (Entry<String, Object> entry : annotationValues.entrySet()) {
-            if (entry.getKey().endsWith("Constant")) {
-                return entry.getValue();
-            }
-        }
-        return null;
+    private Object getPrimitiveConstant()
+    {
+        return annotationValues.entrySet().stream().filter(entry -> entry.getKey().endsWith("Constant")).findFirst().map(Entry::getValue).orElse(null);
     }
 
 
@@ -208,7 +204,7 @@ public class HookContainerParser {
         @Override
         public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
             if (HOOK_DESC.equals(desc)) {
-                annotationValues = new HashMap<String, Object>();
+                annotationValues = new HashMap<>();
                 inHookAnnotation = true;
             }
             return new HookAnnotationVisitor();

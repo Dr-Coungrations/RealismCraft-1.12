@@ -8,6 +8,7 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.objectweb.asm.Opcodes.*;
@@ -364,9 +365,7 @@ public class AsmHook implements Cloneable, Comparable<AsmHook> {
          * @see TypeHelper
          */
         public Builder addTargetMethodParameters(Type... parameterTypes) {
-            for (Type type : parameterTypes) {
-                AsmHook.this.targetMethodParameters.add(type);
-            }
+            Arrays.stream(parameterTypes).forEach(type -> AsmHook.this.targetMethodParameters.add(type));
             return this;
         }
 
@@ -379,10 +378,7 @@ public class AsmHook implements Cloneable, Comparable<AsmHook> {
          */
 
         public Builder addTargetMethodParameters(String... parameterTypeNames) {
-            Type[] types = new Type[parameterTypeNames.length];
-            for (int i = 0; i < parameterTypeNames.length; i++) {
-                types[i] = TypeHelper.getType(parameterTypeNames[i]);
-            }
+            Type[] types = Arrays.stream(parameterTypeNames).map(TypeHelper::getType).toArray(Type[]::new);
             return addTargetMethodParameters(types);
         }
 

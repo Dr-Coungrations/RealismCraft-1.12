@@ -1,21 +1,16 @@
 package com.lg.realism.event;
 
-import org.lwjgl.opengl.GL11;
-
-import com.lg.realism.RegItems;
 import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
 import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
-import com.lg.realism.Config.ConfigManager;
-
+import com.lg.realism.RegItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.client.event.RenderSpecificHandEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.lwjgl.opengl.GL11;
 
 public class VisualTempBody {
 	static Minecraft mc = Minecraft.getMinecraft();

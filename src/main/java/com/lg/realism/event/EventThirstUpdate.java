@@ -1,5 +1,11 @@
 package com.lg.realism.event;
 
+import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
+import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
+import com.lg.realism.Config.ConfigManager;
+import com.lg.realism.PSystem.HUDSyncMessage;
+import com.lg.realism.PSystem.NetworkHandler;
+import com.lg.realism.Realism;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Biomes;
@@ -8,13 +14,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import com.lg.realism.Realism;
-import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
-import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
-import com.lg.realism.Config.ConfigManager;
-import com.lg.realism.PSystem.HUDSyncMessage;
-import com.lg.realism.PSystem.NetworkHandler;
 /*
  * The basis of this code partially comes from modifications Bionisation 2
  * Thanks Thunder for the help

@@ -1,11 +1,7 @@
 package com.lg.realism.GrowWood.Oak;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import javax.annotation.Nullable;
-
+import com.lg.realism.API.TimerForCoord;
+import com.lg.realism.Basic.BasicBlockWithCustomModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOldLeaf;
 import net.minecraft.block.BlockPlanks;
@@ -24,8 +20,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.lg.realism.API.TimerForCoord;
-import com.lg.realism.Basic.BasicBlockWithCustomModel;
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class SmallLeaves extends BasicBlockWithCustomModel{
 	List<TimerForCoord> time =  new ArrayList<TimerForCoord>();

@@ -6,10 +6,11 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.Capability.IStorage;
 
-public class SHStorage implements IStorage<ISeasonHandler> {
-
+public class SHStorage implements IStorage<ISeasonHandler>
+{
 	@Override
-	public NBTBase writeNBT(Capability<ISeasonHandler> capability, ISeasonHandler sh, EnumFacing side) {
+	public NBTBase writeNBT(Capability<ISeasonHandler> capability, ISeasonHandler sh, EnumFacing side)
+	{
 		NBTTagCompound properties = new NBTTagCompound();
 		properties.setInteger("autunm", sh.getAutunm());
 		properties.setInteger("winter", sh.getWinter());
@@ -19,12 +20,12 @@ public class SHStorage implements IStorage<ISeasonHandler> {
 	}
 	
 	@Override
-	public void readNBT(Capability<ISeasonHandler> capability, ISeasonHandler sh, EnumFacing side, NBTBase nbt) {	
+	public void readNBT(Capability<ISeasonHandler> capability, ISeasonHandler sh, EnumFacing side, NBTBase nbt)
+	{
 		NBTTagCompound properties = (NBTTagCompound)nbt;
 		sh.setAutunm(properties.getInteger("autunm"));
 		sh.setWinter(properties.getInteger("winter"));
 		sh.setSpring(properties.getInteger("spring"));
 		sh.setSummer(properties.getInteger("summer"));
 	}
-	
 }

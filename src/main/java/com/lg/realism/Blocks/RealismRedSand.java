@@ -1,7 +1,7 @@
 package com.lg.realism.Blocks;
 
-import java.util.Random;
-
+import com.lg.realism.Realism;
+import com.lg.realism.RegBlocks;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -11,8 +11,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.lg.realism.Realism;
-import com.lg.realism.RegBlocks;
+import java.util.Random;
 
 public class RealismRedSand extends BlockFalling{
 

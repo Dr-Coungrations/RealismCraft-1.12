@@ -1,19 +1,16 @@
 package com.lg.realism.API.WorldAPI;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.world.World;
-
-public interface ISeasonHandler {
-	public void setSpring(int value);
-	public int getSpring();
+public interface ISeasonHandler
+{
+	void setSpring(int value);
+	int getSpring();
 	
-	public void setAutunm(int value);
-	public int getAutunm();
+	void setAutunm(int value);
+	int getAutunm();
 	
-	public void setSummer(int value);
-	public int getSummer();
+	void setSummer(int value);
+	int getSummer();
 	
-	public void setWinter(int value);
-	public int getWinter();
-
+	void setWinter(int value);
+	int getWinter();
 }

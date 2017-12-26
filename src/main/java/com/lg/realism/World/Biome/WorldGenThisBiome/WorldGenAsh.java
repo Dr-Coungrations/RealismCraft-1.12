@@ -1,16 +1,12 @@
 package com.lg.realism.World.Biome.WorldGenThisBiome;
 
-import java.util.Random;
-
 import com.lg.realism.RegBlocks;
-import com.lg.realism.World.Biome.BiomeInit;
-
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+
+import java.util.Random;
 
 public class WorldGenAsh extends WorldGenerator
 {
@@ -23,7 +19,6 @@ public class WorldGenAsh extends WorldGenerator
 			pos = pos.down();
 		}
 
-
 		for (int i = 0; i < 64; ++i)
 		{
 			for (int j = 0; j < 64; ++j)
@@ -33,13 +28,10 @@ public class WorldGenAsh extends WorldGenerator
 					BlockPos blockpos = pos.add(rand.nextInt(8) - rand.nextInt(8), rand.nextInt(4) - rand.nextInt(4), rand.nextInt(8) - rand.nextInt(8));
 
 					if (world.isAirBlock(blockpos) && world.getBlockState(blockpos.down()).getBlock() == RegBlocks.blockburntgrass)
-					{
 						world.setBlockState(blockpos, RegBlocks.ash.getDefaultState(), 2);
-					}
 				}
 			}
 		}
 		return true;
 	}
-
 }

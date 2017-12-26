@@ -1,7 +1,5 @@
 package com.lg.realism.fire;
 
-import javax.annotation.Nullable;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,12 +10,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemHoe;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemTool;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
@@ -27,17 +20,19 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
+
 public class BlockFireTileEntity extends TileEntityLockable implements ITickable, ISidedInventory{
 	
-	//это слоты где будут предметы - т.е. 0 - первый слот для жарки, 1 - второй и 2 - третий
-	private static final int[] SLOTS_TOP = new int[] {0, 1, 2};
-	//тут лежит топливо - 4 пятый и 6 слоты(снизу)
-    private static final int[] SLOTS_BOTTOM = new int[] {3, 4, 5};
-    private static final int[] SLOTS_SIDES = new int[] {3, 4, 5};
+	//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅ.пїЅ. 0 - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, 1 - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ 2 - пїЅпїЅпїЅпїЅпїЅпїЅ
+	private static final int[] SLOTS_TOP = {0, 1, 2};
+	//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - 4 пїЅпїЅпїЅпїЅпїЅ пїЅ 6 пїЅпїЅпїЅпїЅпїЅ(пїЅпїЅпїЅпїЅпїЅ)
+    private static final int[] SLOTS_BOTTOM = {3, 4, 5};
+    private static final int[] SLOTS_SIDES = {3, 4, 5};
     
-    private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(6, ItemStack.EMPTY);
+    private NonNullList<ItemStack> inventory = NonNullList.withSize(6, ItemStack.EMPTY);
     
-    // НЕ ЗАБУДЬ ЗАРЕГАТЬ ТАЙЛ И ГУИ ХЕНДЛЕР)
+    // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
    
     private int fSlotBurnTime;
     private int fSlotProcTime;
@@ -79,20 +74,12 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
     
     public boolean isEmpty()
     {
-        for (ItemStack itemstack : this.inventory)
-        {
-            if (!itemstack.isEmpty())
-            {
-                return false;
-            }
-        }
-
-        return true;
+        return this.inventory.stream().allMatch(ItemStack::isEmpty);
     }
 
     public void setInventorySlotContents(int index, @Nullable ItemStack stack){
     	
-    	ItemStack itemstack = (ItemStack)this.inventory.get(index);
+    	ItemStack itemstack = this.inventory.get(index);
         boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
         this.inventory.set(index, stack);
 
@@ -102,7 +89,7 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
         }
 
         if (index == 0 && !flag){
-        	//сбиваем процесс если что-то потрогал входщий стак
+        	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
             this.fSlotTotalTime = this.getProcessTime(stack);
             this.fSlotProcTime = 0;
             this.markDirty();
@@ -137,7 +124,7 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
     public void readFromNBT(NBTTagCompound compound){
     	
     	super.readFromNBT(compound);
-        this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
+        this.inventory = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(compound, this.inventory);
         
         this.fSlotProcTime = compound.getInteger("fSlotProcTime");
@@ -150,9 +137,9 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
         this.tSlotTotalTime = compound.getInteger("tSlotTotalTime");
 
  
-        this.fSlotBurnTime = getItemBurnTime((ItemStack)this.inventory.get(3));
-        this.sSlotBurnTime = getItemBurnTime((ItemStack)this.inventory.get(4));
-        this.tSlotBurnTime = getItemBurnTime((ItemStack)this.inventory.get(5));
+        this.fSlotBurnTime = getItemBurnTime(this.inventory.get(3));
+        this.sSlotBurnTime = getItemBurnTime(this.inventory.get(4));
+        this.tSlotBurnTime = getItemBurnTime(this.inventory.get(5));
 
         if (compound.hasKey("CustomName", 8))
         {
@@ -207,7 +194,7 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
         boolean flag3 = false;
         
         for(int i = 0; i < 3; i++){
-    		//тут уменьшаем время топлива
+    		//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     		if(this.isProcessing(i)){
     			this.decrement(i);
     		}
@@ -215,26 +202,26 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
 
         if (!this.world.isRemote) {
         	    	
-        	//достаем топливо
+        	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         	ItemStack fuel1 = this.inventory.get(3);
         	ItemStack fuel2 = this.inventory.get(4);
         	ItemStack fuel3 = this.inventory.get(5);
         	
         	//first slot
-        	//для первого слота
-        	//смотрим работает ли топливо в первом слоте, есть ли оно там и не равна ли наша еда нулю
-        	 if (this.isProcessing(0) || !fuel1.isEmpty() && !((ItemStack)this.inventory.get(0)).isEmpty()){
-        		 //если топливо исчерпалось НО можно продолжить процесс
+        	//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+        	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+        	 if (this.isProcessing(0) || !fuel1.isEmpty() && !this.inventory.get(0).isEmpty()){
+        		 //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                  if (!this.isProcessing(0) && this.canProcess(0)) {
                 	 
-                	 //берем из метода время топлива т.е. сколько оно должно прожить
+                	 //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ.пїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                      this.fSlotBurnTime = getItemBurnTime(fuel1);
 
-                     //если это время больше 0
+                     //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 0
                      if (this.isProcessing(0)) {
                          flag1 = true;
 
-                         //короче уменьшаем на единицу кол-во топлива)
+                         //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
                          if (!fuel1.isEmpty()) {
                              Item item = fuel1.getItem();
                              fuel1.shrink(1);
@@ -247,33 +234,33 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
                      }
                  }
 
-                 //теперь если у нас наконец-то есть работающее топливо и можно выполнить процесс
+                 //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                  if (this.isProcessing(0) && this.canProcess(0)) {
  
-                	 //приьавляем переменную нашего процесса
+                	 //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                      ++this.fSlotProcTime;
 
-                     //если она будет равна максимальному значению, т.е. предмет уже готов к жарке
+                     //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ.пїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
                      if (this.fSlotProcTime == this.fSlotTotalTime){
-                    	 //ставим ее на 0 и вызываем метод который дает резулльтат
+                    	 //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ 0 пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                          this.fSlotProcTime = 0;
-                         this.fSlotTotalTime = this.getProcessTime((ItemStack)this.inventory.get(0));
+                         this.fSlotTotalTime = this.getProcessTime(this.inventory.get(0));
                          this.processStacks(0);
                          flag1 = true;
                      }
-                 }//иначе если что-то пошло не так сбиваем процесс
+                 }//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                  else {
                      this.fSlotProcTime = 0;
                  }
-             }//а тут  хз что происходит)
+             }//пїЅ пїЅпїЅпїЅ  пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
              else if (!this.isProcessing(0) && this.fSlotProcTime > 0) {
                  this.fSlotProcTime = MathHelper.clamp(this.fSlotProcTime - 2, 0, this.fSlotTotalTime);
              }
         	 
-        	 //для второго и третьего слотов нанлогично первому
+        	 //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         	 
         	 //second slot
-        	 if (this.isProcessing(1) || !fuel2.isEmpty() && !((ItemStack)this.inventory.get(1)).isEmpty()){
+        	 if (this.isProcessing(1) || !fuel2.isEmpty() && !this.inventory.get(1).isEmpty()){
                  if (!this.isProcessing(1) && this.canProcess(1)) {
                      this.sSlotBurnTime = getItemBurnTime(fuel2);
 
@@ -299,7 +286,7 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
                      if (this.sSlotProcTime == this.sSlotTotalTime)
                      {
                          this.sSlotProcTime = 0;
-                         this.sSlotTotalTime = this.getProcessTime((ItemStack)this.inventory.get(1));
+                         this.sSlotTotalTime = this.getProcessTime(this.inventory.get(1));
                          this.processStacks(1);
                          flag2 = true;
                      }
@@ -312,7 +299,7 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
                  this.sSlotProcTime = MathHelper.clamp(this.sSlotProcTime - 2, 0, this.sSlotTotalTime);
              }
         	 //third slot
-        	 if (this.isProcessing(2) || !fuel3.isEmpty() && !((ItemStack)this.inventory.get(2)).isEmpty()){
+        	 if (this.isProcessing(2) || !fuel3.isEmpty() && !this.inventory.get(2).isEmpty()){
                  if (!this.isProcessing(2) && this.canProcess(2)) {
                      this.tSlotBurnTime = getItemBurnTime(fuel3);
 
@@ -337,7 +324,7 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
 
                      if (this.tSlotProcTime == this.tSlotTotalTime){
                          this.tSlotProcTime = 0;
-                         this.tSlotTotalTime = this.getProcessTime((ItemStack)this.inventory.get(2));
+                         this.tSlotTotalTime = this.getProcessTime(this.inventory.get(2));
                          this.processStacks(2);
                          flag3 = true;
                      }
@@ -350,7 +337,7 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
                  this.tSlotProcTime = MathHelper.clamp(this.tSlotProcTime - 2, 0, this.tSlotTotalTime);
              }
          
-        	 //помечаем что инвентарь был изменен
+        	 //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
              if (flag != this.isProcessing(0)){
                  flag1 = true;
              }
@@ -403,7 +390,7 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
 
     public int getProcessTime(@Nullable ItemStack stack){
     	
-    	//сколько тиков будет занимать жарка предметов
+    	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         return 480;
     }
 
@@ -417,25 +404,22 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
         	}
 
         	ItemStack itemstack1 = FireRecipeManager.getInstance().getSmeltingResult(this.inventory.get(0));
-        	if (itemstack1.isEmpty()) return false;  	
-        	return true;
-        case 1:
+            return !itemstack1.isEmpty();
+            case 1:
         	if(this.inventory.get(1).isEmpty()){
         		return false;
         	}
 
         	ItemStack itemstack2 = FireRecipeManager.getInstance().getSmeltingResult(this.inventory.get(1));
-        	if (itemstack2.isEmpty()) return false;
-        	return true;
-        case 2:
+            return !itemstack2.isEmpty();
+            case 2:
         	if(this.inventory.get(2).isEmpty()){
         		return false;
         	}
         	
         	ItemStack itemstack3 = FireRecipeManager.getInstance().getSmeltingResult(this.inventory.get(2));
-        	if (itemstack3.isEmpty()) return false;
-        	return true;
-        default:
+            return !itemstack3.isEmpty();
+            default:
         	return true;
     	}          
     }
@@ -443,7 +427,7 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
     public void processStacks(int i){
     	
         if (this.canProcess(i)){    	
-        	//тут осторожно, если ты поставил рецепт что с 1 яблока дает 2 золота, а кто-то положит 2 яблока то вместо 4 золота всеравно выйдет 2. Сам подумай как исправить)
+        	//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ 1 пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 4 пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 2. пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
         	ItemStack itemstack = FireRecipeManager.getInstance().getSmeltingResult(this.inventory.get(i)).copy(); 
         	this.setInventorySlotContents(i, itemstack);
         }
@@ -492,7 +476,7 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
 
     public boolean isUsableByPlayer(EntityPlayer player){
     	
-        return this.world.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX() + 0.5D, (double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
+        return this.world.getTileEntity(this.pos) == this && player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;
     }
 
     public void openInventory(EntityPlayer player){
@@ -504,11 +488,8 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
     }
 
     public boolean isItemValidForSlot(int index, ItemStack stack){
-    	
-        if (index < 3){
-            return true;
-        }
-        return false;
+
+        return index < 3;
     }
 
     public int[] getSlotsForFace(EnumFacing side){
@@ -526,9 +507,7 @@ public class BlockFireTileEntity extends TileEntityLockable implements ITickable
         if (direction == EnumFacing.DOWN && (index < 3)){
             Item item = stack.getItem();
 
-            if (item != Items.WATER_BUCKET && item != Items.BUCKET){
-                return false;
-            }
+            return item == Items.WATER_BUCKET || item == Items.BUCKET;
         }
 
         return true;

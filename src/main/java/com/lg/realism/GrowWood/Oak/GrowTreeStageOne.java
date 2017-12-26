@@ -1,9 +1,8 @@
 package com.lg.realism.GrowWood.Oak;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
+import com.lg.realism.API.TimerForCoord;
+import com.lg.realism.Basic.BasicBlockWithCustomModel;
+import com.lg.realism.RegBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -16,9 +15,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.lg.realism.RegBlocks;
-import com.lg.realism.API.TimerForCoord;
-import com.lg.realism.Basic.BasicBlockWithCustomModel;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class GrowTreeStageOne extends BasicBlockWithCustomModel {
 	List<TimerForCoord> time =  new ArrayList<TimerForCoord>();

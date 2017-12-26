@@ -1,5 +1,7 @@
 package com.lg.realism.Items.FullShovel;
 
+import com.lg.realism.Basic.DevBasicItem;
+import com.lg.realism.Realism;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -9,9 +11,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import com.lg.realism.Realism;
-import com.lg.realism.Basic.DevBasicItem;
 
 
 public class FullWoodenShovel extends DevBasicItem{

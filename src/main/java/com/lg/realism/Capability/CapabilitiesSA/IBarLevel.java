@@ -1,33 +1,30 @@
 package com.lg.realism.Capability.CapabilitiesSA;
 
-import java.util.List;
-/*
+/**
  * The basis of this code comes from modifications Bionisation 2
  * Thanks Thunder for the help
  */
-public interface IBarLevel {
+public interface IBarLevel
+{
 	//Water Bar
-	public void addWaterLevel(int level);
-	public void reduceWaterLevel(int level);
-	public int getWaterLevel();
-	public void setWaterLevel(int level);
+    void addWaterLevel(int level);
+	void reduceWaterLevel(int level);
+	int getWaterLevel();
+	void setWaterLevel(int level);
 	
-	public void addTempBody(float temp);
-	public void reduceTempBody(float temp);
-	public float getTempBody();
-	public void setTempBody(float temp);
+	void addTempBody(float temp);
+	void reduceTempBody(float temp);
+	float getTempBody();
+	void setTempBody(float temp);
 	
-	public boolean getCommonCold();
-	public void setCommonCold(boolean cold);
+	boolean getCommonCold();
+	void setCommonCold(boolean cold);
 	
-	public boolean getGrippe();
-	public void setGrippe(boolean grippe);
+	boolean getGrippe();
+	void setGrippe(boolean grippe);
 	
-	public void setTicker(int value);
-	public int getTicker();
-	public void incrementTicker();
-	public void copyCapabilities(IBarLevel indicator);
-
+	void setTicker(int value);
+	int getTicker();
+	void incrementTicker();
+	void copyCapabilities(IBarLevel indicator);
 }
-
-	

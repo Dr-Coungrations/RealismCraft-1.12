@@ -1,5 +1,7 @@
 package com.lg.realism.Items.ItemsLog;
 
+import com.lg.realism.Basic.BasicItem;
+import com.lg.realism.RegBlocks;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumActionResult;
@@ -7,9 +9,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import com.lg.realism.RegBlocks;
-import com.lg.realism.Basic.BasicItem;
 
 public class ItemBranchBirch extends BasicItem{
 	 public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);

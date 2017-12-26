@@ -1,11 +1,10 @@
 package com.lg.realism.event;
 
+import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
+import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
-import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
 
 public class ClonePlayer {
 	

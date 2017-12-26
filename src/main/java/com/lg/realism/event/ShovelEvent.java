@@ -1,15 +1,12 @@
 package com.lg.realism.event;
 
+import com.lg.realism.RegItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import com.lg.realism.RegItems;
 
 public class ShovelEvent {
 	@SubscribeEvent

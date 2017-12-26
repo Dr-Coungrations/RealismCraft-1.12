@@ -2,13 +2,11 @@ package com.lg.realism.event;
 
 import com.lg.realism.RegBlocks;
 import com.lg.realism.RegItems;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.event.world.BlockEvent;

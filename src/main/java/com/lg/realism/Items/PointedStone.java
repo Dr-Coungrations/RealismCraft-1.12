@@ -1,8 +1,8 @@
 package com.lg.realism.Items;
 
-import java.util.Random;
-import java.util.Set;
-
+import com.google.common.collect.Sets;
+import com.lg.realism.Realism;
+import com.lg.realism.RegItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -17,9 +17,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.google.common.collect.Sets;
-import com.lg.realism.Realism;
-import com.lg.realism.RegItems;
+import java.util.Random;
+import java.util.Set;
 
 public class PointedStone extends ItemTool {
 	   private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.GRASS);
@@ -33,17 +32,13 @@ public class PointedStone extends ItemTool {
 	     this.setRegistryName(name);
 	  this.setCreativeTab(Realism.tabMain);
 	  this.setUnlocalizedName(name);
-	        this.attackDamage = ATTACK_DAMAGES[material.ordinal()];
+	        this.damageVsEntity = ATTACK_DAMAGES[material.ordinal()];
 	        this.attackSpeed = ATTACK_SPEEDS[material.ordinal()];
 	    }
 	    public PointedStone(Item.ToolMaterial material, float damage, float speed) {
 	        super(material, EFFECTIVE_ON);
-	        this.attackDamage = damage;
+	        this.damageVsEntity = damage;
 	        this.attackSpeed = speed;
-	    }
-	    public float getDestroySpeed(ItemStack stack, IBlockState state) {
-	        Material material = state.getMaterial();
-	        return material != Material.GRASS ? super.getDestroySpeed(stack, state) : this.efficiency;
 	    }
 	 @Override
 	 public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)

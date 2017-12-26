@@ -18,10 +18,12 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockDeadTree extends BlockRotatedPillar {
+public class BlockDeadTree extends BlockRotatedPillar
+{
+	private static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.create("axis", EnumFacing.Axis.class);
 
-	public static final PropertyEnum<EnumFacing.Axis> AXIS = PropertyEnum.<EnumFacing.Axis>create("axis", EnumFacing.Axis.class);
-	public BlockDeadTree(final Material materialIn, final String name, float hardness, String hravLevel, int level, float resistanse, SoundType soundtype) {
+	public BlockDeadTree(final Material materialIn, final String name, float hardness, String hravLevel, int level, float resistanse, SoundType soundtype)
+    {
 		super(materialIn);
 		this.setRegistryName(name);
 		this.setUnlocalizedName(name);
@@ -32,7 +34,8 @@ public class BlockDeadTree extends BlockRotatedPillar {
 		this.setCreativeTab(Realism.tabMain);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(AXIS, EnumFacing.Axis.Y));
 	}
-	public static enum EnumAxis implements IStringSerializable
+
+	public enum EnumAxis implements IStringSerializable
 	{
 		X("x"),
 		Y("y"),
@@ -41,7 +44,7 @@ public class BlockDeadTree extends BlockRotatedPillar {
 
 		private final String name;
 
-		private EnumAxis(String name)
+		EnumAxis(String name)
 		{
 			this.name = name;
 		}
@@ -51,30 +54,17 @@ public class BlockDeadTree extends BlockRotatedPillar {
 			return this.name;
 		}
 
-		public static BlockDeadTree.EnumAxis fromFacingAxis(EnumFacing.Axis axis)
-		{
-			switch (axis)
-			{
-			case X:
-				return X;
-			case Y:
-				return Y;
-			case Z:
-				return Z;
-			default:
-				return NONE;
-			}
-		}
-
 		public String getName()
 		{
 			return this.name;
 		}
 	}
+
 	@Override
 	public boolean rotateBlock(World world, BlockPos pos, EnumFacing axis)
 	{
 		IBlockState state = world.getBlockState(pos);
+
 		for (IProperty<?> prop : state.getProperties().keySet())
 		{
 			if (prop.getName().equals("axis"))
@@ -94,21 +84,19 @@ public class BlockDeadTree extends BlockRotatedPillar {
 	{
 		switch (rot)
 		{
-		case COUNTERCLOCKWISE_90:
-		case CLOCKWISE_90:
-
-			switch ((EnumFacing.Axis)state.getValue(AXIS))
-			{
-			case X:
-				return state.withProperty(AXIS, EnumFacing.Axis.Z);
-			case Z:
-				return state.withProperty(AXIS, EnumFacing.Axis.X);
-			default:
-				return state;
-			}
-
-		default:
-			return state;
+            case COUNTERCLOCKWISE_90:
+            case CLOCKWISE_90:
+                switch (state.getValue(AXIS))
+                {
+                    case X:
+                        return state.withProperty(AXIS, EnumFacing.Axis.Z);
+                    case Z:
+                        return state.withProperty(AXIS, EnumFacing.Axis.X);
+                    default:
+                        return state;
+                }
+            default:
+                return state;
 		}
 	}
 
@@ -138,7 +126,7 @@ public class BlockDeadTree extends BlockRotatedPillar {
 	public int getMetaFromState(IBlockState state)
 	{
 		int i = 0;
-		EnumFacing.Axis enumfacing$axis = (EnumFacing.Axis)state.getValue(AXIS);
+		EnumFacing.Axis enumfacing$axis = state.getValue(AXIS);
 
 		if (enumfacing$axis == EnumFacing.Axis.X)
 		{
@@ -154,7 +142,7 @@ public class BlockDeadTree extends BlockRotatedPillar {
 
 	protected BlockStateContainer createBlockState()
 	{
-		return new BlockStateContainer(this, new IProperty[] {AXIS});
+		return new BlockStateContainer(this, AXIS);
 	}
 
 	protected ItemStack getSilkTouchDrop(IBlockState state)
@@ -170,5 +158,4 @@ public class BlockDeadTree extends BlockRotatedPillar {
 	{
 		return super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(AXIS, facing.getAxis());
 	}
-
 }

@@ -1,7 +1,5 @@
 package com.lg.realism.Basic;
 
-import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -14,11 +12,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.Random;
+
 public class BasicBlockFalling extends BasicBlock
 {
-	public BasicBlockFalling(Material materialIn, String name, float hardness, float resistanse, SoundType soundtype) {
+	public BasicBlockFalling(Material materialIn, String name, float hardness, float resistanse, SoundType soundtype)
+	{
 		super(materialIn, name, hardness, resistanse, soundtype);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
@@ -45,13 +45,13 @@ public class BasicBlockFalling extends BasicBlock
 	}
 
 	private void checkFallableDown(World world, BlockPos pos)
-	{	
-		IBlockState state = world.getBlockState(pos);
-
+	{
 		if (world.isAreaLoaded(pos.add(-32, -32, -32), pos.add(32, 32, 32)))
 		{
-			if(!world.isRemote) {
-				if(world.isAirBlock(pos.down())) {
+			if (!world.isRemote)
+			{
+				if (world.isAirBlock(pos.down()))
+				{
 					EntityFallingBlock efb = new EntityFallingBlock(world, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, world.getBlockState(pos));
 					this.onStartFalling(efb);
 					world.spawnEntity(efb);
@@ -59,68 +59,78 @@ public class BasicBlockFalling extends BasicBlock
 			}
 		}
 	}
+
 	private void checkFallableSouth(World world, BlockPos pos)
 	{
 		IBlockState state = world.getBlockState(pos);
 
 		if (world.isAreaLoaded(pos.add(-32, -32, -32), pos.add(32, 32, 32)))
 		{
-			if(!world.isRemote) {
-				if(world.isAirBlock(pos.down())){
-					return;
-				}
-				if(world.isAirBlock(pos.south())){
+			if (!world.isRemote)
+			{
+				if (world.isAirBlock(pos.down())) return;
+
+				if (world.isAirBlock(pos.south()))
+				{
 					EntityFallingBlock efb = new EntityFallingBlock(world, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, world.getBlockState(pos.south()));
 					this.onStartFalling(efb);
 					world.spawnEntity(efb);
 				}
-				if( world.isAirBlock(new BlockPos(pos.getX(),pos.getY() - 1,pos.getZ() + 1))) {
 
+				if (world.isAirBlock(new BlockPos(pos.getX(),pos.getY() - 1,pos.getZ() + 1)))
+				{
 					world.setBlockState(new BlockPos(pos.getX(),pos.getY(),pos.getZ() + 1), state);
 					world.setBlockToAir(pos);
 				}
 			}
 		}
 	}
+
 	private void checkFallableNorth(World world, BlockPos pos)
 	{
 		IBlockState state = world.getBlockState(pos);
 
 		if (world.isAreaLoaded(pos.add(-32, -32, -32), pos.add(32, 32, 32)))
 		{
-			if(!world.isRemote) {
-				if(world.isAirBlock(pos.down())){
-					return;
-				}
-				if(world.isAirBlock(pos.north())){
+			if(!world.isRemote)
+			{
+				if (world.isAirBlock(pos.down())) return;
+
+				if (world.isAirBlock(pos.north()))
+				{
 					EntityFallingBlock efb = new EntityFallingBlock(world, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, world.getBlockState(pos.north()));
 					this.onStartFalling(efb);
 					world.spawnEntity(efb);
 				}
-				if( world.isAirBlock(new BlockPos(pos.getX(),pos.getY() - 1,pos.getZ() - 1))) {
 
+				if (world.isAirBlock(new BlockPos(pos.getX(),pos.getY() - 1,pos.getZ() - 1)))
+				{
 					world.setBlockState(new BlockPos(pos.getX(),pos.getY(),pos.getZ() - 1), state);
 					world.setBlockToAir(pos);
 				}
 			}
 		}
 	}
+
 	private void checkFallableWest(World world, BlockPos pos)
 	{
 		IBlockState state = world.getBlockState(pos);
 
 		if (world.isAreaLoaded(pos.add(-32, -32, -32), pos.add(32, 32, 32)))
 		{
-			if(!world.isRemote) {
-				if(world.isAirBlock(pos.down())){
-					return;
-				}
-				if(world.isAirBlock(pos.west())){
+			if (!world.isRemote)
+			{
+				if (world.isAirBlock(pos.down())) return;
+
+				if (world.isAirBlock(pos.west()))
+				{
 					EntityFallingBlock efb = new EntityFallingBlock(world, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, world.getBlockState(pos.west()));
 					this.onStartFalling(efb);
 					world.spawnEntity(efb);
 				}
-				if( world.isAirBlock(new BlockPos(pos.getX() + 1,pos.getY() - 1,pos.getZ()))) {
+
+				if (world.isAirBlock(new BlockPos(pos.getX() + 1,pos.getY() - 1,pos.getZ())))
+				{
 
 					world.setBlockState(new BlockPos(pos.getX() + 1,pos.getY(),pos.getZ()), state);
 					world.setBlockToAir(pos);
@@ -128,22 +138,26 @@ public class BasicBlockFalling extends BasicBlock
 			}
 		}
 	}
+
 	private void checkFallableEast(World world, BlockPos pos)
 	{
 		IBlockState state = world.getBlockState(pos);
 
 		if (world.isAreaLoaded(pos.add(-32, -32, -32), pos.add(32, 32, 32)))
 		{
-			if(!world.isRemote) {
-				if(world.isAirBlock(pos.down())){
-					return;
-				}
-				if(world.isAirBlock(pos.east())){
+			if (!world.isRemote)
+			{
+				if (world.isAirBlock(pos.down())) return;
+
+				if (world.isAirBlock(pos.east()))
+				{
 					EntityFallingBlock efb = new EntityFallingBlock(world, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, world.getBlockState(pos.east()));
 					this.onStartFalling(efb);
 					world.spawnEntity(efb);
 				}
-				if( world.isAirBlock(new BlockPos(pos.getX() - 1,pos.getY() - 1,pos.getZ()))) {
+
+				if (world.isAirBlock(new BlockPos(pos.getX() - 1,pos.getY() - 1,pos.getZ())))
+				{
 
 					world.setBlockState(new BlockPos(pos.getX() - 1,pos.getY(),pos.getZ()), state);
 					world.setBlockToAir(pos);
@@ -152,26 +166,7 @@ public class BasicBlockFalling extends BasicBlock
 		}
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	protected void onStartFalling(EntityFallingBlock fallingEntity)
-	{
-	}
+	protected void onStartFalling(EntityFallingBlock fallingEntity) {}
 
 	/**
 	 * How many world ticks before ticking
@@ -186,14 +181,6 @@ public class BasicBlockFalling extends BasicBlock
 		Block block = state.getBlock();
 		Material material = state.getMaterial();
 		return block == Blocks.FIRE || material == Material.AIR || material == Material.WATER || material == Material.LAVA;
-	}
-
-	public void onEndFalling(World worldIn, BlockPos pos, IBlockState p_176502_3_, IBlockState p_176502_4_)
-	{
-	}
-
-	public void onBroken(World worldIn, BlockPos pos)
-	{
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -211,11 +198,5 @@ public class BasicBlockFalling extends BasicBlock
 				worldIn.spawnParticle(EnumParticleTypes.FALLING_DUST, d0, d1, d2, 0.0D, 0.0D, 0.0D, Block.getStateId(stateIn));
 			}
 		}
-	}
-
-	@SideOnly(Side.CLIENT)
-	public int getDustColor(IBlockState state)
-	{
-		return -16777216;
 	}
 }

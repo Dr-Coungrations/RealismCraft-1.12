@@ -1,12 +1,9 @@
 package com.lg.realism.World.GenFallingWood;
 
-import java.util.Random;
-
+import com.lg.realism.Config.ConfigManager;
 import com.lg.realism.Realism;
 import com.lg.realism.RegBlocks;
-import com.lg.realism.Config.ConfigManager;
 import com.lg.realism.World.WorldGeneratorOne;
-
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.BlockOldLog;
 import net.minecraft.block.BlockPlanks;
@@ -15,6 +12,8 @@ import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class BreakBirchGen extends WorldGeneratorOne {
 	public static final PropertyEnum<BlockLog.EnumAxis> LOG_AXIS = PropertyEnum.<BlockLog.EnumAxis>create("axis", BlockLog.EnumAxis.class);

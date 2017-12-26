@@ -1,19 +1,18 @@
 package com.lg.realism.World.GenCactus;
 
-import java.util.Random;
-
+import com.lg.realism.RegBlocks;
+import com.lg.realism.World.LayerGenerator.ALayerGen;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.lg.realism.RegBlocks;
-import com.lg.realism.World.LayerGenerator.ALayerGen;
+import java.util.Random;
 
 public class WorldGenNewCactus extends ALayerGen{
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
-	static final int[][][] MATRIX = new int[][][] {
+	static final int[][][] MATRIX = {
 
 		{
 			{0, 2, 0},

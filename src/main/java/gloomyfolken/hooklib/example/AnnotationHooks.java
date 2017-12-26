@@ -1,24 +1,10 @@
 package gloomyfolken.hooklib.example;
 
-import java.util.Random;
-
-import javax.annotation.Nullable;
-
 import com.google.common.base.Predicate;
-import com.lg.realism.RegBlocks;
 import com.lg.realism.RegItems;
-
 import gloomyfolken.hooklib.asm.Hook;
 import gloomyfolken.hooklib.asm.ReturnCondition;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockCactus;
-import net.minecraft.block.BlockDirt;
-import net.minecraft.block.BlockFalling;
-import net.minecraft.block.BlockLeaves;
-import net.minecraft.block.BlockOldLeaf;
-import net.minecraft.block.BlockPane;
-import net.minecraft.block.BlockPlanks;
-import net.minecraft.block.BlockStone;
+import net.minecraft.block.*;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -39,18 +25,15 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenCactus;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+
+import javax.annotation.Nullable;
+import java.util.Random;
 public class AnnotationHooks {
 
 	public static final AxisAlignedBB NULL_AABB = null;
 	public static boolean fallInstantly;
-	public static final PropertyEnum<EnumDyeColor> COLOR = PropertyEnum.<EnumDyeColor>create("color", EnumDyeColor.class);
-	public static final PropertyEnum<BlockPlanks.EnumType> VARIANT = PropertyEnum.<BlockPlanks.EnumType>create("variant", BlockPlanks.EnumType.class, new Predicate<BlockPlanks.EnumType>()
-			{
-		public boolean apply(@Nullable BlockPlanks.EnumType p_apply_1_)
-		{
-			return p_apply_1_.getMetadata() < 4;
-		}
-			});
+	public static final PropertyEnum<EnumDyeColor> COLOR = PropertyEnum.create("color", EnumDyeColor.class);
+	public static final PropertyEnum<BlockPlanks.EnumType> VARIANT = PropertyEnum.create("variant", BlockPlanks.EnumType.class, type -> type.getMetadata() < 4);
 	
 
     public static int tickRate(World worldIn)
@@ -290,7 +273,7 @@ public class AnnotationHooks {
 	@Hook(returnCondition = ReturnCondition.ALWAYS)
 	public static void updateLightmap(EntityRenderer render, float partialTicks)
 	{
-	//	System.out.println("Пездато работет");
+	//	System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 		boolean lightmapUpdateNeeded = ObfuscationReflectionHelper.getPrivateValue(EntityRenderer.class, render, "lightmapUpdateNeeded");
 		float torchFlickerX = ObfuscationReflectionHelper.getPrivateValue(EntityRenderer.class, render, "torchFlickerX");
 		float bossColorModifier = ObfuscationReflectionHelper.getPrivateValue(EntityRenderer.class, render, "bossColorModifier");
@@ -403,7 +386,7 @@ public class AnnotationHooks {
 	                    }
 
 	                    
-	                    //цвета?!
+	                    //пїЅпїЅпїЅпїЅпїЅ?!
 	                    int j = 255;
 	                    int k = (int)(f8 * 255.0F);
 	                    int l = (int)(f9 * 255.0F);
@@ -434,21 +417,21 @@ public class AnnotationHooks {
 	                        f10 = f10 * (1.0F - getNightVis) + f10 * f12 * getNightVis;
 	                        lightmapColors[i] = -40293745 | k << 16 | l << 8 | i1;
 	                     
-	            			//Веселые комбинации
+	            			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	        				/*
-	        				 * 16777216 - норма
-	        				 * 25500139 - ярко-темнозеленый
-	        				 * 15678234 - сочно-зеленый
-	        				 * 40293745 - кроваво -красный цвет ярости
+	        				 * 16777216 - пїЅпїЅпїЅпїЅпїЅ
+	        				 * 25500139 - пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	        				 * 15678234 - пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	        				 * 40293745 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	        				 */
 	                    }
 				}					   //12345678
-				//Веселые комбинации
+				//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				/*
-				 * 16777216 - норма
-				 * 25500139 - ярко-темнозеленый
-				 * 15678234 - сочно-зеленый
-				 * 40293745 - кроваво -красный цвет ярости
+				 * 16777216 - пїЅпїЅпїЅпїЅпїЅ
+				 * 25500139 - пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+				 * 15678234 - пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+				 * 40293745 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ -пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 				 */
 
 				lightmapTexture.updateDynamicTexture();
@@ -468,11 +451,11 @@ public class AnnotationHooks {
     }
 }
 /*
- * получить игрока из ентиту
+ * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 if (entity instanceof EntityPlayer) {
    EntityPlayer player = (EntityPlayer) entity;
 
   }
-  получить игрока из мира
+  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 world.loadedEntityList
  */

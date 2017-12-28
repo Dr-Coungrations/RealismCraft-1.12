@@ -21,7 +21,7 @@ public class EventJoinToWorld {
 		
 		if(!player.world.isRemote){
 			IBarLevel capabilities = player.getCapability(WaterBarProv.LEVEL_CAP, null);  
-			NetworkHandler.INSTANCE.sendTo(new HUDSyncMessage(capabilities.getWaterLevel()), (EntityPlayerMP)player);  
+			NetworkHandler.NETWORK.sendTo(new HUDSyncMessage(capabilities.getWaterLevel()), (EntityPlayerMP)player);
 		} 
 	}
 }

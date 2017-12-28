@@ -15,8 +15,9 @@ out
 
 # gradle
 build
-.gradle
 
 # other
+*.log
 eclipse
 run
+build.bat

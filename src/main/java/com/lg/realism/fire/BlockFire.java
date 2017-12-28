@@ -126,7 +126,7 @@ public class BlockFire extends BlockContainer {
 			EntityItem ei = (EntityItem)entity;
 			ItemStack stack = ei.getItem();
 			if(stack.getItem() == Items.APPLE){
-				if(entity.isCollided) {
+				if(entity.collided) {
 					
 						
 						EnumFacing enumfacing = state.getValue(FACING);

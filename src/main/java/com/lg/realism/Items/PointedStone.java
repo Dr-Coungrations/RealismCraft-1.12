@@ -32,12 +32,12 @@ public class PointedStone extends ItemTool {
 	     this.setRegistryName(name);
 	  this.setCreativeTab(Realism.tabMain);
 	  this.setUnlocalizedName(name);
-	        this.damageVsEntity = ATTACK_DAMAGES[material.ordinal()];
+	        this.attackDamage = ATTACK_DAMAGES[material.ordinal()];
 	        this.attackSpeed = ATTACK_SPEEDS[material.ordinal()];
 	    }
 	    public PointedStone(Item.ToolMaterial material, float damage, float speed) {
 	        super(material, EFFECTIVE_ON);
-	        this.damageVsEntity = damage;
+	        this.attackDamage = damage;
 	        this.attackSpeed = speed;
 	    }
 	 @Override

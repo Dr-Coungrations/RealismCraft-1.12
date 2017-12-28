@@ -54,7 +54,7 @@ public class FilledJar {
 						Realism.LOGGER.info("(fillJar) WaterLevel PreMessage: " + capabilities.getWaterLevel());
 					}
 					
-					NetworkHandler.INSTANCE.sendToServer(new HUDSyncMessageServer(capabilities.getWaterLevel()));
+					NetworkHandler.NETWORK.sendToServer(new HUDSyncMessageServer(capabilities.getWaterLevel()));
 					if(ConfigManager.thirstDebug){
 						Realism.LOGGER.info("(fillJar) WaterLevel PostMessage: " + capabilities.getWaterLevel());
 					}

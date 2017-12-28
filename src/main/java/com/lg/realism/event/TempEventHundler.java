@@ -44,7 +44,7 @@ public class TempEventHundler {
 
 		if(!player.world.isRemote){
 			IBarLevel capabilities = player.getCapability(WaterBarProv.LEVEL_CAP, null);  
-			NetworkHandler.INSTANCE.sendTo(new TemperatureBodyClientMessage(capabilities.getTempBody()), (EntityPlayerMP)player);  
+			NetworkHandler.NETWORK.sendTo(new TemperatureBodyClientMessage(capabilities.getTempBody()), (EntityPlayerMP)player);
 		} 
 	}
 
@@ -55,7 +55,7 @@ public class TempEventHundler {
 			EntityPlayer player = (EntityPlayer) event.getEntity();
 			IBarLevel capabilities = player.getCapability(WaterBarProv.LEVEL_CAP, null);
 
-			NetworkHandler.INSTANCE.sendTo(new TemperatureBodyClientMessage(capabilities.getTempBody()), (EntityPlayerMP)player);
+			NetworkHandler.NETWORK.sendTo(new TemperatureBodyClientMessage(capabilities.getTempBody()), (EntityPlayerMP)player);
 		}
 	}
 	@SubscribeEvent
@@ -121,8 +121,8 @@ public class TempEventHundler {
 
 				//System.out.println("pre b " + capabilities.getCommonCold());
 			//	System.out.println("pre " + capabilities.getTempBody());
-				NetworkHandler.INSTANCE.sendTo(new TemperatureBodyClientMessage(capabilities.getTempBody()), (EntityPlayerMP)player);
-				NetworkHandler.INSTANCE.sendTo(new ColdMessageClient(capabilities.getCommonCold()), (EntityPlayerMP)player);
+				NetworkHandler.NETWORK.sendTo(new TemperatureBodyClientMessage(capabilities.getTempBody()), (EntityPlayerMP)player);
+				NetworkHandler.NETWORK.sendTo(new ColdMessageClient(capabilities.getCommonCold()), (EntityPlayerMP)player);
 			//	System.out.println("post " + capabilities.getTempBody());
 			//	System.out.println("post b " + capabilities.getCommonCold());
 			}

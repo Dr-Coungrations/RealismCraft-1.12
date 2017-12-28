@@ -50,7 +50,7 @@ public class EventHandThirstUpdate {
 						Realism.LOGGER.info("(EventHandThirstUpdate) WaterLevel PreMessage: " + capabilities.getWaterLevel());
 					}
 				
-					NetworkHandler.INSTANCE.sendToServer(new HUDSyncMessageServer(capabilities.getWaterLevel()));
+					NetworkHandler.NETWORK.sendToServer(new HUDSyncMessageServer(capabilities.getWaterLevel()));
 					if(ConfigManager.thirstDebug){
 						Realism.LOGGER.info("(EventHandThirstUpdate) WaterLevel PostMessage: " + capabilities.getWaterLevel());
 					}

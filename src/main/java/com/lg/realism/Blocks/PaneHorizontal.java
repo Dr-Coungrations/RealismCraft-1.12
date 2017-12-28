@@ -45,7 +45,7 @@ public class PaneHorizontal extends BasicBlock{
 			EntityItem ei = (EntityItem)entity;
 			ItemStack stack = ei.getItem();
 			if(stack.getItem() == Items.APPLE){
-				if(entity.isCollided){
+				if(entity.collided){
 					world.destroyBlock(pos, false);
 				}
 			}

@@ -46,7 +46,7 @@ public class EventThirstUpdate {
 				if(ConfigManager.thirstDebug){
 				Realism.LOGGER.info("(EventThirstUpdate) WaterLevel PreMessage: " + capabilities.getWaterLevel());
 				}
-				NetworkHandler.INSTANCE.sendTo(new HUDSyncMessage(capabilities.getWaterLevel()), (EntityPlayerMP)player);
+				NetworkHandler.NETWORK.sendTo(new HUDSyncMessage(capabilities.getWaterLevel()), (EntityPlayerMP)player);
 				if(ConfigManager.thirstDebug){
 				Realism.LOGGER.info("(EventThirstUpdate) WaterLevel PostMessage: " + capabilities.getWaterLevel());
 				}

@@ -37,7 +37,7 @@ public class EventCounterDrink {
 				if(ConfigManager.thirstDebug){
 					Realism.LOGGER.info("(EventCounterDrink) WaterLevel PreMessage: " + capabilities.getWaterLevel());
 				}
-				NetworkHandler.INSTANCE.sendTo(new HUDSyncMessage(capabilities.getWaterLevel()), (EntityPlayerMP)player);
+				NetworkHandler.NETWORK.sendTo(new HUDSyncMessage(capabilities.getWaterLevel()), (EntityPlayerMP)player);
 				if(ConfigManager.thirstDebug){
 					Realism.LOGGER.info("(EventCounterDrink) WaterLevel PostMessage: " + capabilities.getWaterLevel());
 				}

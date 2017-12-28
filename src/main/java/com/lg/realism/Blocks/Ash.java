@@ -60,7 +60,7 @@ public class Ash extends Block{
 				double d15 = (double)pos.getZ() + world.rand.nextDouble();
 				world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, d5, d10, d15, 0.0D, 0.0D, 0.0D);
 		}
-		if(entity.isCollidedVertically){
+		if(entity.collided){
 			if(entity.motionX != 0 && entity.motionZ != 0) {
 			double d6 = (double)pos.getX() + world.rand.nextDouble();
 			double d7 = (double)pos.getY() + world.rand.nextDouble();

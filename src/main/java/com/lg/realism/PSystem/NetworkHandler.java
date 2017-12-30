@@ -1,12 +1,12 @@
 package com.lg.realism.PSystem;
 
+import com.lg.realism.Realism;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
-
-import com.lg.realism.Realism;
 
 public class NetworkHandler {
 
@@ -17,6 +17,7 @@ public class NetworkHandler {
 	public NetworkHandler() {}
 
 	public void init() {
+		NETWORK.registerMessage(OpenInventoryMessage.class, OpenInventoryMessage.class, id++, Side.SERVER);
 		NETWORK.registerMessage(HUDSyncMessage.class, HUDSyncMessage.class, id++, Side.CLIENT);
 		NETWORK.registerMessage(HUDSyncMessageServer.class, HUDSyncMessageServer.class, id++, Side.SERVER);
 		NETWORK.registerMessage(TemperatureBodyClientMessage.class, TemperatureBodyClientMessage.class, id++, Side.CLIENT);

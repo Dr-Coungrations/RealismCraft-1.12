@@ -5,7 +5,6 @@ import com.lg.realism.Blocks.Ash;
 import com.lg.realism.Blocks.BlockBurntGrass;
 import com.lg.realism.Blocks.BlockBurntTree;
 import com.lg.realism.Blocks.BlockDryGrass;
-import com.lg.realism.Blocks.FallingDirt;
 import com.lg.realism.Blocks.MossBlock;
 import com.lg.realism.Blocks.PaneHorizontal;
 import com.lg.realism.Blocks.RealismRedSand;
@@ -16,10 +15,12 @@ import com.lg.realism.Blocks.WetSand;
 import com.lg.realism.Blocks.Cactus.CactusSmall;
 import com.lg.realism.Blocks.Cactus.OneStageCactus;
 import com.lg.realism.Blocks.Cactus.SideCactus;
+import com.lg.realism.Blocks.CompactWorkbench.BlockCompactWorkbench;
 import com.lg.realism.Blocks.DeadTree.BlockDeadTree;
 import com.lg.realism.Blocks.DeadTree.DeadBranch;
 import com.lg.realism.Blocks.ExTorch.ExTorch;
 import com.lg.realism.Blocks.ExTorch.Torch;
+import com.lg.realism.Blocks.FallenLeaves.FallenBlockLeaves;
 import com.lg.realism.Blocks.Ocean.Corals;
 import com.lg.realism.Blocks.Ocean.Seaweeds;
 import com.lg.realism.GrowWood.GrowTreeStageOneAcacia;
@@ -138,10 +139,16 @@ public class RegBlocks {
 	public static Block torch = new Torch();
 	public static Block extorch = new ExTorch();
 	
-//	public static Block fdirt = new FallingDirt(Material.WOOD, "fdirt", 6F, 1, SoundType.WOOD);
+	public static Block compactworkbench = new BlockCompactWorkbench(Material.WOOD, "compactworkbench", 6F, 1, SoundType.WOOD);
+	
+//	public static Block oaksaplingfromseed = new OakSaplingsSEED("oaksaplingfromseed", RegItems.appleseed, RegItems.appleseed);
+
+	public static Block fallenlayers = new FallenBlockLeaves(Material.LEAVES, "fallenlayers", 6F, 1, SoundType.WOOD);
+	
 	public static void register() {
+		registerBlock(fallenlayers);
+		registerBlock(compactworkbench);
 		registerBlock(sprucebranch);
-	//	registerBlock(fdirt);
 		registerBlock(torch);
 		registerBlock(extorch);
 		registerBlock(connectblock);
@@ -189,8 +196,9 @@ public class RegBlocks {
 		registerBlock(smallleavesspruce);
 	}
 	public static void registerRender() {
+		registerRenderBlock(fallenlayers);
 		registerRenderBlock(sprucebranch);
-	//	registerRenderBlock(fdirt);
+		registerRenderBlock(compactworkbench);
 		registerRenderBlock(extorch);
 		registerRenderBlock(torch);
 		registerRenderBlock(connectblock);

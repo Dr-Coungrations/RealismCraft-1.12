@@ -36,13 +36,15 @@ public class Realism
 	public static final String VERSION = "1.0";
 	public static final String NAME = "Realism Mod";
 	public static final Logger LOGGER = LogManager.getLogger();
+	public static final String[] AUTHORS = new String[] {"LegendGamer"};
 	public static CreativeTabs tabMain = new MainRealism("tabMain");
 	public static CreativeTabs tabDev = new DevRealism("tabDev");
 	@SidedProxy(clientSide = "com.lg.realism.proxy.ClientProxy", serverSide = "com.lg.realism.proxy.CommonProxy")
 	public static CommonProxy proxy;
 	@Mod.Instance
 	public static Realism INSTANCE;
-	
+
+
 
 	//Materials
 	public static Item.ToolMaterial StoneMaterial = EnumHelper.addToolMaterial("realism:StoneMaterial", 4, 74, 1.0F, 0.1F, 0);
@@ -55,8 +57,11 @@ public class Realism
 	public void preInit(FMLPreInitializationEvent event) {
 		GameRegistry.registerTileEntity(BlockFireTileEntity.class, "BlockFireTileEntity");
 		BiomeInit.registerBiomes();
+		
 		proxy.preInit(event);
 
+		
+		
 		MinecraftForge.EVENT_BUS.register(this);
 		RegEvents.register();
 		LOGGER.info("[MOD] Realism Mod enabled and loaded");
@@ -103,8 +108,6 @@ public class Realism
 		if(getTicks % ConfigManager.timeOneSec == 0 && counter % 3 == 0) {
 			wsd.sec++;
 		}
-		
-		
 		if(getTicks % ConfigManager.timeOneMin == 0 && counter % 3 == 0) {
 			wsd.min++;
 		}

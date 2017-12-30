@@ -3,6 +3,8 @@ package com.lg.realism.proxy;
 import com.lg.realism.Realism;
 import com.lg.realism.RegBlocks;
 import com.lg.realism.RegItems;
+import com.lg.realism.RegRenderLayer;
+import com.lg.realism.NewInventory.CAPforINV.reg.KeyHandler;
 import com.lg.realism.Sounds.SoundsRegister;
 import com.lg.realism.event.EventToolMode;
 import com.lg.realism.event.RenderTextEvent;
@@ -36,16 +38,16 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
-		
+		RegRenderLayer.register();
 		RegBlocks.registerRender();
 		RegItems.registerRender();
 		SoundsRegister.register();
+		KeyHandler.register();
 		 ClientRegistry.registerKeyBinding(RenderTextEvent.pressKeyOne); 
 		 ClientRegistry.registerKeyBinding(RenderTextEvent.pressKeyTwo); 
 		 ClientRegistry.registerKeyBinding(RenderTextEvent.pressKeyCharge); 
 		 ClientRegistry.registerKeyBinding(RenderTextEvent.pressKeyChargeM); 
-		 
-			ClientRegistry.registerKeyBinding(EventToolMode.KEY_TOOL_MODE);
+		 ClientRegistry.registerKeyBinding(EventToolMode.KEY_TOOL_MODE);
 			
 	}
 
@@ -53,13 +55,22 @@ public class ClientProxy extends CommonProxy {
 	public void postInit(FMLPostInitializationEvent event) {
 		super.postInit(event);
 		
-		final BlockColors block = FMLClientHandler.instance().getClient().getBlockColors();         
+		final BlockColors block = FMLClientHandler.instance().getClient().getBlockColors(); 
+		
 		block.registerBlockColorHandler(new IBlockColor() { 
 			
 			@Override
 			public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex)
-			{return worldIn != null && pos != null ? (tintIndex == 1 ? BiomeColorHelper.getGrassColorAtPos(worldIn, pos) : 0xFFFFFFFF) : ColorizerGrass.getGrassColor(0.5D, 1.0D);}                
-		}, RegBlocks.smallleaves,RegBlocks.smallleavesspruce,RegBlocks.smallleavesbirch,RegBlocks.mossblock,RegBlocks.smallleavesappletree,RegBlocks.leavesappletree);
+			{
+				return worldIn != null && pos != null ? (tintIndex == 1 ? BiomeColorHelper.getGrassColorAtPos(worldIn, pos) : 0xFFFFFFFF) : ColorizerGrass.getGrassColor(0.5D, 1.0D);
+				
+			}                
+		}, 
+		RegBlocks.smallleaves,
+		RegBlocks.smallleavesspruce,
+		RegBlocks.smallleavesbirch,
+		RegBlocks.mossblock,
+		RegBlocks.smallleavesappletree);
 
 		ItemColors color = FMLClientHandler.instance().getClient().getItemColors();
 		color.registerItemColorHandler(new IItemColor() {
@@ -69,7 +80,11 @@ public class ClientProxy extends CommonProxy {
 			public int colorMultiplier(ItemStack stack, int tintIndex) {
 				return block.colorMultiplier( RegBlocks.smallleaves.getStateFromMeta(0), (IBlockAccess)null, (BlockPos)null, tintIndex);}
 			},
-				RegBlocks.smallleaves,RegBlocks.smallleavesspruce,RegBlocks.mossblock,RegBlocks.smallleavesbirch,RegBlocks.smallleavesappletree,RegBlocks.leavesappletree);
+				RegBlocks.smallleaves,
+				RegBlocks.smallleavesspruce,
+				RegBlocks.mossblock,
+				RegBlocks.smallleavesbirch,
+				RegBlocks.smallleavesappletree);
 		
 	}
 

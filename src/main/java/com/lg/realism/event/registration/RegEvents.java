@@ -2,8 +2,10 @@ package com.lg.realism.event.registration;
 
 import com.lg.realism.Diseaces.Cold;
 import com.lg.realism.Diseaces.Grippe;
+import com.lg.realism.Particle.ParticleEvent;
 import com.lg.realism.event.AmfRenderEvent;
 import com.lg.realism.event.BurnTorchEvent;
+import com.lg.realism.event.CanceledVanillaInv;
 import com.lg.realism.event.CapEventHandler;
 import com.lg.realism.event.ClearDropsEvent;
 import com.lg.realism.event.ClonePlayer;
@@ -18,11 +20,13 @@ import com.lg.realism.event.EventToolMode;
 import com.lg.realism.event.FilledJar;
 import com.lg.realism.event.PlaceOnBlock;
 import com.lg.realism.event.RenderTextEvent;
+import com.lg.realism.event.SeasonEventer;
 import com.lg.realism.event.ShovelEvent;
 import com.lg.realism.event.TempEventHundler;
 import com.lg.realism.event.UnbreakBlock;
 import com.lg.realism.event.VisualTempBody;
 import com.lg.realism.event.WorldResetTime;
+import com.lg.realism.event.SystemWeight.EventWeight;
 
 import net.minecraftforge.common.MinecraftForge;
 
@@ -47,13 +51,18 @@ public class RegEvents {
 	    	register(new Grippe());
 	    	register(new VisualTempBody());
 	       	register(new FilledJar());
-	    	//register(new DelRecipesHundler());
+	    	register(new CanceledVanillaInv());
 	     	register(new WorldResetTime());
 	     	register(new AmfRenderEvent());
 	     	register(new EventToolMode());
 	     	register(new BurnTorchEvent());
-	   //  	register(new NewTimeHundler());
-	     //	register(new PickingUpEvent());
+	     	register(new SeasonEventer());
+	     	register(new EventWeight());
+	     	register(new ParticleEvent());
+	    // 	register(new SeasonEventer());
+	    // 	register(new SeasonEventer());
+	  //  	register(new EventPermPickup());
+	     	
 		}
 		
 		static void register(Object object) {

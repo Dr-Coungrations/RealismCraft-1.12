@@ -19,6 +19,8 @@ public class ConfigManager
    public static boolean enableTwoGenerator;
    public static boolean enableThirdGenerator;
    
+   public static int updateInv;
+   
    public static int timeOneSec;
    public static int timeOneMin;
    public static int timeOneHour;
@@ -26,10 +28,51 @@ public class ConfigManager
    public static int timeOneMonth;
    public static int timeOneSeason;
    public static int timeOneYear;
+   
+   //pm = player motion 
+   //spm = sprinting player motion 
+   //the number at the end - the extreme weight
+   public static float pm339;
+   public static float spm339;
+   
+   public static float pm678;
+   public static float spm678;
+   
+   public static float pm1017;
+   public static float spm1017;
+   
+   public static float pm1356;
+   public static float spm1356;
+   
+   public static float pm1695;
+   public static float spm1695;
+   
+   public static float pm2034;
+   public static float spm2034;
+
 
    public static void register(FMLPreInitializationEvent e) {
        config = new Configuration(e.getSuggestedConfigurationFile());
        config.load();
+       
+       pm339 = config.getFloat("pm339", "System Weight", 1.05F, 1.2F, 1.0F, I18n.format("config.pm339"), "config.pm339.name");
+       spm339 = config.getFloat("spm339", "System Weight", 1.01F, 1.07F, 1.0F, I18n.format("config.spm339"), "config.spm339.name");
+
+       pm678 = config.getFloat("pm678", "System Weight", 0.9F, 0.96F, 0.81F, I18n.format("config.pm678"), "config.pm678.name");
+       spm678 = config.getFloat("spm678", "System Weight", 0.9F, 0.96F, 0.81F, I18n.format("config.spm678"), "config.spm678.name");
+
+       pm1017 = config.getFloat("pm1017", "System Weight", 0.8F, 0.89F, 0.71F, I18n.format("config.pm1017"), "config.pm1017.name");
+       spm1017 = config.getFloat("spm1017", "System Weight", 0.8F, 0.89F, 0.71F, I18n.format("config.spm1017"), "config.spm1017.name");
+       
+       pm1356 = config.getFloat("pm1356", "System Weight", 0.7F, 0.79F, 0.61F, I18n.format("config.pm1356"), "config.pm1356.name");
+       spm1356 = config.getFloat("spm1356", "System Weight", 0.7F, 0.79F, 0.61F, I18n.format("config.spm1356"), "config.spm1356.name");
+       
+       pm1695 = config.getFloat("pm1695", "System Weight", 0.5F, 0.59F, 0.41F, I18n.format("config.pm1695"), "config.pm1695.name");
+       spm1695 = config.getFloat("spm1695", "System Weight", 0.5F, 0.59F, 0.41F, I18n.format("config.spm1695"), "config.spm1695.name");
+       
+       pm2034 = config.getFloat("pm2034", "System Weight", 0.4F, 0.49F, 0.31F, I18n.format("config.pm2034"), "config.pm2034.name");
+       spm2034 = config.getFloat("spm2034", "System Weight", 0.4F, 0.49F, 0.31F, I18n.format("config.spm2034"), "config.spm2034.name");
+       
        timeOneSec = config.getInt("timeOneSec", "Time Ticker", 20, Int.MinValue(), Int.MinValue(), I18n.format("config.timeOneSec"), "config.timeOneSec.name");
        timeOneMin = config.getInt("timeOneMin", "Time Ticker", 1200, Int.MinValue(), Int.MinValue(), I18n.format("config.timeOneMin"), "config.timeOneMin.name");
        timeOneHour = config.getInt("timeOneHour", "Time Ticker", 72000, Int.MinValue(), Int.MinValue(), I18n.format("config.timeOneHour"), "config.timeOneHour.name");
@@ -37,6 +80,8 @@ public class ConfigManager
        timeOneMonth = config.getInt("timeOneMonth", "Time Ticker", 51840000, Int.MinValue(), Int.MinValue(), I18n.format("config.timeOneMonth"), "config.timeOneMonth.name");
        timeOneSeason = config.getInt("timeOneSeason", "Time Ticker", 155520000, Int.MinValue(), Int.MinValue(), I18n.format("config.timeOneSeason"), "config.timeOneSeason.name");
        timeOneYear = config.getInt("timeOneYear", "Time Ticker", 622080000, Int.MinValue(), Int.MinValue(), I18n.format("config.timeOneYear"), "config.timeOneYear.name");
+       
+       updateInv = config.getInt("updateInv", "System Weight", 20, 20, 60, I18n.format("config.updateInv"), "config.updateInv.name");
        
        xTextTempBody = config.getInt("xTextTempBody", "Customization", 190, Int.MinValue(), Int.MaxValue(), I18n.format("config.xTextTempBody"), "config.xTextTempBody.name");
        yTextTempBody = config.getInt("yTextTempBody", "Customization", 20, Int.MinValue(),  Int.MaxValue(), I18n.format("config.yTextTempBody"), "config.yTextTempBody.name");

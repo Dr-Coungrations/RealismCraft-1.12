@@ -1,18 +1,18 @@
 package com.lg.realism.fire;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.lg.realism.GuiHandler;
+import com.lg.realism.Realism;
+import com.lg.realism.RegBlocks;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
-import net.minecraft.block.BlockRedstoneComparator;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -20,7 +20,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.Container;
@@ -41,11 +40,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.lg.realism.Realism;
-import com.lg.realism.RegBlocks;
-import com.lg.realism.RegItems;
-import com.lg.realism.API.TimerForCoord;
 
 public class BlockFire extends BlockContainer {
 
@@ -201,7 +195,7 @@ public class BlockFire extends BlockContainer {
 			if (tileentity instanceof BlockFireTileEntity)
 			{
 
-				playerIn.openGui(Realism.INSTANCE, BlockFireGuiHandler.BLOCK_FIRE_GUI_ID, worldIn, pos.getX(), pos.getY(), pos.getZ());      	
+				playerIn.openGui(Realism.INSTANCE, GuiHandler.BLOCK_FIRE_GUI_ID, worldIn, pos.getX(), pos.getY(), pos.getZ());      	
 			}
 
 			return true;

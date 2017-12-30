@@ -1,26 +1,85 @@
 package com.lg.realism.event;
 
-import com.lg.realism.Config.ConfigManager;
 import com.lg.realism.Realism.TimeTicker;
 
+import net.minecraft.init.Biomes;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeProvider;
+import net.minecraftforge.event.terraingen.BiomeEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class SeasonEventer {
-	int counter;
-	@SubscribeEvent
-	public void onWorldTick(TickEvent.WorldTickEvent event) {
-		World world = event.world;
-		TimeTicker wsd = TimeTicker.get(world);
-		counter++;
-		if(wsd.season % 3 == 0 && counter % 3 == 0) {
-			
-			
-			
-			
-		}
-		
-	}
 	
+	MinecraftServer ws = FMLCommonHandler.instance().getMinecraftServerInstance();
+	World world = ws.worlds[0];
+	
+	@SubscribeEvent
+	public void biomeColorGrass(BiomeEvent.GetGrassColor e) {	
+
+		for (Biome biome : BiomeProvider.allowedBiomes)
+        {
+				if (biome != Biomes.DESERT || biome != Biomes.DESERT_HILLS)
+				{
+					TimeTicker wsd = TimeTicker.get(world);
+					if(wsd.season == 0)e.setNewColor(0xFFFFFF);
+					//0xDDDD55 - лето
+					//0x89FF8F - весна
+					//0xBECE0F - осень
+					//0xFFFFFF - зима
+					e.setNewColor(0xBECE0F);
+				
+				}
+        }
+	}
+
+	@SubscribeEvent
+	public void biomeColorWater(BiomeEvent.GetWaterColor e) {
+		
+		
+		for (Biome biome : BiomeProvider.allowedBiomes)
+        {
+            if (biome != Biomes.DESERT || biome != Biomes.DESERT_HILLS)
+            {
+            	//0xDDDD55 - лето
+                e.setNewColor(0xDDDD55);
+                
+            }
+        }
+	}
+    @SubscribeEvent
+    public void onBiome(BiomeEvent e)
+    {
+        if (e.getBiome() == Biomes.FOREST_HILLS || e.getBiome() == Biomes.FOREST || e.getBiome() == Biomes.BEACH || e.getBiome() == Biomes.RIVER)
+        {
+            e.getBiome().temperature = 0.0F;
+            e.getBiome().enableRain = false;
+            e.getBiome().enableSnow = true;
+         //   e.getBiome().waterColor = 0xFF3235;
+        }
+    }
+	@SubscribeEvent
+	public void biomeColorFoliage(BiomeEvent.GetFoliageColor e) {
+		
+		
+		for (Biome biome : BiomeProvider.allowedBiomes)
+        {
+		
+            if (biome != Biomes.DESERT || biome != Biomes.DESERT_HILLS)
+            {
+            
+            	//0xDDDD55 - лето
+            	//0x700400 - красная листва
+            	//0xEE9200 - оранжевая листва
+            	//0xFFE269 - желтая листва 
+            	//0x00FF0D - весна
+            	//0xFFFFFF - зима(по идее листва должна пропадать)
+                e.setNewColor(0x700400);
+                
+            }
+			}
+	}
+
 }

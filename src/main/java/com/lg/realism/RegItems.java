@@ -4,6 +4,7 @@ import com.lg.realism.API.ItemDrink;
 import com.lg.realism.Basic.BasicDamageItem;
 import com.lg.realism.Basic.BasicFood;
 import com.lg.realism.Basic.BasicItem;
+import com.lg.realism.Blocks.FallenLeaves.ItemFallenLeaves;
 import com.lg.realism.Items.Counter;
 import com.lg.realism.Items.ItemRealPickaxe;
 import com.lg.realism.Items.ItemRealShovel;
@@ -14,6 +15,7 @@ import com.lg.realism.Items.RealismPickaxe;
 import com.lg.realism.Items.Rope;
 import com.lg.realism.Items.Stonehand;
 import com.lg.realism.Items.WetVineItem;
+import com.lg.realism.Items.Backpacks.ItemBackpack;
 import com.lg.realism.Items.FullShovel.FullDiamondShovel;
 import com.lg.realism.Items.FullShovel.FullGoldShovel;
 import com.lg.realism.Items.FullShovel.FullIronShovel;
@@ -98,6 +100,10 @@ public class RegItems {
 	public static Item goldpickaxe = new RealismPickaxe("goldpickaxe",Realism.GoldenMaterial);
 	public static Item diamondpickaxe = new RealismPickaxe("diamondpickaxe",Realism.DiamondMaterial);
 	
+	
+	//Семена для саженцев
+	//public static Item appleseed = new SeedOakSapling("appleseed");
+	//Саженцы которые уставливают саженец
 	public static Item oaksapling = new OakSapling("oaksapling",64);
 	public static Item birchsapling = new BirchSapling("birchsapling",64);
 	public static Item sprucesapling = new SpruceSapling("sprucesapling",64);
@@ -120,15 +126,22 @@ public class RegItems {
 	
 	public static Item counter = new Counter("counter",1);
 
+
+	public static Item backpack = new ItemBackpack("backpack",1);
 	
+	public static Item itemfallen = new ItemFallenLeaves("itemfallen");
+
 	public static void register() {
 		// MP's register
+//		registerItem(appleseed);
+		registerItem(itemfallen);
 		
 		registerItem(wood_shovel);
 		registerItem(stone_shovel);
 		registerItem(wood_pickaxe);
 		registerItem(wood_pickaxe_handle);
 		
+		registerItem(backpack);
 		registerItem(thermo);
 		
 		registerItem(counter);
@@ -189,8 +202,9 @@ public class RegItems {
 
 	}
 	public static void registerRender() {
+		registerRenderItem(itemfallen);
 		registerRenderItem(thermo);
-		
+		registerRenderItem(backpack);
 		registerRenderItem(counter);
 		registerRenderItem(cookedplayermeat);
 		registerRenderItem(playermeat);
@@ -198,6 +212,7 @@ public class RegItems {
 		registerRenderItem(konin);
 		registerRenderItem(birchsapling);
 		registerRenderItem(branchbirchitem);
+///		registerRenderItem(appleseed);
 		
 		registerRenderItem(oreitemiron);
 		registerRenderItem(oreitemgold);

@@ -1,9 +1,14 @@
 package ru.ivasik.seasons;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
 
 @Mod(modid = "seasons", name = "Seasons", version = "1.0", dependencies = "required-after:realism;")
 public final class Seasons
@@ -17,6 +22,14 @@ public final class Seasons
     public void pre(FMLPreInitializationEvent e)
     {
         new EventsHandler();
+    }
+
+    @Mod.EventHandler
+    public void server(FMLServerStartedEvent e)
+    {
+        MinecraftServer instance = FMLCommonHandler.instance().getMinecraftServerInstance();
+
+        World w = instance.getEntityWorld();
     }
 
     public static int getHour()

@@ -26,7 +26,7 @@ public class FilledJar {
 	@SubscribeEvent
 	public void fillJar(PlayerInteractEvent.RightClickBlock event){
 
-		final World world = (World)Minecraft.getMinecraft().world;
+		final World world = Minecraft.getMinecraft().world;
 		EntityPlayer player = (EntityPlayer) event.getEntity();
 		ItemStack is = player.getHeldItem(EnumHand.MAIN_HAND);
 		RayTraceResult raytraceresult = this.rayTrace(world, player, true);
@@ -39,12 +39,13 @@ public class FilledJar {
 
 				if (world.getBlockState(blockpos).getMaterial() == Material.WATER)
 				{
-					if (is != null && is.getItem() == RegItems.itemcup) {
+					if (is.getItem() == RegItems.itemcup) {
 						player.getHeldItem(EnumHand.MAIN_HAND).shrink(1);
 						player.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(RegItems.itemcupfill));
 						player.world.playSound(player, blockpos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.NEUTRAL, 0.8F, 1.0F);
 					}
-					if (is != null && is.getItem() == RegItems.annealedclaycup) {
+
+					if (is.getItem() == RegItems.annealedclaycup) {
 						player.getHeldItem(EnumHand.MAIN_HAND).shrink(1);
 						player.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(RegItems.annealedclaycupfull));
 						player.world.playSound(player, blockpos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.NEUTRAL, 0.8F, 1.0F);

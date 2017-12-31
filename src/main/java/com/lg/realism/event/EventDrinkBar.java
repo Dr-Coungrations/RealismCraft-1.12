@@ -7,13 +7,16 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 /*
  * Created with the help of a timaxa007
  */
-public class EventDrinkBar {
-	
+public class EventDrinkBar
+{
 	static Minecraft mc = Minecraft.getMinecraft();
 	public static final ResourceLocation textureWater = new ResourceLocation("realism:textures/gui/drinkbar.png");
 	
@@ -21,7 +24,7 @@ public class EventDrinkBar {
 	public void renderWLevel(RenderGameOverlayEvent.Post event) {
 		IBarLevel capabilities = Minecraft.getMinecraft().player.getCapability(WaterBarProv.LEVEL_CAP, null);
 		if (event.isCancelable() || event.getType() != ElementType.FOOD) return;
-		//Matrix draw
+
 		GL11.glPushMatrix();
 			GL11.glEnable(GL11.GL_BLEND);
 				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);

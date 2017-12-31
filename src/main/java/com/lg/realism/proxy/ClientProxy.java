@@ -4,25 +4,20 @@ import com.lg.realism.Realism;
 import com.lg.realism.RegBlocks;
 import com.lg.realism.RegItems;
 import com.lg.realism.Sounds.SoundsRegister;
-import com.lg.realism.event.EventToolMode;
-import com.lg.realism.event.RenderTextEvent;
-import net.minecraft.block.state.IBlockState;
+import com.lg.realism.event.*;
+import com.lg.realism.event.registration.RegEvents;
 import net.minecraft.client.renderer.color.BlockColors;
-import net.minecraft.client.renderer.color.IBlockColor;
-import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.client.renderer.color.ItemColors;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ColorizerGrass;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.biome.BiomeColorHelper;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-public class ClientProxy extends CommonProxy
+public final class ClientProxy extends CommonProxy
 {
 	public static String KEY_CATEGORY = "key.categories." + Realism.MODID;
 	public static EventToolMode.EnumToolMode currentToolMode = EventToolMode.EnumToolMode.FULL;
@@ -32,6 +27,7 @@ public class ClientProxy extends CommonProxy
 	{
 		super.preInit(e);
 		RegItems.preRegisterRender();
+		new RegEvents.Client();
 	}
 
 	@Override

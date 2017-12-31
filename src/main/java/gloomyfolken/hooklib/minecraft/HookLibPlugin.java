@@ -3,7 +3,6 @@ package gloomyfolken.hooklib.minecraft;
 
 import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.relauncher.CoreModManager;
-import net.minecraftforge.fml.relauncher.FMLRelaunchLog;
 
 import java.lang.reflect.Field;
 import java.util.Map;

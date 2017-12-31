@@ -4,33 +4,21 @@ import com.lg.realism.PSystem.AbstractPacket;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 
-public class TimePacketToClient extends AbstractPacket<TimePacketToClient>
+public class TimePacketToClient extends AbstractPacket
 {
-	private static int time;
-	
 	public TimePacketToClient() {}
-	public TimePacketToClient(int i)
+	public TimePacketToClient(int time)
     {
-		time = i;
-	}
-	
-	@Override
-	public void fromBytes(ByteBuf buf)
-    {
-		time = buf.readInt();
-	}
-	
-	@Override
-	public void toBytes(ByteBuf buf)
-    {
-		buf.writeInt(time);
+		buf().writeInt(time);
 	}
 	
 	@Override
 	public void handleClientSide(EntityPlayer player)
     {
-		if (player!= null)
+		if (player != null)
 		{
+			int time = buf().readInt();
+
 			ISeasonHandler season = player.getCapability(SeasonProvider.LEVEL_CAP, null);
 			season.setAutunm(time);
 			season.setWinter(time);
@@ -38,7 +26,4 @@ public class TimePacketToClient extends AbstractPacket<TimePacketToClient>
 			season.setSpring(time);
 		}
 	}
-	
-	@Override
-	public void handleServerSide(EntityPlayer player) {}
 }

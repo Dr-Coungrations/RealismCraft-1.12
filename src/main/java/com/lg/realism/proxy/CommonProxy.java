@@ -10,6 +10,7 @@ import com.lg.realism.Realism;
 import com.lg.realism.RegBlocks;
 import com.lg.realism.RegItems;
 import com.lg.realism.WorldGenRegistry;
+import com.lg.realism.event.registration.RegEvents;
 import com.lg.realism.fire.BlockFireGuiHandler;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -27,6 +28,7 @@ public class CommonProxy
     	RegBlocks.register();
     	RegItems.register();
     	new NetworkHandler();
+		new RegEvents.Server();
 		CapabilityManager.INSTANCE.register(IBarLevel.class, new WaterLevelStorage(), WaterBar.class);
     }
 

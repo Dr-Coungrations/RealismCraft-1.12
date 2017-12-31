@@ -27,7 +27,7 @@ public class EventCounterDrink {
 			IBarLevel capabilities = event.getEntity().getCapability(WaterBarProv.LEVEL_CAP, null);
 
 			if (event.getItem().getItemUseAction() == EnumAction.DRINK) {
-				if (event.getItem().getItem() != null && event.getItem().getItem() == RegItems.itemcupfill) {
+				if (event.getItem().getItem() == RegItems.itemcupfill) {
 					capabilities.reduceWaterLevel(30);
 					event.getItem().shrink(1);
 					player.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(RegItems.itemcup));

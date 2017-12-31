@@ -1,5 +1,3 @@
 package com.lg.realism.event;
 
-public class RenderThermo {
-
-}
+public final class RenderThermo {}

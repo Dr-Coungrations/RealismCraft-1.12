@@ -19,9 +19,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
-public class RegItems {
-
-	
+public class RegItems
+{
 	public static Item fullstoneshovel = new FullStoneShovel("fullstoneshovel",1);
 	public static Item fullwoodshovel = new FullWoodenShovel("fullwoodshovel",1);
 	public static Item fullironshovel = new FullIronShovel("fullironshovel",1);
@@ -95,7 +94,6 @@ public class RegItems {
 			   oreitemcopper = new BasicItem("oreitemcopper",64),
 			   oreitemdiamond = new BasicItem("oreitemdiamond",64);
 		// MaximPixel's Items
-	
 
 	public static Item wood_shovel = new ItemRealShovel("Wood", "wood_shovel");
 	public static Item stone_shovel = new ItemRealShovel("Stone", "stone_shovel");
@@ -106,8 +104,8 @@ public class RegItems {
 	
 	public static Item counter = new Counter("counter",1);
 
-	
-	public static void register() {
+	public static void register()
+    {
 		// MP's register
 		
 		registerItem(wood_shovel);
@@ -172,9 +170,10 @@ public class RegItems {
 		registerItem(dryvineitem);
 		registerItem(pointedstone);
 		registerItem(clumpclay);
-
 	}
-	public static void registerRender() {
+
+	public static void registerRender()
+    {
 		registerRenderItem(thermo);
 		
 		registerRenderItem(counter);
@@ -258,7 +257,8 @@ public class RegItems {
 		registerRenderItem(wood_pickaxe_handle, new ResourceLocation("stick"));
 	}
 	
-	public static void preRegisterRender() {
+	public static void preRegisterRender()
+    {
 		String modid = Realism.MODID;
 		
 		registerCustomModel(wood_shovel, 0, new ResourceLocation(modid, "wooden_shovel_empty"));
@@ -271,27 +271,33 @@ public class RegItems {
 		registerCustomModel(stone_shovel, 3, new ResourceLocation(modid, "stone_shovel_gravel"));
 	}
 	
-	private static void registerItem(Item item) {
+	private static void registerItem(Item item)
+    {
 		ForgeRegistries.ITEMS.register(item);
 	}
 	
-	private static void registerCustomModel(Item item, int meta, ResourceLocation location) {
+	private static void registerCustomModel(Item item, int meta, ResourceLocation location)
+    {
 		ModelLoader.setCustomModelResourceLocation(item, meta, getModel(location));
 	}
 	
-	private static void registerRenderItem(Item item) {
+	private static void registerRenderItem(Item item)
+    {
 		registerRenderItem(item, item.getRegistryName());
 	}
 	
-	private static void registerRenderItem(Item item, ResourceLocation location) {
+	private static void registerRenderItem(Item item, ResourceLocation location)
+    {
 		registerRenderItem(item, 0, location);
 	}
 	
-	private static void registerRenderItem(Item item, int meta, ResourceLocation location) {
+	private static void registerRenderItem(Item item, int meta, ResourceLocation location)
+    {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, meta, getModel(location));
 	}
 	
-	public static ModelResourceLocation getModel(ResourceLocation location) {
+	private static ModelResourceLocation getModel(ResourceLocation location)
+    {
 		return new ModelResourceLocation(location, "inventory");
 	}
 }

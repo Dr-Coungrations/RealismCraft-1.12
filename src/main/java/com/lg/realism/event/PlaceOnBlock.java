@@ -12,35 +12,46 @@ import net.minecraft.util.EnumHand;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class PlaceOnBlock {
-	public static final PropertyEnum<BlockLog.EnumAxis> LOG_AXIS = PropertyEnum.<BlockLog.EnumAxis>create("axis", BlockLog.EnumAxis.class);	
+public final class PlaceOnBlock
+{
+	public static final PropertyEnum<BlockLog.EnumAxis> LOG_AXIS = PropertyEnum.create("axis", BlockLog.EnumAxis.class);
+
 	@SubscribeEvent
-	public void placeble(RightClickBlock.RightClickBlock event){
+	public void placeble(RightClickBlock.RightClickBlock e)
+    {
+		ItemStack is = e.getEntityPlayer().getHeldItem(EnumHand.MAIN_HAND);
 
-		ItemStack is = event.getEntityPlayer().getHeldItem(EnumHand.MAIN_HAND);
-
-		if (is != null && ( is.getItem() == RegItems.wetvineitem)) {
-			if (event.getWorld().getBlockState(event.getPos()) == Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.OAK).withProperty(LOG_AXIS, BlockLog.EnumAxis.Z)
-					|| event.getWorld().getBlockState(event.getPos()) == Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.OAK).withProperty(LOG_AXIS, BlockLog.EnumAxis.X)) {		
-				event.getWorld().setBlockState(event.getPos().up(),RegBlocks.wetvine.getDefaultState());
-			}
-		}
-		if (is != null && (is.getItem() == RegItems.oaksapling)) {
-			if (event.getWorld().getBlockState(event.getPos()) == Blocks.GRASS.getDefaultState() || event.getWorld().getBlockState(event.getPos()) == Blocks.DIRT.getDefaultState()){
-				event.getWorld().setBlockState(event.getPos().up(),RegBlocks.growtreeone.getDefaultState());
-			}
-		}
-		if (is != null && (is.getItem() == RegItems.birchsapling)) {
-			if (event.getWorld().getBlockState(event.getPos()) == Blocks.GRASS.getDefaultState() || event.getWorld().getBlockState(event.getPos()) == Blocks.DIRT.getDefaultState()){
-				event.getWorld().setBlockState(event.getPos().up(),RegBlocks.growtreeonebirch.getDefaultState());
+		if (is.getItem() == RegItems.wetvineitem)
+		{
+			if (e.getWorld().getBlockState(e.getPos()) == Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.OAK).withProperty(LOG_AXIS, BlockLog.EnumAxis.Z)
+					|| e.getWorld().getBlockState(e.getPos()) == Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.OAK).withProperty(LOG_AXIS, BlockLog.EnumAxis.X))
+			{
+				e.getWorld().setBlockState(e.getPos().up(),RegBlocks.wetvine.getDefaultState());
 			}
 		}
 
-		if (is != null && (is.getItem() == RegItems.sprucesapling)) {
-			if (event.getWorld().getBlockState(event.getPos()) == Blocks.GRASS.getDefaultState() || event.getWorld().getBlockState(event.getPos()) == Blocks.DIRT.getDefaultState()){
-				event.getWorld().setBlockState(event.getPos().up(),RegBlocks.growtreeonespruce.getDefaultState());
+		if (is.getItem() == RegItems.oaksapling)
+		{
+			if (e.getWorld().getBlockState(e.getPos()) == Blocks.GRASS.getDefaultState() || e.getWorld().getBlockState(e.getPos()) == Blocks.DIRT.getDefaultState())
+			{
+				e.getWorld().setBlockState(e.getPos().up(),RegBlocks.growtreeone.getDefaultState());
+			}
+		}
+
+		if (is.getItem() == RegItems.birchsapling)
+		{
+			if (e.getWorld().getBlockState(e.getPos()) == Blocks.GRASS.getDefaultState() || e.getWorld().getBlockState(e.getPos()) == Blocks.DIRT.getDefaultState())
+			{
+				e.getWorld().setBlockState(e.getPos().up(),RegBlocks.growtreeonebirch.getDefaultState());
+			}
+		}
+
+		if (is.getItem() == RegItems.sprucesapling)
+		{
+			if (e.getWorld().getBlockState(e.getPos()) == Blocks.GRASS.getDefaultState() || e.getWorld().getBlockState(e.getPos()) == Blocks.DIRT.getDefaultState())
+			{
+				e.getWorld().setBlockState(e.getPos().up(),RegBlocks.growtreeonespruce.getDefaultState());
 			}
 		}
 	}
-
 }

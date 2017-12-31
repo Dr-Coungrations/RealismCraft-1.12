@@ -3,10 +3,7 @@ package com.lg.realism.Blocks.Cactus;
 import com.lg.realism.API.BlockSide;
 import com.lg.realism.Realism;
 import com.lg.realism.RegBlocks;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,7 +18,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import java.util.List;
-import java.util.Random;
 
 public class SideCactus extends BlockSide
 {

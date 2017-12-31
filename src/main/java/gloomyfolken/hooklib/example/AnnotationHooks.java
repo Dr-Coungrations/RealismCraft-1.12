@@ -1,6 +1,5 @@
 package gloomyfolken.hooklib.example;
 
-import com.google.common.base.Predicate;
 import com.lg.realism.RegItems;
 import gloomyfolken.hooklib.asm.Hook;
 import gloomyfolken.hooklib.asm.ReturnCondition;
@@ -26,7 +25,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenCactus;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
-import javax.annotation.Nullable;
 import java.util.Random;
 public class AnnotationHooks {
 

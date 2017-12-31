@@ -2,7 +2,6 @@ package com.lg.realism.Basic;
 
 import com.lg.realism.Realism;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 /**
  * Basics API class by block bush
  * @author LegendGamer

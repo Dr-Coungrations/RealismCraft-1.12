@@ -4,37 +4,20 @@ import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 
-public class TemperatureBodyServerMessage extends AbstractPacket<TemperatureBodyServerMessage>
+public final class TemperatureBodyServerMessage extends AbstractPacket
 {
-	private static float temp;
-	
 	public TemperatureBodyServerMessage() {}
-	public TemperatureBodyServerMessage(float i)
+	public TemperatureBodyServerMessage(float temp)
 	{
-		temp = i;
+		buf().writeFloat(temp);
 	}
-	
-	@Override
-	public void fromBytes(ByteBuf buf)
-	{
-		temp = buf.readFloat();
-	}
-	
-	@Override
-	public void toBytes(ByteBuf buf)
-	{
-		buf.writeFloat(temp);
-	}
-	
-	@Override
-	public void handleClientSide(EntityPlayer player) {}
 	
 	@Override
 	public void handleServerSide(EntityPlayer player)
 	{
 		if (player != null)
 		{
-			player.getCapability(WaterBarProv.LEVEL_CAP, null).setTempBody(temp);
+			player.getCapability(WaterBarProv.LEVEL_CAP, null).setTempBody(buf().readFloat());
 		}
 	}
 }

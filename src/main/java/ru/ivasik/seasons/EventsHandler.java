@@ -2,18 +2,15 @@ package ru.ivasik.seasons;
 
 import net.minecraft.init.Biomes;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeProvider;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.terraingen.BiomeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import ru.ivasik.seasons.data.Date;
+import ru.ivasik.seasons.api.IDate;
 import ru.ivasik.seasons.data.DateProvider;
 import ru.ivasik.seasons.data.DateStorage;
-import ru.ivasik.seasons.api.IDate;
 
 public final class EventsHandler
 {

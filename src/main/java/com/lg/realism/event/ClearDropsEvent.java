@@ -16,12 +16,12 @@ public class ClearDropsEvent {
 
 	@SubscribeEvent
 	public void onDrop(BlockEvent.HarvestDropsEvent event) {		
-		EntityPlayer player = (EntityPlayer)event.getHarvester();
+		EntityPlayer player = event.getHarvester();
 		if(!event.getWorld().isRemote) { 	
 			if(player != null) {
 				ItemStack is = player.getHeldItem(EnumHand.MAIN_HAND);
 				
-				if(is != null && is.getItem() != Items.STONE_SHOVEL ){
+				if(is.getItem() != Items.STONE_SHOVEL){
 					if(event.getState().getBlock().equals(Blocks.GRASS_PATH) || event.getState().getBlock().equals(Blocks.FARMLAND) || event.getState().getBlock().equals(Blocks.DIRT) || event.getState().getBlock().equals(Blocks.GRASS)) {
 						event.getDrops().clear();
 						event.getDrops().add(new ItemStack(RegItems.handfuldirt,event.getWorld().rand.nextInt(5)));

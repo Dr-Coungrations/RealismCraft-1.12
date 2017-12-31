@@ -15,7 +15,6 @@ import net.minecraft.world.storage.MapStorage;
 import net.minecraft.world.storage.WorldSavedData;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -28,19 +27,21 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = Realism.MODID, name = Realism.NAME, version = Realism.VERSION)
-public class Realism
+import java.util.Objects;
+
+@Mod(modid = Realism.MODID, name = "Realism Mod", version = "1.0")
+public final class Realism
 {
 	private int counter = 0;
-	public static final String MODID = "realism", VERSION = "1.0", NAME = "Realism Mod";
+	public static final String MODID = "realism";
 	public static final Logger LOGGER = LogManager.getLogger();
 	public static CreativeTabs tabMain = new MainRealism("tabMain"), tabDev = new DevRealism("tabDev");
 
-	@SidedProxy(clientSide = "com.lg.realism.proxy.ClientProxy", serverSide = "com.lg.realism.proxy.CommonProxy")
-	public static CommonProxy proxy;
-
 	@Mod.Instance
 	public static Realism INSTANCE;
+
+	@SidedProxy(clientSide = "com.lg.realism.proxy.ClientProxy", serverSide = "com.lg.realism.proxy.CommonProxy")
+	public static CommonProxy proxy;
 
 	//Materials
 	public static Item.ToolMaterial
@@ -51,25 +52,16 @@ public class Realism
 			DiamondMaterial = EnumHelper.addToolMaterial("realism:DiamondMaterial", 4, 2600, 8.0F, 4.0F, 0);
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent e)
+	public void pre(FMLPreInitializationEvent e)
 	{
 		GameRegistry.registerTileEntity(BlockFireTileEntity.class, "BlockFireTileEntity");
 		new BiomeInit();
 		proxy.preInit(e);
 
 		MinecraftForge.EVENT_BUS.register(this);
-		RegEvents.register();
 		LOGGER.info("[MOD] Realism Mod enabled and loaded");
 
-		if (ConfigManager.debugGeneration)
-		{
-			LOGGER.info("Generation debug enable");
-		}
-
-		if (!ConfigManager.debugGeneration)
-		{
-			LOGGER.info("Generation debug disable");
-		}
+        LOGGER.info(ConfigManager.debugGeneration ? "Generation debug enable" : "Generation debug disable");
 	}
 
 	@EventHandler
@@ -79,9 +71,9 @@ public class Realism
 	}
 
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event)
+	public void post(FMLPostInitializationEvent e)
 	{
-		proxy.postInit(event);
+		proxy.postInit(e);
 	}
 
 	/*
@@ -94,7 +86,7 @@ public class Realism
 		{
 			counter++;
 			TimeTicker wsd = TimeTicker.get(e.world);
-			int getTicks = (int)e.world.getTotalWorldTime();
+			int getTicks = (int) e.world.getTotalWorldTime();
 
 			if (getTicks % ConfigManager.timeOneSec == 0 && counter % 3 == 0)
 			{
@@ -134,57 +126,58 @@ public class Realism
 			wsd.markDirty();
 		}
 	}
-	public static class TimeTicker extends WorldSavedData {
+
+	public static class TimeTicker extends WorldSavedData
+    {
 		private static final String name = "wsdName";
 
 		public long century  = 0;
-		public int year  = 0;
-		public int month = 0;
-		public int day   = 0;
-		public int sec   = 0;
-		public int min   = 0;
-		public int hour  = 0;
+		public int year = 0, month = 0, day = 0, sec = 0, min = 0, hour = 0;
 		
 		public int season = 0;
 
-		public TimeTicker(String name) {
+		TimeTicker(String name)
+        {
 			super(name);
 		}
 
 		@Override
-		public void readFromNBT(NBTTagCompound nbt) {
+		public void readFromNBT(NBTTagCompound nbt)
+        {
 			sec = nbt.getInteger("sec");
 			min = nbt.getInteger("min");
 			day = nbt.getInteger("day");
 			month = nbt.getInteger("month");
 			year = nbt.getInteger("year");
 			season = nbt.getInteger("season");
-	//		century = nbt.getLong("century");
+            //century = nbt.getLong("century");
 		}
 
 		@Override
-		public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
+		public NBTTagCompound writeToNBT(NBTTagCompound nbt)
+        {
 			nbt.setInteger("min", min);
 			nbt.setInteger("sec", sec);
 			nbt.setInteger("day", day);
 			nbt.setInteger("month", month);
 			nbt.setInteger("season", season);
 			nbt.setInteger("year", year);
-	//		nbt.setLong("century", century);
+            //nbt.setLong("century", century);
 			return nbt;
 		}
 
-		public static TimeTicker get(World world) {
+		public static TimeTicker get(World world)
+        {
 			MapStorage storage = world.getMapStorage();
 			TimeTicker instance = (TimeTicker) storage.getOrLoadData(TimeTicker.class, name);
-			if (instance == null) {
+
+			if (instance == null)
+			{
 				instance = new TimeTicker(name);
 				storage.setData(name, instance);
 				instance.markDirty();
-
 			}
 			return instance;
 		}
 	}
-
 }

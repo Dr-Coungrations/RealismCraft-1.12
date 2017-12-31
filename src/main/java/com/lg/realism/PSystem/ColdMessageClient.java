@@ -4,36 +4,18 @@ import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 
-public class ColdMessageClient extends AbstractPacket<ColdMessageClient>
+public final class ColdMessageClient extends AbstractPacket
 {
-	private static boolean temp;
-	
 	public ColdMessageClient() {}
-	public ColdMessageClient(boolean i) {
-		temp = i;
-	}
-	
-	@Override
-	public void fromBytes(ByteBuf buf)
-    {
-		temp = buf.readBoolean();
-	}
-	
-	@Override
-	public void toBytes(ByteBuf buf)
-    {
-		buf.writeBoolean(temp);
+	public ColdMessageClient(boolean temp)
+	{
+        buf().writeBoolean(temp);
 	}
 	
 	@Override
 	public void handleClientSide(EntityPlayer player)
     {
 		if (player != null)
-		{
-			player.getCapability(WaterBarProv.LEVEL_CAP, null).setCommonCold(temp);
-		}
+		    player.getCapability(WaterBarProv.LEVEL_CAP, null).setCommonCold(buf().readBoolean());
 	}
-	
-	@Override
-	public void handleServerSide(EntityPlayer player) {}
 }

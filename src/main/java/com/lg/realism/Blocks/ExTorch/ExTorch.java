@@ -1,11 +1,9 @@
 package com.lg.realism.Blocks.ExTorch;
 
-import com.google.common.base.Predicate;
 import com.lg.realism.Basic.BasicBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;

@@ -8,7 +8,8 @@ import com.lg.realism.World.WorldGeneratorOne;
 import com.lg.realism.World.WorldGeneratorThree;
 import com.lg.realism.World.WorldGeneratorTwo;
 
-public class WorldGenRegistry {
+public class WorldGenRegistry
+{
 	public static WorldGeneratorOne wgo = new WorldGeneratorOne();
 	public static WorldGeneratorTwo wgt = new WorldGeneratorTwo();
 	public static WorldGeneratorThree wgth = new WorldGeneratorThree();

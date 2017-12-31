@@ -17,7 +17,7 @@ public class EventToolMode {
 	
 	public static KeyBinding KEY_TOOL_MODE = new KeyBinding("key.toolMode", Keyboard.KEY_J, ClientProxy.KEY_CATEGORY);
 	
-	public static enum EnumToolMode {
+	public enum EnumToolMode {
 		FULL(0), TAKE(1), ROAD(2);
 		
 		private int id;

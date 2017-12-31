@@ -37,7 +37,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
-public class RegBlocks {
+public class RegBlocks
+{
 	public static Block panehorizontal = new PaneHorizontal(Material.WOOD, "panehorizontal", 3F, 3F, SoundType.WOOD);
 	//appletree
 	public static Block blockappletree = new BlockAppleTree(Material.WOOD, "blockappletree", 6F, 6F, SoundType.WOOD);
@@ -101,7 +102,6 @@ public class RegBlocks {
 	public static Block coralblock = new BasicBlockWithDropItem(Material.ROCK, "coralblock", 3F, 3F, SoundType.STONE, Item.getItemFromBlock(RegBlocks.corals), 2,0);
 	
 	public static Block cumpfire = new BlockFire("cumpfire", false);
-	
 
 	public static Block testgen = new TestGen(Material.LEAVES, "testgen", 0.1F, 0.1F, SoundType.GROUND);
 	
@@ -115,14 +115,13 @@ public class RegBlocks {
 
 	public static Block blockburnttree = new BlockBurntTree(Material.WOOD, "blockburnttree", 6F, "axe",  1, 3F, SoundType.WOOD);
 	public static Block blockdeadtree = new BlockDeadTree(Material.WOOD, "blockdeadtree", 6F, "axe",  1, 3F, SoundType.WOOD);
-	
 
-	
 	public static Block torch = new Torch();
 	public static Block extorch = new ExTorch();
 	
 //	public static Block fdirt = new FallingDirt(Material.WOOD, "fdirt", 6F, 1, SoundType.WOOD);
-	public static void register() {
+	public static void register()
+    {
 		registerBlock(sprucebranch);
 	//	registerBlock(fdirt);
 		registerBlock(torch);
@@ -171,7 +170,9 @@ public class RegBlocks {
 		registerBlock(growtreetwospruce);
 		registerBlock(smallleavesspruce);
 	}
-	public static void registerRender() {
+
+	public static void registerRender()
+    {
 		registerRenderBlock(sprucebranch);
 	//	registerRenderBlock(fdirt);
 		registerRenderBlock(extorch);
@@ -220,12 +221,15 @@ public class RegBlocks {
 		registerRenderBlock(growtreetwospruce);
 		registerRenderBlock(smallleavesspruce);
 	}
-	public static void registerBlock(Block block) {
+
+	private static void registerBlock(Block block)
+    {
 		ForgeRegistries.BLOCKS.register(block);
 		ForgeRegistries.ITEMS.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
 	}
-	public static void registerRenderBlock(Block block) {
+
+	private static void registerRenderBlock(Block block)
+    {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 	}
-	
 }

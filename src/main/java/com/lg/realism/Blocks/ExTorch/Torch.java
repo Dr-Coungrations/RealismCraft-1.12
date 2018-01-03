@@ -9,7 +9,7 @@ import javax.annotation.Nullable;
 import com.google.common.base.Predicate;
 import com.lg.realism.RegBlocks;
 import com.lg.realism.API.TimerForCoord;
-import com.lg.realism.Basic.BasicBlock;
+import com.lg.realism.Basic.BasicBlock.BasicBlock;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;

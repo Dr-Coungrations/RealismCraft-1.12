@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.lg.realism.Realism;
 import com.lg.realism.RegItems;
-import com.lg.realism.Basic.DevBasicBlock;
+import com.lg.realism.Basic.BasicBlock.DevBasicBlock;
 
 public class DryVine extends DevBasicBlock{
 	protected static final AxisAlignedBB dryvine_AABB = new AxisAlignedBB(0D, 0.0D, 0D, 1D, 0.1D, 1D);

@@ -1,6 +1,6 @@
 package com.lg.realism.Items;
 
-import com.lg.realism.Basic.BasicItem;
+import com.lg.realism.Basic.BasicItem.BasicItem;
 
 public class Kaolin extends BasicItem{
 

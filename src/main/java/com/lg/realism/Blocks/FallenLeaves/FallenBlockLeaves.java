@@ -5,7 +5,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import com.lg.realism.Realism;
-import com.lg.realism.Basic.BasicBlock;
+import com.lg.realism.Basic.BasicBlock.BasicBlock;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;

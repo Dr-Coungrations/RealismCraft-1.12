@@ -1,10 +1,11 @@
 package com.lg.realism.PSystem;
 
-import io.netty.buffer.ByteBuf;
-import net.minecraft.entity.player.EntityPlayer;
-
 import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
 import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
+
+import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 
 public class TemperatureBodyServerMessage extends AbstractPacket<TemperatureBodyServerMessage> {
 	
@@ -32,7 +33,7 @@ public class TemperatureBodyServerMessage extends AbstractPacket<TemperatureBody
 	}
 	
 	@Override
-	public void handleServerSide(EntityPlayer player) {
+	public void handleServerSide(EntityPlayerMP player) {
 		if(player!= null){
 			IBarLevel cap = player.getCapability(WaterBarProv.LEVEL_CAP, null);
 			cap.setTempBody(temp);

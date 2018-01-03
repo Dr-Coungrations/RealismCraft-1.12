@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 import com.lg.realism.RegBlocks;
 import com.lg.realism.RegItems;
-import com.lg.realism.Basic.BasicItem;
+import com.lg.realism.Basic.BasicItem.BasicItem;
 
 public class WetVineItem extends BasicItem{
 

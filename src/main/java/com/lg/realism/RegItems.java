@@ -1,9 +1,9 @@
 package com.lg.realism;
 
 import com.lg.realism.API.ItemDrink;
-import com.lg.realism.Basic.BasicDamageItem;
-import com.lg.realism.Basic.BasicFood;
-import com.lg.realism.Basic.BasicItem;
+import com.lg.realism.Basic.BasicItem.BasicDamageItem;
+import com.lg.realism.Basic.BasicItem.BasicFood;
+import com.lg.realism.Basic.BasicItem.BasicItem;
 import com.lg.realism.Blocks.FallenLeaves.ItemFallenLeaves;
 import com.lg.realism.Items.Counter;
 import com.lg.realism.Items.ItemRealPickaxe;

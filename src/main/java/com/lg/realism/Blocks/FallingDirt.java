@@ -1,6 +1,6 @@
 package com.lg.realism.Blocks;
 
-import com.lg.realism.Basic.BasicBlockFalling;
+import com.lg.realism.Basic.BasicBlock.BasicBlockFalling;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

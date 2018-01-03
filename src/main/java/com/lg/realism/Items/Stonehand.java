@@ -10,7 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import com.lg.realism.RegItems;
-import com.lg.realism.Basic.BasicItem;
+import com.lg.realism.Basic.BasicItem.BasicItem;
 
 public class Stonehand extends BasicItem{
 

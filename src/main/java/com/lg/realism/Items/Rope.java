@@ -1,5 +1,7 @@
 package com.lg.realism.Items;
 
+import com.lg.realism.Basic.BasicItem.BasicItem;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.creativetab.CreativeTabs;
@@ -12,8 +14,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import com.lg.realism.Basic.BasicItem;
 
 public class Rope extends BasicItem {
 

@@ -1,5 +1,7 @@
 package com.lg.realism.Blocks.Ocean;
 
+import com.lg.realism.Basic.BasicBlock.BasicBlockWithCustomModel;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.SoundType;
@@ -14,8 +16,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.lg.realism.Basic.BasicBlockWithCustomModel;
 
 public class Corals extends BasicBlockWithCustomModel{
 	protected static final AxisAlignedBB corals_AABB = new AxisAlignedBB(0.2D, 0.0D, 0.2D, 0.8D, 0.8D, 0.8D);

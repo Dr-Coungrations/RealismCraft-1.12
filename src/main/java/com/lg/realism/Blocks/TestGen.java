@@ -9,7 +9,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import com.lg.realism.Basic.BasicBlock;
+import com.lg.realism.Basic.BasicBlock.BasicBlock;
 import com.lg.realism.World.Biome.WorldGenThisBiome.WorldGenDeadTree;
 
 public class TestGen extends BasicBlock{

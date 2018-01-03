@@ -1,6 +1,6 @@
 package com.lg.realism;
 
-import com.lg.realism.Basic.BasicBlockWithDropItem;
+import com.lg.realism.Basic.BasicBlock.BasicBlockWithDropItem;
 import com.lg.realism.Blocks.Ash;
 import com.lg.realism.Blocks.BlockBurntGrass;
 import com.lg.realism.Blocks.BlockBurntTree;

@@ -6,12 +6,11 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.lg.realism.Particle.FallingLeaves;
 import com.lg.realism.RegBlocks;
 import com.lg.realism.API.TimerForCoord;
-import com.lg.realism.Basic.BasicBlockWithCustomModel;
-import com.lg.realism.Particle.FallingLeaves;
+import com.lg.realism.Basic.BasicBlock.BasicBlockWithCustomModel;
 
-import net.minecraft.block.BlockSnow;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -57,39 +56,40 @@ public class LeavesAppleTree extends BasicBlockWithCustomModel{
 				time2 = t;
 				++t.time;
 			}
-		}
+		} 
 		if (time2 == null) return;
 		world.scheduleBlockUpdate(pos, this, 1, 0);
-		FallingLeaves newEffect = new FallingLeaves(world, pos.getX() + rand.nextFloat(), pos.getY(), pos.getZ()+ rand.nextFloat(), 0, 0, 0);
+	//	FallingLeaves newEffect = new FallingLeaves(world, pos.getX() + rand.nextFloat(), pos.getY(), pos.getZ()+ rand.nextFloat(), 0, 0, 0);
 
 		//   IBlockState iblockstate = world.getBlockState(pos);
 		//		   int value = ((Integer)iblockstate.getValue(BlockSnow.LAYERS)).intValue();
 
-		if(!world.isRemote) {
+		if(world.isRemote) {
 			if(time2.time % 60 == 0) {
 				if(!world.isAirBlock(pos.down())) {
 
 				}
 				if(world.isAirBlock(pos.down())) {
-					Minecraft.getMinecraft().effectRenderer.addEffect(newEffect);
+			//		Minecraft.getMinecraft().effectRenderer.addEffect(newEffect);
 				}
-
 			}
-			if(time2.time % 480 == 0) {
-				
-				int value;
-				for(int i = 0; i < 10; i++) {
-					if(world.getBlockState(new BlockPos(pos.getX(), pos.getY() - i, pos.getZ())) != Blocks.AIR ||
-							world.getBlockState(new BlockPos(pos.getX(), pos.getY() - i, pos.getZ())) != RegBlocks.blockappletree) {
-						world.setBlockToAir(pos);
-						world.setBlockState(new BlockPos(pos.getX(), pos.getY() - i, pos.getZ()), RegBlocks.fallenlayers.getDefaultState());
-					}
-					//осталось реализовать генерацию скопления листвы снизу под деревом
 
+		}
+		if(time2.time % 480 == 0) {
+
+			int value;
+			for(int i = 0; i < 10; i++) {
+				if(world.getBlockState(new BlockPos(pos.getX(), pos.getY() - i, pos.getZ())) != Blocks.AIR ||
+						world.getBlockState(new BlockPos(pos.getX(), pos.getY() - i, pos.getZ())) != RegBlocks.blockappletree) {
+					world.setBlockToAir(pos);
+					world.setBlockState(new BlockPos(pos.getX(), pos.getY() - i, pos.getZ()), RegBlocks.fallenlayers.getDefaultState());
 				}
+				//осталось реализовать генерацию скопления листвы снизу под деревом
+
 			}
 		}
 	}
+
 
 	@Override
 	public boolean isOpaqueCube(IBlockState state) {

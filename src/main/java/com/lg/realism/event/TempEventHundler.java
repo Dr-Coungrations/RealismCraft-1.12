@@ -1,5 +1,12 @@
 package com.lg.realism.event;
 
+import com.lg.realism.Realism;
+import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
+import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
+import com.lg.realism.PSystem.ColdMessageClient;
+import com.lg.realism.PSystem.NetworkHandler;
+import com.lg.realism.PSystem.TemperatureBodyClientMessage;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Biomes;
@@ -13,16 +20,6 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerChangedDimensionEvent;
-
-import com.lg.realism.Realism;
-import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
-import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
-import com.lg.realism.Config.ConfigManager;
-import com.lg.realism.PSystem.ColdMessageClient;
-import com.lg.realism.PSystem.HUDSyncMessage;
-import com.lg.realism.PSystem.NetworkHandler;
-import com.lg.realism.PSystem.TemperatureBodyClientMessage;
-import com.lg.realism.Sounds.SoundsRegister;
 
 public class TempEventHundler {
 	public static final ResourceLocation LEVEL_CAP = new ResourceLocation(Realism.MODID ,"tempBody");

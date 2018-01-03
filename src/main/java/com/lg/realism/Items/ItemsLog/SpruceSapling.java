@@ -1,5 +1,7 @@
 package com.lg.realism.Items.ItemsLog;
 
+import com.lg.realism.Basic.BasicItem.BasicItem;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumActionResult;
@@ -7,8 +9,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import com.lg.realism.Basic.BasicItem;
 
 public class SpruceSapling extends BasicItem{
 

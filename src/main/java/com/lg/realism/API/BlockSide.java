@@ -20,16 +20,16 @@ import com.lg.realism.Realism;
 
 public class BlockSide extends BlockHorizontal
 {
-    private final AxisAlignedBB[] aabb;
+    private AxisAlignedBB[] SIDE_AABB;
 
     public BlockSide(String name, Material material, AxisAlignedBB[] aabb)
     {
         super(material);
     	this.setRegistryName(name);
-	this.setUnlocalizedName(name);
+		this.setUnlocalizedName(name);
 	
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-        this.aabb = aabb;
+        this.SIDE_AABB = aabb;
     }
 
     @Override
@@ -38,14 +38,14 @@ public class BlockSide extends BlockHorizontal
         switch (state.getValue(FACING))
         {
             case SOUTH:
-                return this.aabb[0];
+                return this.SIDE_AABB[0];
             case NORTH:
             default:
-                return this.aabb[1];
+                return this.SIDE_AABB[1];
             case WEST:
-                return this.aabb[2];
+                return this.SIDE_AABB[2];
             case EAST:
-                return this.aabb[3];
+                return this.SIDE_AABB[3];
         }
     }
 
@@ -73,6 +73,8 @@ public class BlockSide extends BlockHorizontal
         return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
     }
 
+
+
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
@@ -83,13 +85,13 @@ public class BlockSide extends BlockHorizontal
     public int getMetaFromState(IBlockState state)
     {
         int i = 0;
-        i |= state.getValue(FACING).getHorizontalIndex();
+        i = i | state.getValue(FACING).getHorizontalIndex();
         return i;
     }
 
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, FACING);
+        return new BlockStateContainer(this, new IProperty[] {FACING});
     }
 }

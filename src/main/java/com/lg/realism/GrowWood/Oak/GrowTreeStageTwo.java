@@ -22,7 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.lg.realism.RegBlocks;
 import com.lg.realism.API.TimerForCoord;
-import com.lg.realism.Basic.BasicBlockWithCustomModel;
+import com.lg.realism.Basic.BasicBlock.BasicBlockWithCustomModel;
 
 public class GrowTreeStageTwo extends BasicBlockWithCustomModel {
 	List<TimerForCoord> time =  new ArrayList<TimerForCoord>();

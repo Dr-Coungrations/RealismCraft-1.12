@@ -1,6 +1,6 @@
 package com.lg.realism.Items.Backpacks;
 
-import com.lg.realism.Basic.BasicItem;
+import com.lg.realism.Basic.BasicItem.BasicItem;
 
 public class ItemBackpack extends BasicItem{
 

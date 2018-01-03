@@ -1,10 +1,11 @@
 package com.lg.realism.PSystem;
 
-import io.netty.buffer.ByteBuf;
-import net.minecraft.entity.player.EntityPlayer;
-
 import com.lg.realism.Capability.CapabilitiesSA.IBarLevel;
 import com.lg.realism.Capability.CapabilitiesSA.WaterBarProv;
+
+import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 
 public class HUDSyncMessage extends AbstractPacket<HUDSyncMessage> {
 	
@@ -35,5 +36,5 @@ public class HUDSyncMessage extends AbstractPacket<HUDSyncMessage> {
 	}
 	
 	@Override
-	public void handleServerSide(EntityPlayer player) {}
+	public void handleServerSide(EntityPlayerMP player) {}
 }

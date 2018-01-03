@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.lg.realism.Realism;
 import com.lg.realism.RegItems;
-import com.lg.realism.Basic.DevBasicBlock;
+import com.lg.realism.Basic.BasicBlock.DevBasicBlock;
 
 public class MossBlock extends DevBasicBlock{
 	 

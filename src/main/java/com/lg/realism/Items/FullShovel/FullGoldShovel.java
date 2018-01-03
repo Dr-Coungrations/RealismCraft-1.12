@@ -11,7 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import com.lg.realism.Realism;
-import com.lg.realism.Basic.DevBasicItem;
+import com.lg.realism.Basic.BasicItem.DevBasicItem;
 
 public class FullGoldShovel extends DevBasicItem{
 

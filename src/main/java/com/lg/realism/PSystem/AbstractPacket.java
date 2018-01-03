@@ -1,6 +1,7 @@
 package com.lg.realism.PSystem;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
@@ -19,5 +20,5 @@ public abstract class AbstractPacket<REQ extends IMessage> implements IMessage, 
 		return null;
 	}
 	public abstract void handleClientSide(final EntityPlayer player);
-	public abstract void handleServerSide(final EntityPlayer player);
+	public abstract void handleServerSide(final EntityPlayerMP player);
 }

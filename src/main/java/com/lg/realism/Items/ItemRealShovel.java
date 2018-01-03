@@ -3,6 +3,7 @@ package com.lg.realism.Items;
 import com.lg.realism.Realism;
 import com.lg.realism.event.EventToolMode;
 import com.lg.realism.proxy.ClientProxy;
+
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -74,7 +75,7 @@ public class ItemRealShovel extends Item {
 							player.addItemStackToInventory(new ItemStack(block));
 					if (block == Blocks.GRAVEL)
 						if (world.setBlockToAir(pos))
-							player.addItemStackToInventory(new ItemStack(block));
+			 				player.addItemStackToInventory(new ItemStack(block));
 				} else if (ClientProxy.currentToolMode == EventToolMode.EnumToolMode.ROAD) {
 					if (block == Blocks.GRASS)
 						world.setBlockState(pos, Blocks.GRASS_PATH.getDefaultState());

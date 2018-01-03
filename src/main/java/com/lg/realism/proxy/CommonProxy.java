@@ -16,14 +16,20 @@ import com.lg.realism.NewInventory.CAPforINV.CAPCustomInventoryStorage;
 import com.lg.realism.NewInventory.CAPforINV.ICAPCustomInventory;
 import com.lg.realism.NewInventory.CAPforINV.reg.CapabilityEventHandler;
 import com.lg.realism.PSystem.NetworkHandler;
+import com.lg.realism.event.registration.RegEvents;
 
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.common.capabilities.CapabilityManager;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class CommonProxy {
+
+
     public void registerColouring() {}
     public void preInit(FMLPreInitializationEvent event) {
     	
@@ -31,7 +37,8 @@ public class CommonProxy {
     	RegBlocks.register();
     	RegItems.register();
     	RegEntity.register();
-    	NetworkHandler.INSTANCE.init();
+    	new NetworkHandler();
+		new RegEvents.Server();
 		CapabilityManager.INSTANCE.register(IBarLevel.class, new WaterLevelStorage(), WaterBar.class);
     
     }

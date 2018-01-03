@@ -20,7 +20,7 @@ import com.lg.realism.Realism;
 import com.lg.realism.RegBlocks;
 import com.lg.realism.RegItems;
 import com.lg.realism.API.TimerForCoord;
-import com.lg.realism.Basic.DevBasicBlock;
+import com.lg.realism.Basic.BasicBlock.DevBasicBlock;
 
 public class WetVine extends DevBasicBlock {
 	List<TimerForCoord> time =  new ArrayList<TimerForCoord>();

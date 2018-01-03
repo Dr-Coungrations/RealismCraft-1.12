@@ -1,5 +1,7 @@
 package com.lg.realism.Blocks;
 
+import com.lg.realism.Basic.BasicBlock.BasicBlock;
+
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -17,8 +19,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.lg.realism.Basic.BasicBlock;
 
 public class PaneHorizontal extends BasicBlock{
 	protected static final AxisAlignedBB pane_AABB = new AxisAlignedBB(0D, 0.45D, 0D, 1D, 0.55D, 1D);

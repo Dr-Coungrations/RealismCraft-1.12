@@ -6,7 +6,7 @@ import java.util.Random;
 
 import com.lg.realism.RegBlocks;
 import com.lg.realism.API.TimerForCoord;
-import com.lg.realism.Basic.BasicBlockWithCustomModel;
+import com.lg.realism.Basic.BasicBlock.BasicBlockWithCustomModel;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;

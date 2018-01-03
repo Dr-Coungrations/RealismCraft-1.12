@@ -2,7 +2,7 @@ package com.lg.realism.Blocks.CompactWorkbench;
 
 import com.lg.realism.GuiHandler;
 import com.lg.realism.Realism;
-import com.lg.realism.Basic.BasicBlock;
+import com.lg.realism.Basic.BasicBlock.BasicBlock;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

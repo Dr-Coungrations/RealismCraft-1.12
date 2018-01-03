@@ -48,14 +48,10 @@ public class EventHandThirstUpdate {
 		
 					player.world.playSound(player, blockpos, SoundEvents.ENTITY_GENERIC_DRINK, SoundCategory.NEUTRAL, 0.8F, 1.0F);
 			
-					if(ConfigManager.thirstDebug){
-						Realism.LOGGER.info("(EventHandThirstUpdate) WaterLevel PreMessage: " + capabilities.getWaterLevel());
-					}
+
 				
 					NetworkHandler.INSTANCE.sendToServer(new HUDSyncMessageServer(capabilities.getWaterLevel()));
-					if(ConfigManager.thirstDebug){
-						Realism.LOGGER.info("(EventHandThirstUpdate) WaterLevel PostMessage: " + capabilities.getWaterLevel());
-					}
+
 				}
 				}
 			}
